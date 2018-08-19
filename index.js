@@ -6,7 +6,7 @@ const TOKEN = process.env.BOT_TOKEN
 
 bot.on("message", function(message) {
 
-    bot.user.setActivity(`!ajuda | 7 Comandos`, {type: "WATCHING"});
+    bot.user.setActivity(`!ajuda | 6 Comandos`, {type: "WATCHING"});
            
 });
 
