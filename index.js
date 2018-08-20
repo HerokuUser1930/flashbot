@@ -22,7 +22,7 @@ bot.on("message", function(message) {
 
             message.channel.send('**Olá,' + message.author + '! Esse comando ainda está sendo feito. Tente novamente mais tarde. :x:**')
 
-		if(message.author.id == '360272364950388736')
+		if(message.author.id == '360272364950388736') {
 			
 			message.channel.send(message.author + '**Enviei meus comandos na sua dm.**')
 			
@@ -47,6 +47,7 @@ bot.on("message", function(message) {
     console.log(e.stack);
   }
 		
+		}
 			
 	}
 
