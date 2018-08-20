@@ -24,6 +24,8 @@ bot.on("message", function(message) {
 
 		if(message.author.id == '360272364950388736')
 			
+			message.channel.send(message.author + '**Enviei meus comandos na sua dm.**')
+			
 			const h1 = new Discord.RichEmbed()
 			.addField('Comandos Públicos:', '!serverinfo - Mostra as informações do servidor\n!reportar - Reporta um usuário para a Staff')
 			.setColor('#ff7a00')
@@ -32,6 +34,20 @@ bot.on("message", function(message) {
 			.addField('Comandos para Moderação:', '!ban - Bane o usuário do servidor(Banir Membros)\n!kick - Expulsa o usuário do servidor(Expulsar Membros)')
 			.setColor('#ff1800')
 	
+			  try{
+    await message.author.send(h1)
+  }catch(e){
+    console.log(e.stack);
+    message.channel.send(`${message.author}**, Habilite o Dm para eu enviar os comandos.**`)
+  }
+		
+		  try{
+    await message.author.send(h2)
+  }catch(e){
+    console.log(e.stack);
+  }
+		
+			
 	}
 
         if (command == `${prefix}serverinfo`) {
