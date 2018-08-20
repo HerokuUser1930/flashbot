@@ -19,8 +19,6 @@ bot.on("message", function(message) {
         let args = messageArray.slice(1);
 
         if (command == `${prefix}ajuda`) {
-
-		if(message.author.id !== '360272364950388736') return message.channel.send('**Olá,' + message.author + '! Esse comando ainda está sendo feito. Tente novamente mais tarde. :x:**')
 			
 			message.channel.send(message.author + '**, Enviei meus comandos na sua dm.**')
 			
