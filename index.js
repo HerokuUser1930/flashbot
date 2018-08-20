@@ -20,9 +20,7 @@ bot.on("message", function(message) {
 
         if (command == `${prefix}ajuda`) {
 
-            message.channel.send('**Olá,' + message.author + '! Esse comando ainda está sendo feito. Tente novamente mais tarde. :x:**')
-
-		if(message.author.id == '360272364950388736') {
+		if(message.author.id !== '360272364950388736') return message.channel.send('**Olá,' + message.author + '! Esse comando ainda está sendo feito. Tente novamente mais tarde. :x:**')
 			
 			message.channel.send(message.author + '**, Enviei meus comandos na sua dm.**')
 			
@@ -47,6 +45,12 @@ bot.on("message", function(message) {
 		
 		  try{
     await message.author.send(h2)
+  }catch(e){
+    console.log(e.stack);
+  }
+		
+				  try{
+    await message.author.send(h3)
   }catch(e){
     console.log(e.stack);
   }
