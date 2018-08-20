@@ -13,7 +13,6 @@ bot.on("message", function(message) {
     bot.on("message", async message => {
         if(message.author.bot) return;
         if(message.channel.type === "dm") return;
-
         let prefix = '!'
         let messageArray = message.content.split(" ");
         let command = messageArray[0];
@@ -22,7 +21,18 @@ bot.on("message", function(message) {
         if (command == `${prefix}ajuda`) {
 
             message.channel.send('**Olá,' + message.author + '! Esse comando ainda está sendo feito. Tente novamente mais tarde. :x:**')
-}
+
+		if(message.author.id == '360272364950388736')
+			
+			const h1 = new Discord.RichEmbed()
+			.addField('Comandos Públicos:', '!serverinfo - Mostra as informações do servidor\n!reportar - Reporta um usuário para a Staff')
+			.setColor('#ff7a00')
+			
+			const h2 = new Discord.RichEmbed()
+			.addField('Comandos para Moderação:', '!ban - Bane o usuário do servidor(Banir Membros)\n!kick - Expulsa o usuário do servidor(Expulsar Membros)')
+			.setColor('#ff1800')
+	
+	}
 
         if (command == `${prefix}serverinfo`) {
             const embed = new Discord.RichEmbed()
