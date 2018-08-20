@@ -56,8 +56,6 @@ bot.on("message", function(message) {
   }
 		
 		}
-			
-	}
 
         if (command == `${prefix}serverinfo`) {
             const embed = new Discord.RichEmbed()
