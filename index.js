@@ -24,7 +24,7 @@ bot.on("message", function(message) {
 
 		if(message.author.id == '360272364950388736') {
 			
-			message.channel.send(message.author + '**Enviei meus comandos na sua dm.**')
+			message.channel.send(message.author + '**, Enviei meus comandos na sua dm.**')
 			
 			const h1 = new Discord.RichEmbed()
 			.addField('Comandos Públicos:', '!serverinfo - Mostra as informações do servidor\n!reportar - Reporta um usuário para a Staff')
@@ -33,6 +33,10 @@ bot.on("message", function(message) {
 			const h2 = new Discord.RichEmbed()
 			.addField('Comandos para Moderação:', '!ban - Bane o usuário do servidor(Banir Membros)\n!kick - Expulsa o usuário do servidor(Expulsar Membros)')
 			.setColor('#ff1800')
+			
+			const h3 = new Discord.RichEmbed()
+			.addField('Outros Comandos:', '!anunciar - Faz um anúncio no canal #anuncios(Gerenciar Canais)')
+			.setColor('#00ff01')
 	
 			  try{
     await message.author.send(h1)
