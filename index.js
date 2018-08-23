@@ -4,8 +4,9 @@ var bot = new Discord.Client()
 
 const TOKEN = process.env.BOT_TOKEN
 
-  client.on("ready", () => {
-    bot.user.setActivity(`${client.users.size} Usuarios`, {type: "WATCHING"});
+  bot.on("message", function(message) {
+
+    bot.user.setActivity(`LightMine loja de minecraft!`, {type: "WATCHING"});
            
 });
 
