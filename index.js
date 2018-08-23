@@ -199,7 +199,7 @@ if (command == `${prefix}anunciar`) {
           kickchannel.send(kickEmbed);
         }
 
-	if(cmd === `<@473212509545824296>`
+	if(command === `<@473212509545824296>`
 	     }catch(e){
     console.log(e.stack);
     message.channel.send(`${message.author}**, Utilize !ajuda.**`)
