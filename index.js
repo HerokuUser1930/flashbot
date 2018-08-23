@@ -4,9 +4,9 @@ var bot = new Discord.Client()
 
 const TOKEN = process.env.BOT_TOKEN
 
-bot.on("message", function(message) {
-
-    bot.user.setActivity(`!ajuda | 7 Comandos`, {type: "STREAMING"});
+  client.on("ready", () => {
+        client.user.setGame(`${client.users.size} Usuarios`, {type: "WHATING"});
+    })
            
 });
 
