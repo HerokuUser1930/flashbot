@@ -6,7 +6,7 @@ const TOKEN = process.env.BOT_TOKEN
 
   bot.on("message", function(message) {
 
-    bot.user.setActivity(`LightMine loja de minecraft!`, {type: "WATCHING"});
+	  bot.user.setActivity(`${bot.users.size} Usuarios`, {type: "WATCHING"});
            
 });
 
