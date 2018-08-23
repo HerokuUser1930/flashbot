@@ -200,10 +200,7 @@ if (command == `${prefix}anunciar`) {
         }
 
 	if(command === `<@473212509545824296>`
-	     }catch(e){
-    console.log(e.stack);
-    message.channel.send(`${message.author}**, Utilize !ajuda.**`)
-  }
+              message.channel.send(message.author + '**, Olá utilize !ajuda para ver meus comandos!.**')
 	    
     });
 bot.login(TOKEN);
