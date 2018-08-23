@@ -198,9 +198,6 @@ if (command == `${prefix}anunciar`) {
 
           kickchannel.send(kickEmbed);
         }
-
-	if(command == `<@473212509545824296>`
-              message.channel.send(message.author + '**, Olá utilize !ajuda para ver meus comandos!.**')
 	    
     });
 bot.login(TOKEN);
