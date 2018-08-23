@@ -5,7 +5,7 @@ var bot = new Discord.Client()
 const TOKEN = process.env.BOT_TOKEN
 
   client.on("ready", () => {
-        client.user.setGame(`${client.users.size} Usuarios`, {type: "WHATING"});
+        client.user.setGame(`${client.users.size} Usuarios`, {type: "LISTENING"});
     })
            
 });
