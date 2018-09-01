@@ -198,6 +198,25 @@ if (command == `${prefix}anunciar`) {
 
           kickchannel.send(kickEmbed);
         }
+	 
+	       if (command == `${prefix}invite`) {
+			
+			message.channel.send(message.author + '**, Enviei meus comandos na sua dm.**')
+			
+			const h1 = new Discord.RichEmbed()
+			.addField('Meu site:', 'https://botflash.glitch.me/')
+			.setColor('#ff7a00')
+			.setAuthor(message.author.tag, message.author.displayAvatarURL)
+	
+			  try{
+    await message.author.send(h1)
+  }catch(e){
+    console.log(e.stack);
+    message.channel.send(`${message.author}**, Habilite o Dm para eu enviar os comandos.**`)
+  }
+		
+		}
+
 	    
     });
 bot.login(TOKEN);
