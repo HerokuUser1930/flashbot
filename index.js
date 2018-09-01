@@ -6,7 +6,7 @@ const TOKEN = process.env.BOT_TOKEN
 
   bot.on("message", function(message) {
 
-	 bot.user.setPresence({ game: { name: `Bot iniciado com ${bot.users.size} usuarios, em ${bot.channels.size} canais, em ${bot.guilds.size} diferentes!`, type: 1, url: "https://www.twitch.tv/flashcentral"}});
+	 bot.user.setPresence({ game: { name: `Distribuindo Amor para ${bot.users.size} usuarios, em ${bot.guilds.size} guilds diferentes!`, type: 1, url: "https://www.twitch.tv/flashcentral"}});
            
 });
 
