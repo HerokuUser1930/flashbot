@@ -6,7 +6,7 @@ const TOKEN = process.env.BOT_TOKEN
 
   bot.on("message", function(message) {
 
-	 dragon.user.setPresence({ game: { name: 'Vendo viados', type: 1, url: "https://www.twitch.tv/flashcentral"}});
+	 bot.user.setPresence({ game: { name: 'Vendo viados', type: 1, url: "https://www.twitch.tv/flashcentral"}});
            
 });
 
