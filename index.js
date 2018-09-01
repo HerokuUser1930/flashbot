@@ -4,7 +4,7 @@ var bot = new Discord.Client()
 
 const TOKEN = process.env.BOT_TOKEN
 
-  bot.on("message", function(message) {
+  bot.on('guildMemberAdd', member => { member.guild.channels.get('🎉boas-vindas').send("Bem Vindo"); });
 
 	 bot.user.setPresence({ game: { name: `Distribuindo Amor para ${bot.users.size} usuarios, em ${bot.guilds.size} guilds diferentes!`, type: 1, url: "https://www.twitch.tv/flashcentral"}});
            
