@@ -20,7 +20,7 @@ const TOKEN = process.env.BOT_TOKEN
 
         if (command == `${prefix}ajuda`) {
 			
-			message.channel.send(message.author + '**, Enviei meus comandos na sua dm.**')
+			message.channel.send(message.author + '**, Enviei minhas informações em seu privado.**')
 			
 			const h1 = new Discord.RichEmbed()
 			.addField('Comandos Públicos:', '!serverinfo - Mostra as informações do servidor\n!reportar - Reporta um usuário para a Staff')
@@ -36,12 +36,17 @@ const TOKEN = process.env.BOT_TOKEN
 			.addField('Outros Comandos:', '!anunciar - Faz um anúncio no canal #anuncios(Gerenciar Canais)')
 			.setColor('#00ff01')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
+			
+			const h4 = new Discord.RichEmbed()
+			.addField('Caso precise de algo:', 'contate meu dono! PotterZ#6281 Ou _SpeedLight_#4293 \nMe Adicione: https://botflash.glitch.me/)')
+			.setColor('#00ff01')
+			.setAuthor(message.author.tag, message.author.displayAvatarURL)
 	
 			  try{
     await message.author.send(h1)
   }catch(e){
     console.log(e.stack);
-    message.channel.send(`${message.author}**, Habilite o Dm para eu enviar os comandos.**`)
+    message.channel.send(`${message.author}**, Habilite o seu privado para mim poder enviar minhas informações.**`)
   }
 		
 		  try{
@@ -55,8 +60,14 @@ const TOKEN = process.env.BOT_TOKEN
   }catch(e){
     console.log(e.stack);
   }
-		
-		}
+
+						  try{
+    await message.author.send(h4)
+  }catch(e){
+    console.log(e.stack);
+  }
+
+	}
 
         if (command == `${prefix}serverinfo`) {
             const embed = new Discord.RichEmbed()
@@ -198,25 +209,6 @@ if (command == `${prefix}anunciar`) {
 
           kickchannel.send(kickEmbed);
         }
-	 
-	       if (command == `${prefix}invite`) {
-			
-			message.channel.send(message.author + '**, Enviei meus comandos na sua dm.**')
-			
-			const h1 = new Discord.RichEmbed()
-			.addField('Meu site:', 'https://botflash.glitch.me/')
-			.setColor('#ff7a00')
-			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-	
-			  try{
-    await message.author.send(h1)
-  }catch(e){
-    console.log(e.stack);
-    message.channel.send(`${message.author}**, Habilite o Dm para eu enviar os comandos.**`)
-  }
-		
-		}
-
 	    
     });
 bot.login(TOKEN);
