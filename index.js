@@ -189,9 +189,6 @@ if (command == `${prefix}anunciar`) {
     if (message.content.startsWith(`${prefix}ping`)) {
         message.channel.sendMessage('Pong! Your ping is `' + `${Date.now() - message.createdTimestamp}` + ' ms`');
     }
-});
-
-client.login(token)
 	    
     });
 bot.login(TOKEN);
