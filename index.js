@@ -23,7 +23,7 @@ const TOKEN = process.env.BOT_TOKEN
 			message.channel.send(message.author + '**, Enviei minhas informações em seu privado.**')
 			
 			const h1 = new Discord.RichEmbed()
-			.addField('Comandos Públicos:', '!serverinfo - Mostra as informações do servidor\n!reportar - Reporta um usuário para a Staff')
+			.addField('Comandos Públicos:', '!serverinfo - Mostra as informações do servidor\n!reportar - Reporta um usuário para a Staff\n!ping ver o seu ping')
 			.setColor('#ff7a00')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
 			.addField('Comandos para Moderação:', '!ban - Bane o usuário do servidor(Banir Membros)\n!kick - Expulsa o usuário do servidor(Expulsar Membros)')
