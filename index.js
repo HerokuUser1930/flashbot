@@ -186,9 +186,11 @@ if (command == `${prefix}anunciar`) {
           kickchannel.send(kickEmbed);
         }
 	    
-  if(command === "${Math.round(client.ping)}ms") {
-m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
-       }
+  if(command === "ping") {
+    const m = await message.channel.send("${Math.round(client.ping)}ms");
+    m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
+  }
+
 	    
     });
 bot.login(TOKEN);
