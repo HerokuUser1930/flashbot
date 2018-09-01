@@ -26,17 +26,13 @@ const TOKEN = process.env.BOT_TOKEN
 			.addField('Comandos Públicos:', '!serverinfo - Mostra as informações do servidor\n!reportar - Reporta um usuário para a Staff')
 			.setColor('#ff7a00')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-			
-			const h2 = new Discord.RichEmbed()
 			.addField('Comandos para Moderação:', '!ban - Bane o usuário do servidor(Banir Membros)\n!kick - Expulsa o usuário do servidor(Expulsar Membros)')
 			.setColor('#ff1800')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-			
-			const h3 = new Discord.RichEmbed()
 			.addField('Outros Comandos:', '!anunciar - Faz um anúncio no canal #anuncios(Gerenciar Canais)')
 			.setColor('#00ff01')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)		
-			.addField('Caso precise de algo:', 'contate meu dono! PotterZ#6281 Ou _SpeedLight_#4293 \nMe Adicione: https://botflash.glitch.me/)')
+			.addField('Caso precise de algo:', 'contate meu dono! PotterZ#6281 Ou `_SpeedLight_#4293` \nMe Adicione: https://botflash.glitch.me/)')
 			.setColor('#00ff01')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
 	
@@ -45,18 +41,6 @@ const TOKEN = process.env.BOT_TOKEN
   }catch(e){
     console.log(e.stack);
     message.channel.send(`${message.author}**, Habilite o seu privado para mim poder enviar minhas informações.**`)
-  }
-		
-		  try{
-    await message.author.send(h2)
-  }catch(e){
-    console.log(e.stack);
-  }
-		
-				  try{
-    await message.author.send(h3)
-  }catch(e){
-    console.log(e.stack);
   }
 
 	}
