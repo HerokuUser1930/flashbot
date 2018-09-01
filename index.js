@@ -35,9 +35,7 @@ const TOKEN = process.env.BOT_TOKEN
 			const h3 = new Discord.RichEmbed()
 			.addField('Outros Comandos:', '!anunciar - Faz um anúncio no canal #anuncios(Gerenciar Canais)')
 			.setColor('#00ff01')
-			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-			
-			const h4 = new Discord.RichEmbed()
+			.setAuthor(message.author.tag, message.author.displayAvatarURL)		
 			.addField('Caso precise de algo:', 'contate meu dono! PotterZ#6281 Ou _SpeedLight_#4293 \nMe Adicione: https://botflash.glitch.me/)')
 			.setColor('#00ff01')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
@@ -57,12 +55,6 @@ const TOKEN = process.env.BOT_TOKEN
 		
 				  try{
     await message.author.send(h3)
-  }catch(e){
-    console.log(e.stack);
-  }
-
-						  try{
-    await message.author.send(h4)
   }catch(e){
     console.log(e.stack);
   }
