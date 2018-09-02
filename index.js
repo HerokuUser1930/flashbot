@@ -26,7 +26,7 @@ bot.on("message", function(message) {
 			.addField('Comandos Públicos:', '!ajuda - Mostra essas páginas de comandos\n!serverinfo - Mostra as informações do servidor\n!reportar - Reporta um usuário para a Staff\n!ping - ver o seu ping')
 			.setColor('#ff7a00')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-			.addField('Comandos para Moderação:', '!ban - Banir um usuário do servidor(Banir Membros)\n!kick - Expulsa um usuário do servidor(Expulsar Membros)')
+			.addField('Comandos para Moderação:', '!banir - Banir um usuário do servidor(Banir Membros)\n!kick - Expulsa um usuário do servidor(Expulsar Membros)')
 			.setColor('#ff1800')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
 			.addField('Outros Comandos:', '!anunciar - Faz um anúncio no canal #anuncios(Gerenciar Canais)')
@@ -79,7 +79,7 @@ if (command == `${prefix}anunciar`) {
     anunciochannel.send(embed);
   }
 
-  if (command == `${prefix}ban`) {
+  if (command == `${prefix}banir`) {
     if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(`**Você não tem permissão para utilizar esse comando!** :x:`);
     let staff = message.author
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
