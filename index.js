@@ -514,6 +514,31 @@ incidentschannel.send(muteembed);
           .addField("📜 Motivo", reason)
           .addField("⏳ Expira em", 'Nunca')
           .setColor("#0c8109")
+
+          try{
+            await tomute.send(embed)
+          }catch(e){
+          }
+
+          let embed = new Discord.RichEmbed()
+        .setTitle(`🔇 FlashLog I Silenciado`)
+        .addField('⛔ Usuário Mutado', tomute)
+        .addField('🔎 Pelo Staff', message.author)
+        .addField('📄 Motivo', reason, true)
+        .addField('⏳ Expira em', 'Nunca', true)
+          .setColor("#0c8109")
+          .setThumbnail(message.author.avatarURL)
+          .setFooter(`FlashBOT Moderação`, message.author.displayAvatarURL)
+
+          await(tomute.addRole(muterole.id));
+        
+          let incidentschannel = message.guild.channels.find(`name`, 'modlog');
+          
+incidentschannel.send(muteembed);
+
+          message.channel.send(`:white_check_mark: I <@${message.author.id}>, O usuário foi **Mutado** com sucesso!`)
+        //end of module
+        }
           
  if (command == `${prefix}unmute`) {
         if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
@@ -538,35 +563,11 @@ incidentschannel.send(muteembed);
       .setThumbnail(msg.author.avatarURL)
       .setFooter(`FlashBOT Moderação`, message.author.displayAvatarURL)
 
-      let unmutechannel = message.guild.channels.find('name', modlog)
+      let unmutechannel = message.guild.channels.find('name', 'modlog')
      
         unmutechannel.send(embed);
       message.delete();
       }
-          try{
-            await tomute.send(embed)
-          }catch(e){
-          }
-        
-          let muteembed = new Discord.RichEmbed()
-        .setTitle(`🔇 FlashLog I Silenciado`)
-        .addField('⛔ Usuário Mutado', tomute)
-        .addField('🔎 Pelo Staff', message.author)
-        .addField('📄 Motivo', reason, true)
-        .addField('⏳ Expira em', 'Nunca', true)
-          .setColor("#0c8109")
-          .setThumbnail(message.author.avatarURL)
-          .setFooter(`FlashBOT Moderação`, message.author.displayAvatarURL)
-
-          await(tomute.addRole(muterole.id));
-        
-          let incidentschannel = message.guild.channels.find(`name`, 'modlog');
-          
-incidentschannel.send(muteembed);
-
-          message.channel.send(`:white_check_mark: I <@${message.author.id}>, O usuário foi **Mutado** com sucesso!`)
-        //end of module
-        }
 
     });
 bot.login(TOKEN);
