@@ -187,64 +187,8 @@ if (command == `${prefix}anunciar`) {
         }
 	    
     if (message.content.startsWith(`${prefix}ping`)) {
-        message.channel.sendMessage('Pong! Seu ping e `' + `${Date.now() - message.createdTimestamp}` + ' ms`');
+        message.channel.sendMessage('Pong! o Ping do bot e: `' + `${Date.now() - message.createdTimestamp}` + ' ms`');
     }
-   
-if (command == `${prefix}warn`) {
 
-  if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.reply("Vc nao pode fazer isso!");
-  let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
-  if(!wUser) return message.reply("Não consegui encontrá-los");
-  if(wUser.hasPermission("MANAGE_MESSAGES")) return message.reply("They waaaay too kewl");
-  let reason = args.join(" ").slice(22);
-
-  if(!warns[wUser.id]) warns[wUser.id] = {
-    warns: 0
-  };
-
-  warns[wUser.id].warns++;
-
-  fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
-    if (err) console.log(err)
-  });
-
-  let warnEmbed = new Discord.RichEmbed()
-  .setDescription("Warn")
-  .setAuthor(message.author.username)
-  .setColor("#fc6400")
-  .addField("Usuário avisado", `<@${wUser.id}>`)
-  .addField("Avisado em", message.channel)
-  .addField("Número de avisos", warns[wUser.id].warns)
-  .addField("Razão", reason);
-
-  let warnchannel = message.guild.channels.find(`name`, "punições");
-  if(!warnchannel) return message.reply("Couldn't find channel");
-
-  warnchannel.send(warnEmbed);
-
-  if(warns[wUser.id].warns == 2){
-    let muterole = message.guild.roles.find(`name`, "muted");
-    if(!muterole) return message.reply("You should create that role dude.");
-
-    let mutetime = "10s";
-    await(wUser.addRole(muterole.id));
-    message.channel.send(`<@${wUser.id}> has been temporarily muted`);
-
-    setTimeout(function(){
-      wUser.removeRole(muterole.id)
-      message.reply(`<@${wUser.id}> has been unmuted.`)
-    }, ms(mutetime))
-  }
-  if(warns[wUser.id].warns == 3){
-    message.guild.member(wUser).ban(reason);
-    message.reply(`<@${wUser.id}> has been banned.`)
-  }
-
-}
-
-module.exports.help = {
-  name: "warn"
-}
-	    
     });
 bot.login(TOKEN);
