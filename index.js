@@ -32,7 +32,7 @@ bot.on("message", function(message) {
 			.addField('Outros Comandos:', '!anunciar - Faz um anúncio no canal #anuncios(Gerenciar Canais)')
 			.setColor('#00ff01')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)		
-			.addField('Caso precise de algo:', 'contate meu dono! PotterZ#6281 Ou `_SpeedLight_#4293` \nMe Adicione: https://botflash.glitch.me/)')
+			.addField('Caso precise de algo:', 'contate meu dono! 🔥 zPotterZ ๖̶̶̶ۣۣۜۜ͜ζ͜͡ Ownerツ#6281 Ou `_SpeedLight_#4293` \nMe Adicione: https://botflash.glitch.me/)')
 			.setColor('#00ff01')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
 	
@@ -61,7 +61,7 @@ bot.on("message", function(message) {
     .addField("🙋‍ Total de Membros", message.guild.memberCount)
     .addField("💬 Total de Canais", message.guild.channels.size)
     .addField("🌍 Região", message.guild.region)
-    .setFooter(`SpeedStersBOT ServerInfo`, message.author.displayAvatarURL)
+    .setFooter(`FlashBOT ServerInfo`, message.author.displayAvatarURL)
     .addField("📜 Cargos", message.guild.roles.map(r => r.name).join(", "))
     message.channel.send(embed)
   }
