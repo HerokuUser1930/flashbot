@@ -43,6 +43,29 @@ bot.on("message", function(message) {
     message.channel.send(`${message.author}**, Habilite o seu privado para mim poder enviar minhas informações.**`)
   }
 
+ if (cmd == `${prefix}serverinfo`) {
+    message.channel.send(`${message.author}`)
+    const embed = new Discord.RichEmbed()
+    .setTitle("Informações desse Servidor")
+    .setColor("#90ff00")
+    .addField("📋 Nome", message.guild.name, true)
+    .addField('👾 Total de Bots', `${message.guild.members.filter(b => b.user.bot).size}`, true)
+    .addField('📃 Presença', `📗 Online: ${message.guild.presences.size}/${message.guild.presences.filter(p => p.status === 'online').size}\n📕 Ocupado: ${message.guild.presences.filter(p => p.status === 'dnd').size}\n📒 Ausente: ${message.guild.presences.filter(p => p.status === 'idle').size}`, true)
+    .addField('💬 Canais de texto', `${msg.guild.channels.filter(m => m.type === 'text').size}`, true)
+    .addField('🔊 Canais de Voz', `${msg.guild.channels.filter(m => m.type === 'voice').size}`, true)
+    .setThumbnail(message.guild.iconURL)
+    .addField("💻 ID", message.guild.id)
+    .addField("👑 Dono", message.guild.owner)
+    .addField("📑 Criado em", message.guild.createdAt)
+    .addField("📮 Entrei aqui em", message.guild.joinedAt)
+    .addField("🙋‍ Total de Membros", message.guild.memberCount)
+    .addField("💬 Total de Canais", message.guild.channels.size)
+    .addField("🌍 Região", message.guild.region)
+    .setFooter(`SpeedStersBOT ServerInfo`, message.author.displayAvatarURL)
+    .addField("📜 Cargos", message.guild.roles.map(r => r.name).join(", "))
+    message.channel.send(embed)
+  }
+
 if (command == `${prefix}anunciar`) {
     if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`**Você não tem permissão para utilizar este comando!** :x:`);
     let anuncio = args.join(" ");
@@ -171,6 +194,47 @@ if (command == `${prefix}anunciar`) {
     if (message.content.startsWith(`${prefix}ping`)) {
         message.channel.sendMessage('Pong! o Ping do bot e: `' + `${Date.now() - message.createdTimestamp}` + ' ms`');
     }
+
+    if (cmd == `${prefix}avatar`) {
+    const user = msg.mentions.users.first();
+    if (!user) {
+        msg.channel.send(`${msg.author}, Mencione um Usuário!`);
+    }
+	  const embed = new Discord.RichEmbed()
+	  
+	  .setTitle(`Avatar de ${user.username}#${user.discriminator}`)
+	  .addField(`Download`, `[Clique aqui](${user.avatarURL})`)
+	  .setImage(user.avatarURL)
+	  .setColor('#243cd8')
+
+	  msg.channel.send(`${msg.author}`)
+	  msg.channel.send(embed)
+	  
+	  
+
+    }
+
+if (cmd == `${prefix}apagar`) {
+        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado`);
+		    if(!message.guild.member(bot.user).hasPermission('MANAGE_MESSAGES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Mensagens`")
+	  
+            // We want to check if the argument is a number
+            if (isNaN(args[0])) {
+                // Sends a message to the channel.
+                message.channel.send('Coloque um número de 1 á 100! Para poder apagar as mensagens!'); //\n means new line.
+                // Cancels out of the script, so the rest doesn't run.
+                return;
+            }
+
+            const fetched = await message.channel.fetchMessages({limit: args[0]}); // This grabs the last number(args) of messages in the channel.
+            console.log(fetched.size + ' messages found, deleting...'); // Lets post into console how many messages we are deleting
+
+            // Deleting the messages
+            message.channel.bulkDelete(fetched)
+    
+      .catch(error => message.reply(`Eu não consegui deletar mensagens por: ${error}`));
+    message.channel.send(`:white_check_mark: I ${message.author}, Chat limpo!`)
+  }
 
     });
 bot.login(TOKEN);
