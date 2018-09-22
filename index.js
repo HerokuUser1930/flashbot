@@ -192,9 +192,9 @@ if (command == `${prefix}anunciar`) {
    
 if (command == `${prefix}warn`) {
 
-  if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.reply("No can do pal!");
+  if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.reply("Vc nao pode fazer isso!");
   let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
-  if(!wUser) return message.reply("Couldn't find them yo");
+  if(!wUser) return message.reply("Não consegui encontrá-los");
   if(wUser.hasPermission("MANAGE_MESSAGES")) return message.reply("They waaaay too kewl");
   let reason = args.join(" ").slice(22);
 
@@ -209,13 +209,13 @@ if (command == `${prefix}warn`) {
   });
 
   let warnEmbed = new Discord.RichEmbed()
-  .setDescription("Warns")
+  .setDescription("Warn")
   .setAuthor(message.author.username)
   .setColor("#fc6400")
-  .addField("Warned User", `<@${wUser.id}>`)
-  .addField("Warned In", message.channel)
-  .addField("Number of Warnings", warns[wUser.id].warns)
-  .addField("Reason", reason);
+  .addField("Usuário avisado", `<@${wUser.id}>`)
+  .addField("Avisado em", message.channel)
+  .addField("Número de avisos", warns[wUser.id].warns)
+  .addField("Razão", reason);
 
   let warnchannel = message.guild.channels.find(`name`, "incidents");
   if(!warnchannel) return message.reply("Couldn't find channel");
