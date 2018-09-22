@@ -56,7 +56,7 @@ bot.on("message", function(message) {
             .addField("🙋‍ Total de Membros", message.guild.memberCount)
             .addField("💬 Total de Canais", message.guild.channels.size)
             .addField("🌍 Região", message.guild.region)
-            .setFooter(`SpeedStersBOT ServerInfo`, message.author.displayAvatarURL)
+            .setFooter(`FlashBOT ServerInfo`, message.author.displayAvatarURL)
             .addField("📜 Cargos", message.guild.roles.map(r => r.name).join(", "))
             message.channel.send(embed)
 }
@@ -186,6 +186,26 @@ if (command == `${prefix}anunciar`) {
 
           kickchannel.send(kickEmbed);
         }
+
+  
+    if (cmd == `${prefix}avatar`) {
+    const user = msg.mentions.users.first();
+    if (!user) {
+        msg.channel.send(`${msg.author}, Mencione um Usuário!`);
+    }
+	  const embed = new Discord.RichEmbed()
+	  
+	  .setTitle(`Avatar de ${user.username}#${user.discriminator}`)
+	  .addField(`Download`, `[Clique aqui](${user.avatarURL})`)
+	  .setImage(user.avatarURL)
+	  .setColor('#243cd8')
+
+	  msg.channel.send(`${msg.author}`)
+	  msg.channel.send(embed)
+	  
+	  
+
+    }
 
     });
 bot.login(TOKEN);
