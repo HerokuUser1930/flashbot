@@ -217,24 +217,5 @@ if (command == `${prefix}anunciar`) {
     message.channel.send(`:white_check_mark: I ${message.author}, Chat limpo!`)
   }
 
-    if (command == `${prefix}avatar`) {
-    const user = msg.mentions.users.first();
-    if (!user) {
-        msg.channel.send(`${msg.author}, Mencione um Usuário!`);
-    }
-	  const embed = new Discord.RichEmbed()
-	  
-	  .setTitle(`Avatar de ${user.username}#${user.discriminator}`)
-	  .addField(`Download`, `[Clique aqui](${user.avatarURL})`)
-	  .setImage(user.avatarURL)
-	  .setColor('#243cd8')
-
-	  msg.channel.send(`${msg.author}`)
-	  msg.channel.send(embed)
-	  
-	  
-
-    }
-
     });
 bot.login(TOKEN);
