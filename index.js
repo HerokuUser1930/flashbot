@@ -13,7 +13,7 @@ bot.on("message", function(message) {
     bot.on("message", async message => {
         if(message.author.bot) return;
         if(message.channel.type === "dm") return;
-        let prefix = '!'
+        let prefix = 'F!'
         let messageArray = message.content.split(" ");
         let command = messageArray[0];
         let args = messageArray.slice(1);
@@ -23,12 +23,12 @@ bot.on("message", function(message) {
 			message.channel.send(message.author + '**, Enviei meus comandos na sua dm.**')
 			
 			const h1 = new Discord.RichEmbed()
-			.addField('Comandos Públicos:', '!serverinfo - Mostra as informações do servidor\n!reportar - Reporta um usuário para a Staff')
+			.addField('Comandos Públicos:', 'F!serverinfo - Mostra as informações do servidor\nF!reportar - Reporta um usuário para a Staff')
 			.setColor('#ff7a00')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-			.addField('Comandos para Moderação:', '!ban - Bane o usuário do servidor(Banir Membros)\n!kick - Expulsa o usuário do servidor(Expulsar Membros)')
+			.addField('Comandos para Moderação:', 'F!ban - Bane o usuário do servidor(Banir Membros)\nF!kick - Expulsa o usuário do servidor(Expulsar Membros)')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-			.addField('Outros Comandos:', '!anunciar - Faz um anúncio no canal #anuncios(Gerenciar Canais)')
+			.addField('Outros Comandos:', 'F!anunciar - Faz um anúncio no canal #anuncios(Gerenciar Canais)')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
 	
 			  try{
@@ -180,7 +180,7 @@ if (command == `${prefix}anunciar`) {
 
           message.guild.member(kUser).kick(`Expulso pelo ${message.author.username} - Motivo: ${kReason}`);
 
-          let kickchannel = message.guild.channels.find(`name`, modlog);
+          let kickchannel = message.guild.channels.find(`name`, punicoes);
 
           message.channel.send(`:white_check_mark: I ${message.author}, O Usuário foi **Expulso** com sucesso!`)
 
@@ -205,6 +205,48 @@ if (command == `${prefix}anunciar`) {
 
 	  
     }
+
+        if (command == `${prefix}warn`) {
+if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
+let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
+if(!wUser) return message.channel.send(`<@${message.author.id}>, Mencione um Usuário!`);
+		 if(wUser.hasPermission("MANAGE_GUILD")) return message.channel.send("Não consigo Alertar esse usuário! Por ter a seguinte permissão: `Gerenciar Servidor`");
+if(wUser.id === message.author.id) return message.channel.send(`${message.author}, Você não pode se Alertar!`)
+let reason = args.join(" ").slice(22);
+if(!reason) return message.channel.send(`${message.author}, Coloque um Motivo para o Alerta!`)
+	message.delete();
+
+const embed = new Discord.RichEmbed()
+
+.setFooter(`FlashBOT Moderação`)
+.setTitle(`Você foi Alertado no Servidor ${message.guild.name}!`)
+.addField("🔍 Pelo Staff", `${message.author.username}`)
+.addField("📜 Motivo", reason)
+.setColor("#d25c0d")
+
+try{
+  await wUser.send(embed);
+}catch(e){
+}
+
+let warnEmbed = new Discord.RichEmbed()
+.setColor("#d25c0d")
+        .setTitle(`⚠ FlashLog I Alertado`)
+        .addField('⛔ Usuário Alertado', wUser)
+        .addField('🔎 Pelo Staff', message.author)
+.setThumbnail(message.author.avatarURL)
+        .addField('📄 Motivo', reason, true)
+
+
+let warnchannel = message.guild.channels.find(`name`, punicoes);
+   
+
+message.channel.send(`:white_check_mark: I <@${message.author.id}>, O usuário foi **Alertado** com Sucesso!`)
+
+message.delete().catch(O_o=>{});
+
+warnchannel.send(warnEmbed);
+  }
 
     });
 bot.login(TOKEN);
