@@ -18,10 +18,45 @@ bot.on("message", function(message) {
         let command = messageArray[0];
         let args = messageArray.slice(1);
 
-           if (command == `${prefix}ajuda`) {
-
-            message.channel.send('**Olá,' + message.author + '! Esse comando ainda está sendo feito. Tente novamente mais tarde. :x:**')
-}
+     if (command == `${prefix}ajuda`) {
+			
+			message.channel.send(message.author + '**, Enviei meus comandos na sua dm.**')
+			
+			const h1 = new Discord.RichEmbed()
+			.addField('Comandos Públicos:', '!serverinfo - Mostra as informações do servidor\n!reportar - Reporta um usuário para a Staff')
+			.setColor('#ff7a00')
+			.setAuthor(message.author.tag, message.author.displayAvatarURL)
+			
+			const h2 = new Discord.RichEmbed()
+			.addField('Comandos para Moderação:', '!ban - Bane o usuário do servidor(Banir Membros)\n!kick - Expulsa o usuário do servidor(Expulsar Membros)')
+			.setColor('#ff1800')
+			.setAuthor(message.author.tag, message.author.displayAvatarURL)
+			
+			const h3 = new Discord.RichEmbed()
+			.addField('Outros Comandos:', '!anunciar - Faz um anúncio no canal #anuncios(Gerenciar Canais)')
+			.setColor('#00ff01')
+			.setAuthor(message.author.tag, message.author.displayAvatarURL)
+	
+			  try{
+    await message.author.send(h1)
+  }catch(e){
+    console.log(e.stack);
+    message.channel.send(`${message.author}**, Habilite o Dm para eu enviar os comandos.**`)
+  }
+		
+		  try{
+    await message.author.send(h2)
+  }catch(e){
+    console.log(e.stack);
+  }
+		
+				  try{
+    await message.author.send(h3)
+  }catch(e){
+    console.log(e.stack);
+  }
+		
+		}
 
         if (command == `${prefix}serverinfo`) {
             const embed = new Discord.RichEmbed()
@@ -70,7 +105,7 @@ if (command == `${prefix}anunciar`) {
               message.guild.member(bUser).ban(`Staff ${message.author.username}\n Motivo: ${bReason}`);
 
     let banEmbed = new Discord.RichEmbed()
-    .setTitle(`Flash Ban`)
+    .setTitle(`LightMine`)
     .addField('Usuario banido:', bUser)
     .addField('Staff:', message.author)
     .addField('Razão:', bReason, true)
@@ -96,6 +131,73 @@ if (command == `${prefix}anunciar`) {
 
     incidentchannel.send(banEmbed);
 }
+        
+                if (command == `${prefix}reportar`) {
+                   let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+          if(!rUser) return message.channel.send(`**Mencione o usuário!** :x:`);
+          if(rUser.id === message.author.id) return message.channel.send(`**Você não pode se Reportar!** :x:`)
+          let rreason = args.join(" ").slice(22);
+          if(!rreason) return message.channel.send(`**Coloque a razão do Report!** :x:`)
+          message.delete();
+      
+          let reportEmbed = new Discord.RichEmbed()
+        .setTitle(`LightMine`)
+        .addField('Usuário Reportado', rUser)
+        .addField('Reportado pelo', message.author)
+        .addField('Razão', rreason)
+          .setColor("#54eb12")
+          .setThumbnail(message.author.avatarURL)
+          .setFooter(`FlashReport`)
+      
+          let reportschannel = message.guild.channels.find(`name`, 'reportes');
+          if(!reportschannel) return message.channel.send(`O canal **reportes** não existe. :x:`);
+
+          message.channel.send(`**Usuário reportado com sucesso.**`)
+      
+          message.delete().catch(O_o=>{});
+          reportschannel.send(reportEmbed);
+        }
+        
+                if (command == `${prefix}kick`) {
+          if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send(`**Você não tem permissão para utilizar esse comando!** :x:`);
+          let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+          if(!kUser) return message.channel.send(`**Mencione o usuário!** :x:`);
+		 if(kUser.hasPermission("ADMINISTRATOR")) return message.channel.send("**Você não pode expulsar alguém que tem Administrador.** :x:");
+          if(kUser.id === message.author.id) return message.channel.send(`**Você não pode se Expulsar!** :x:`)
+         
+          let kReason = args.join(" ").slice(22);
+          if(!kReason) return message.channel.send(`**Coloque a razão do kick!** :x:`)
+	  message.delete();
+      
+          const embed = new Discord.RichEmbed()
+          .setFooter(`Equipe de Moderação`)
+          .setTitle(`Você foi Expulso do ${message.guild.name}!`)
+          .addField(" Pelo Staff", `${message.author.username}`)
+          .addField(" Razão", kReason)
+          .setColor("#0c8109")
+    
+          try{
+            await kUser.send(embed)
+          }catch(e){
+          }
+
+          let kickEmbed = new Discord.RichEmbed()
+          .setTitle(`LightMine`)
+        .addField('Usuário Expulso', kUser)
+        .addField(' Pelo Staff', message.author)
+        .addField(' Razão', kReason)
+          .setFooter(`Equipe de Moderação`)
+          .setThumbnail(message.author.avatarURL)
+          .setColor("#e56b00")
+
+          message.guild.member(kUser).kick(`Expulso pelo ${message.author.username} - Motivo: ${kReason}`);
+
+          let kickchannel = message.guild.channels.find(`name`, 'punicoes');
+
+          message.channel.send(`**Usuário expulso com sucesso.**`)
+
+          kickchannel.send(kickEmbed);
+        }
 
     });
 bot.login(TOKEN);
