@@ -43,8 +43,6 @@ bot.on("message", function(message) {
     message.channel.send(`${message.author}**, Habilite o seu privado para mim poder enviar minhas informações.**`)
   }
 
-  }
-
   if (cmd == `${prefix}serverinfo`) {
     message.channel.send(`${message.author}`)
     const embed = new Discord.RichEmbed()
@@ -63,7 +61,7 @@ bot.on("message", function(message) {
     .addField("🙋‍ Total de Membros", message.guild.memberCount)
     .addField("💬 Total de Canais", message.guild.channels.size)
     .addField("🌍 Região", message.guild.region)
-    .setFooter(`FlashBOT ServerInfo`, message.author.displayAvatarURL)
+    .setFooter(`SpeedStersBOT ServerInfo`, message.author.displayAvatarURL)
     .addField("📜 Cargos", message.guild.roles.map(r => r.name).join(", "))
     message.channel.send(embed)
   }
