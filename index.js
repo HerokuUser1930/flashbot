@@ -43,23 +43,30 @@ bot.on("message", function(message) {
     message.channel.send(`${message.author}**, Habilite o seu privado para mim poder enviar minhas informações.**`)
   }
 
-	}
+  }
 
-        if (command == `${prefix}serverinfo`) {
-            const embed = new Discord.RichEmbed()
-         .addField(':computer: Id do servidor', message.guild.id)
-        .setColor(0x00FFFF)
-        .addField(':hammer: Criadores do bot', '`PotterZ#6281` e `_SpeedLight_#4293`')
-        .addField(':newspaper: Seu Cargo', message.member.highestRole.name)
-        .addField(':tophat: Criador do servidor', message.guild.owner)
-        .addField(':earth_americas:   Região do servidor', message.guild.region)
-        .addField(`:speech_balloon: Canais (${message.guild.channels.size})`, `:pencil: Texto: ${message.guild.channels.filter(m => m.type === 'text').size}\n:loud_sound: Voz: ${message.guild.channels.filter(m => m.type === 'voice').size}`)
-        .addField(':book: Servidor criado em', message.guild.createdAt)
-        .addField(':balloon: Entrei aqui em', message.guild.joinedAt)
-        .addField(':busts_in_silhouette:  Membros', `${message.guild.memberCount}`)
-        .setThumbnail(message.guild.iconURL)
-        message.channel.send(embed)
-}
+  if (cmd == `${prefix}serverinfo`) {
+    message.channel.send(`${message.author}`)
+    const embed = new Discord.RichEmbed()
+    .setTitle("Informações desse Servidor")
+    .setColor("#90ff00")
+    .addField("📋 Nome", message.guild.name, true)
+    .addField('👾 Total de Bots', `${message.guild.members.filter(b => b.user.bot).size}`, true)
+    .addField('📃 Presença', `📗 Online: ${message.guild.presences.size}/${message.guild.presences.filter(p => p.status === 'online').size}\n📕 Ocupado: ${message.guild.presences.filter(p => p.status === 'dnd').size}\n📒 Ausente: ${message.guild.presences.filter(p => p.status === 'idle').size}`, true)
+    .addField('💬 Canais de texto', `${msg.guild.channels.filter(m => m.type === 'text').size}`, true)
+    .addField('🔊 Canais de Voz', `${msg.guild.channels.filter(m => m.type === 'voice').size}`, true)
+    .setThumbnail(message.guild.iconURL)
+    .addField("💻 ID", message.guild.id)
+    .addField("👑 Dono", message.guild.owner)
+    .addField("📑 Criado em", message.guild.createdAt)
+    .addField("📮 Entrei aqui em", message.guild.joinedAt)
+    .addField("🙋‍ Total de Membros", message.guild.memberCount)
+    .addField("💬 Total de Canais", message.guild.channels.size)
+    .addField("🌍 Região", message.guild.region)
+    .setFooter(`FlashBOT ServerInfo`, message.author.displayAvatarURL)
+    .addField("📜 Cargos", message.guild.roles.map(r => r.name).join(", "))
+    message.channel.send(embed)
+  }
 
 if (command == `${prefix}anunciar`) {
     if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`**Você não tem permissão para utilizar este comando!** :x:`);
@@ -189,6 +196,30 @@ if (command == `${prefix}anunciar`) {
     if (message.content.startsWith(`${prefix}ping`)) {
         message.channel.sendMessage('Pong! o Ping do bot e: `' + `${Date.now() - message.createdTimestamp}` + ' ms`');
     }
+
+  if (cmd == `${prefix}apagar`) {
+        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado`);
+		    if(!message.guild.member(bot.user).hasPermission('MANAGE_MESSAGES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Mensagens`")
+	  
+            // We want to check if the argument is a number
+            if (isNaN(args[0])) {
+                // Sends a message to the channel.
+                message.channel.send('Coloque um número de 1 á 100! Para poder apagar as mensagens!'); //\n means new line.
+                // Cancels out of the script, so the rest doesn't run.
+                return;
+            }
+
+            const fetched = await message.channel.fetchMessages({limit: args[0]}); // This grabs the last number(args) of messages in the channel.
+            console.log(fetched.size + ' messages found, deleting...'); // Lets post into console how many messages we are deleting
+
+            // Deleting the messages
+            message.channel.bulkDelete(fetched)
+    
+      .catch(error => message.reply(`Eu não consegui deletar mensagens por: ${error}`));
+    message.channel.send(`:white_check_mark: I ${message.author}, Chat limpo!`)
+  }
+
+
 
     });
 bot.login(TOKEN);
