@@ -12,6 +12,15 @@ bot.on("message", function(message) {
 
     bot.on("message", async message => {
         if(message.author.bot) return;
+
+        let modlogs = JSON.parse(fs.readFileSync("./modlogs.json", "utf8"));
+  if(!modlogs[message.guild.id]){
+    modlogs[message.guild.id] = {
+      modlogs: botconfig.modlogs
+    };
+  }
+
+
         if(message.channel.type === "dm") return;
         let prefix = 'F!'
         let messageArray = message.content.split(" ");
