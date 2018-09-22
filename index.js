@@ -61,7 +61,7 @@ bot.on("message", function(message) {
     .addField("🙋‍ Total de Membros", message.guild.memberCount)
     .addField("💬 Total de Canais", message.guild.channels.size)
     .addField("🌍 Região", message.guild.region)
-    .setFooter(`SpeedStersBOT ServerInfo`, message.author.displayAvatarURL)
+    .setFooter(`FlashBOT ServerInfo`, message.author.displayAvatarURL)
     .addField("📜 Cargos", message.guild.roles.map(r => r.name).join(", "))
     message.channel.send(embed)
   }
@@ -194,28 +194,6 @@ if (command == `${prefix}anunciar`) {
     if (message.content.startsWith(`${prefix}ping`)) {
         message.channel.sendMessage('Pong! o Ping do bot e: `' + `${Date.now() - message.createdTimestamp}` + ' ms`');
     }
-
-  if (command == `${prefix}apagar`) {
-        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado`);
-		    if(!message.guild.member(bot.user).hasPermission('MANAGE_MESSAGES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Mensagens`")
-	  
-            // We want to check if the argument is a number
-            if (isNaN(args[0])) {
-                // Sends a message to the channel.
-                message.channel.send('Coloque um número de 1 á 100! Para poder apagar as mensagens!'); //\n means new line.
-                // Cancels out of the script, so the rest doesn't run.
-                return;
-            }
-
-            const fetched = await message.channel.fetchMessages({limit: args[0]}); // This grabs the last number(args) of messages in the channel.
-            console.log(fetched.size + ' messages found, deleting...'); // Lets post into console how many messages we are deleting
-
-            // Deleting the messages
-            message.channel.bulkDelete(fetched)
-    
-      .catch(error => message.reply(`Eu não consegui deletar mensagens por: ${error}`));
-    message.channel.send(`:white_check_mark: I ${message.author}, Chat limpo!`)
-  }
 
     });
 bot.login(TOKEN);
