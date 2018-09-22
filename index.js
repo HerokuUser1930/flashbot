@@ -43,7 +43,7 @@ bot.on("message", function(message) {
     message.channel.send(`${message.author}**, Habilite o seu privado para mim poder enviar minhas informações.**`)
   }
 
-  if (cmd == `${prefix}serverinfo`) {
+  if (command == `${prefix}serverinfo`) {
     message.channel.send(`${message.author}`)
     const embed = new Discord.RichEmbed()
     .setTitle("Informações desse Servidor")
@@ -195,7 +195,7 @@ if (command == `${prefix}anunciar`) {
         message.channel.sendMessage('Pong! o Ping do bot e: `' + `${Date.now() - message.createdTimestamp}` + ' ms`');
     }
 
-  if (cmd == `${prefix}apagar`) {
+  if (command == `${prefix}apagar`) {
         if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado`);
 		    if(!message.guild.member(bot.user).hasPermission('MANAGE_MESSAGES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Mensagens`")
 	  
@@ -217,7 +217,7 @@ if (command == `${prefix}anunciar`) {
     message.channel.send(`:white_check_mark: I ${message.author}, Chat limpo!`)
   }
 
-    if (cmd == `${prefix}avatar`) {
+    if (command == `${prefix}avatar`) {
     const user = msg.mentions.users.first();
     if (!user) {
         msg.channel.send(`${msg.author}, Mencione um Usuário!`);
