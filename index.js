@@ -540,7 +540,7 @@ incidentschannel.send(muteembed);
         //end of module
         }
           
- if (command == `${prefix}unmute`) {
+      if (command == `${prefix}unmute`) {
         if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
     	 	  if(!message.guild.member(bot.user).hasPermission('MANAGE_ROLES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Cargos`.")
 	      
@@ -560,7 +560,7 @@ incidentschannel.send(muteembed);
         .addField('⛔ Usuário Desmutado', tomute)
         .addField('🔎 Pelo Staff', message.author)
       .setColor('#00ff39')
-      .setThumbnail(msg.author.avatarURL)
+      .setThumbnail(message.author.avatarURL)
       .setFooter(`FlashBOT Moderação`, message.author.displayAvatarURL)
 
       let unmutechannel = message.guild.channels.find('name', 'modlog')
