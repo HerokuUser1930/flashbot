@@ -514,7 +514,8 @@ incidentschannel.send(muteembed);
           .addField("📜 Motivo", reason)
           .addField("⏳ Expira em", 'Nunca')
           .setColor("#0c8109")
-          if (cmd == `${prefix}unmute`) {
+          
+ if (cmd == `${prefix}unmute`) {
         if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
     	 	  if(!message.guild.member(bot.user).hasPermission('MANAGE_ROLES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Cargos`.")
 	      
