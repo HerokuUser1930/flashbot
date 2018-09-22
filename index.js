@@ -429,6 +429,6 @@ message.delete().catch(O_o=>{});
 warnchannel.send(warnEmbed);
   }
 
-
+	}
     });
 bot.login(TOKEN);
