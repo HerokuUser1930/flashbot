@@ -236,5 +236,199 @@ if (command == `${prefix}apagar`) {
     message.channel.send(`:white_check_mark: I ${message.author}, Chat limpo!`)
   }
 
+        if (cmd == `${prefix}tempmute`) {
+          if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
+ 	  if(!message.guild.member(bot.user).hasPermission('MANAGE_ROLES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Cargos`, `Gerenciar Canais`.")
+		    if(!message.guild.member(bot.user).hasPermission('MANAGE_CHANNELS')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Canais`")
+          let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+		 if(tomute.hasPermission("MANAGE_GUILD")) return message.channel.send("Não consigo Mutar esse usuário! Por ter a seguinte permissão: `Gerenciar Servidor`");
+          if(!tomute) return message.reply(` Mencione um Usuário!`);
+          if(tomute.id === message.author.id) return message.channel.send(`${message.author}, Você não pode se Mutar!`)
+         
+          let mutetime = args[1];
+          if(!mutetime) return message.reply(` Coloque um tempo para o Mute!`);
+          let reason = args.slice(2).join(" ");
+          if(!reason) return message.reply(` Coloque um motivo para o Mute!`);
+		  message.delete();
+        
+          let muterole = message.guild.roles.find(`name`, "❌Mutado");
+          //start of create role
+          if(!muterole){
+            try{
+              muterole = await message.guild.createRole({
+                name: "❌Mutado",
+                color: "#000000",
+                permissions:[]
+              })
+              message.guild.channels.forEach(async (channel, id) => {
+                await channel.overwritePermissions(muterole, {
+                  SEND_MESSAGES: false,
+                  ADD_REACTIONS: false,
+            SPEAK: false
+                });
+              });
+            }catch(e){
+              console.log(e.stack);
+            }
+          }
+          //end of create role
+        
+          message.delete().catch(O_o=>{});
+        
+        message.channel.send(`:white_check_mark: I <@${message.author.id}>, O Usuário foi **Mutado** com sucesso!`)
+    
+          let muteembed = new Discord.RichEmbed()
+        .setTitle(`🔇 FlashLog I Silenciado`)
+        .addField('⛔ Usuário Mutado', tomute)
+        .addField('🔎 Pelo Staff', message.author)
+        .addField('📄 Motivo', reason, true)
+        .addField('⏳ Expira em', `${ms(ms(mutetime), { long:true })}`, true)
+          .setColor("#0c8109")
+          .setThumbnail(message.author.avatarURL)
+          .setFooter(`FlashBOT Moderação`, message.author.displayAvatarURL)
+
+          await(tomute.addRole(muterole.id));
+		     
+
+          const embed = new Discord.RichEmbed()
+          .setFooter(`FlashBOT Moderação`)
+          .setTitle(`Você foi Mutado no Servidor ${message.guild.name}!`)
+          .addField("🔍 Pelo Staff", `${message.author.username}`)
+          .addField("📜 Motivo", reason)
+          .addField("⏳ Expira em", `${ms(ms(mutetime), { long:true })}`)
+          .setColor("#0c8109")
+    
+          try{
+            await tomute.send(embed)
+          }catch(e){
+          }
+        
+          message.delete().catch(O_o=>{});
+          let incidentschannel = message.guild.channels.find(`name`, modlog);
+
+incidentschannel.send(muteembed);
+
+          setTimeout(function(){
+            tomute.removeRole(muterole.id);
+          }, ms(mutetime));
+        
+        
+        //end of module
+        }
+
+        if (cmd == `${prefix}mute`) {
+          if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
+           	  if(!message.guild.member(bot.user).hasPermission('MANAGE_ROLES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Cargos`, `Gerenciar Canais`.")
+		    if(!message.guild.member(bot.user).hasPermission('MANAGE_CHANNELS')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Canais`")
+	  let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+          if(!tomute) return message.reply(` Mencione um Usuário!`);
+		 if(tomute.hasPermission("MANAGE_GUILD")) return message.channel.send("Não consigo Mutar esse usuário! Por ter a seguinte permissão: `Gerenciar Servidor`");
+          if(tomute.id === message.author.id) return message.channel.send(`${message.author}, Você não pode se Mutar!`)
+         
+          let reason = args.slice(1).join(" ");
+          if(!reason) return message.reply(` Coloque um motivo para o Mute!`);
+		  message.delete();
+      
+        
+          let muterole = message.guild.roles.find(`name`, "❌Mutado");
+          //start of create role
+          if(!muterole){
+            try{
+              muterole = await message.guild.createRole({
+                name: "❌Mutado",
+                color: "#000000",
+                permissions:[]
+              })
+              message.guild.channels.forEach(async (channel, id) => {
+                await channel.overwritePermissions(muterole, {
+                  SEND_MESSAGES: false,
+                  ADD_REACTIONS: false,
+            SPEAK: false
+                });
+              });
+            }catch(e){
+              console.log(e.stack);
+            }
+          }
+          //end of create role
+        
+          message.delete().catch(O_o=>{});
+        
+          const embed = new Discord.RichEmbed()
+          .setFooter(`FlashBOT Moderação`)
+          .setTitle(`Você foi Mutado no Servidor ${message.guild.name}!`)
+          .addField("🔍 Pelo Staff", `${message.author.username}`)
+          .addField("📜 Motivo", reason)
+          .addField("⏳ Expira em", 'Nunca')
+          .setColor("#0c8109")
+      
+          try{
+            await tomute.send(embed)
+          }catch(e){
+          }
+        
+          let muteembed = new Discord.RichEmbed()
+        .setTitle(`🔇 FlashLog I Silenciado`)
+        .addField('⛔ Usuário Mutado', tomute)
+        .addField('🔎 Pelo Staff', message.author)
+        .addField('📄 Motivo', reason, true)
+        .addField('⏳ Expira em', 'Nunca', true)
+          .setColor("#0c8109")
+          .setThumbnail(message.author.avatarURL)
+          .setFooter(`FlashBOT Moderação`, message.author.displayAvatarURL)
+
+          await(tomute.addRole(muterole.id));
+        
+          let incidentschannel = message.guild.channels.find(`name`, modlog);
+          
+incidentschannel.send(muteembed);
+
+          message.channel.send(`:white_check_mark: I <@${message.author.id}>, O usuário foi **Mutado** com sucesso!`)
+        //end of module
+        }
+
+        if (cmd == `${prefix}warn`) {
+if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
+let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
+if(!wUser) return message.channel.send(`<@${message.author.id}>, Mencione um Usuário!`);
+		 if(wUser.hasPermission("MANAGE_GUILD")) return message.channel.send("Não consigo Alertar esse usuário! Por ter a seguinte permissão: `Gerenciar Servidor`");
+if(wUser.id === message.author.id) return message.channel.send(`${message.author}, Você não pode se Alertar!`)
+let reason = args.join(" ").slice(22);
+if(!reason) return message.channel.send(`${message.author}, Coloque um Motivo para o Alerta!`)
+	message.delete();
+
+const embed = new Discord.RichEmbed()
+
+.setFooter(`FlashBOT Moderação`)
+.setTitle(`Você foi Alertado no Servidor ${message.guild.name}!`)
+.addField("🔍 Pelo Staff", `${message.author.username}`)
+.addField("📜 Motivo", reason)
+.setColor("#d25c0d")
+
+try{
+  await wUser.send(embed);
+}catch(e){
+}
+
+let warnEmbed = new Discord.RichEmbed()
+.setColor("#d25c0d")
+        .setTitle(`⚠ FlashLog I Alertado`)
+        .addField('⛔ Usuário Alertado', wUser)
+        .addField('🔎 Pelo Staff', message.author)
+.setThumbnail(message.author.avatarURL)
+        .addField('📄 Motivo', reason, true)
+
+
+let warnchannel = message.guild.channels.find(`name`, modlog);
+   
+
+message.channel.send(`:white_check_mark: I <@${message.author.id}>, O usuário foi **Alertado** com Sucesso!`)
+
+message.delete().catch(O_o=>{});
+
+warnchannel.send(warnEmbed);
+  }
+
+
     });
 bot.login(TOKEN);
