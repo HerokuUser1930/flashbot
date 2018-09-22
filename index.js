@@ -17,7 +17,6 @@ bot.on("message", function(message) {
         let messageArray = message.content.split(" ");
         let command = messageArray[0];
         let args = messageArray.slice(1);
-        let modlog = modlogs[message.guild.id].modlogs
 
      if (command == `${prefix}ajuda`) {
 			
@@ -249,7 +248,7 @@ message.delete().catch(O_o=>{});
 warnchannel.send(warnEmbed);
   }
 
-  if (command == `${prefix}apagar`) {
+  if (command == `${prefix}limpar`) {
         if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado`);
 		    if(!message.guild.member(bot.user).hasPermission('MANAGE_MESSAGES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Mensagens`")
 	  
