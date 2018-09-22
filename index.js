@@ -189,6 +189,8 @@ if (command == `${prefix}anunciar`) {
     if (message.content.startsWith(`${prefix}ping`)) {
         message.channel.sendMessage('Pong! Seu ping e `' + `${Date.now() - message.createdTimestamp}` + ' ms`');
     }
+   
+if (command == `${prefix}warn`) {
 
   if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.reply("No can do pal!");
   let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
