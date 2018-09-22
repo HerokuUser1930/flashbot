@@ -23,12 +23,12 @@ bot.on("message", function(message) {
 			message.channel.send(message.author + '**, Enviei meus comandos na sua dm.**')
 			
 			const h1 = new Discord.RichEmbed()
-			.addField('Comandos Públicos:', 'F!serverinfo - Mostra as informações do servidor\nF!reportar - Reporta um usuário para a Staff')
+			.addField('Comandos Públicos:', 'F!serverinfo - Mostra as informações do servidor\nF!reportar - Reporta um usuário para a Staff\nF!avatar Para ver o avatar de um usuario')
 			.setColor('#ff7a00')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-			.addField('Comandos para Moderação:', 'F!ban - Bane o usuário do servidor(Banir Membros)\nF!kick - Expulsa o usuário do servidor(Expulsar Membros)')
+			.addField('Comandos para Moderação:', 'F!ban - Bane o usuário do servidor(Banir Membros)\nF!kick - Expulsa o usuário do servidor(Expulsar Membros)\nF!warn Para alertar um usuario\nF!softban Soft banir algum usuario\nF!tempban Banir temporariamente um usuario')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-			.addField('Outros Comandos:', 'F!anunciar - Faz um anúncio no canal #anuncios(Gerenciar Canais)')
+			.addField('Outros Comandos:', 'F!anunciar - Faz um anúncio no canal #anuncios(Gerenciar Canais)\nF!limpar Para limpar de 1 a 100 Mensagens\nF!modlog Alterar o canal de punições')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
 	
 			  try{
@@ -180,7 +180,7 @@ if (command == `${prefix}anunciar`) {
 
           message.guild.member(kUser).kick(`Expulso pelo ${message.author.username} - Motivo: ${kReason}`);
 
-          let kickchannel = message.guild.channels.find(`name`, punicoes);
+          let kickchannel = message.guild.channels.find(`name`, modlog);
 
           message.channel.send(`:white_check_mark: I ${message.author}, O Usuário foi **Expulso** com sucesso!`)
 
@@ -247,6 +247,147 @@ message.delete().catch(O_o=>{});
 
 warnchannel.send(warnEmbed);
   }
+
+  if (command == `${prefix}apagar`) {
+        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado`);
+		    if(!message.guild.member(bot.user).hasPermission('MANAGE_MESSAGES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Mensagens`")
+	  
+            // We want to check if the argument is a number
+            if (isNaN(args[0])) {
+                // Sends a message to the channel.
+                message.channel.send('Coloque um número de 1 á 100! Para poder apagar as mensagens!'); //\n means new line.
+                // Cancels out of the script, so the rest doesn't run.
+                return;
+            }
+
+            const fetched = await message.channel.fetchMessages({limit: args[0]}); // This grabs the last number(args) of messages in the channel.
+            console.log(fetched.size + ' messages found, deleting...'); // Lets post into console how many messages we are deleting
+
+            // Deleting the messages
+            message.channel.bulkDelete(fetched)
+    
+      .catch(error => message.reply(`Eu não consegui deletar mensagens por: ${error}`));
+    message.channel.send(`:white_check_mark: I ${message.author}, Chat limpo!`)
+  }
+
+    if (command == `${prefix}modlog`) {
+               if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
+  if(!args[0] || args[0 == "help"]) return message.reply(`Modo de usar, ${prefix}modlog <nome do canal>, exemplo, ${prefix}modlog punições`);
+
+  let modlogs = JSON.parse(fs.readFileSync("./modlogs.json", "utf8"));
+
+  modlogs[message.guild.id] = {
+    modlogs: args[0]
+  };
+
+  fs.writeFile("./modlogs.json", JSON.stringify(modlogs), (err) => {
+    if (err) console.log(err)
+  });
+
+  let sEmbed = new Discord.RichEmbed()
+  .setColor("#6c6c17")
+  .addField('Canal de Suspensão alterado para o canal:', args[0])
+
+  message.channel.send(sEmbed);
+}
+
+  if (command == `${prefix}softban`) {
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
+    if(!message.guild.member(bot.user).hasPermission('BAN_MEMBERS')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `BANIR MEMBROS`.")	 
+    let sbUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!sbUser) return message.channel.send(`<@${message.author.id}>, Mencione um Usuário!`);
+	   if(sbUser.hasPermission("MANAGE_GUILD")) return message.channel.send("Não consigo Banir e Desbanir esse usuário! Por ter a seguinte permissão: `Gerenciar Servidor`");
+    if(sbUser.id === message.author.id) return message.channel.send(`${message.author}, Você não pode se Banir!`)
+    let sbReason = args.join(" ").slice(22);
+    if(!sbReason) return message.channel.send(`<@${message.author.id}>, Coloque um Motivo para o SoftBan!`)
+    message.delete();
+
+    const embed = new Discord.RichEmbed()
+    .setFooter(`FlashBOT Moderação`)
+    .setTitle(`Você foi Soft Banned no Servidor ${message.guild.name}!`)
+    .addField("🔍 Pelo Staff", `${message.author.username}`)
+    .addField("📜 Motivo", sbReason)
+    .setColor("#0070ff")
+
+    try{
+      await sbUser.send(embed)
+    }catch(e){
+    }
+
+    let banEmbed = new Discord.RichEmbed()
+              .setTitle(`🚫 FlashLog I Softban`)
+        .addField('⛔ Usuário Soft Banned', sbUser)
+        .addField('🔎 Pelo Staff', message.author)
+        .addField('📄 Motivo', sbReason, true)
+    .setColor("#0070ff")
+    .setThumbnail(message.author.avatarURL)
+    .setFooter(`FlashBOT Moderação`, message.author.displayAvatarURL)
+
+    message.guild.member(sbUser).ban(`SoftBanned pelo ${message.author.username} - Motivo: ${sbReason}`);
+    message.guild.unban(sbUser);
+
+    let incidentchannel = message.guild.channels.find(`name`, modlog);
+  
+
+    message.channel.send(`:white_check_mark: I <@${message.author.id}>, O Usuário foi **Soft Banned** com sucesso!`)
+
+    incidentchannel.send(banEmbed);
+}
+
+  if (command == `${prefix}tempban`) {
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
+    if(!message.guild.member(bot.user).hasPermission('MANAGE_ROLES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Banir Membros`.")
+    let toban = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!toban) return message.reply(` Mencione um Usuário!`);
+	   if(toban.hasPermission("MANAGE_GUILD")) return message.channel.send("Não consigo Banir esse usuário! Por ter a seguinte permissão: `Gerenciar Servidor`");
+    if(toban.id === message.author.id) return message.channel.send(`${message.author}, Você não pode se Banir!`)
+   
+    let bantime = args[1];
+    if(!bantime) return message.reply(` Coloque um tempo para o Ban!`);
+    let reason = args.slice(2).join(" ");
+    if(!reason) return message.reply(` Coloque um motivo para o Ban!`);
+  
+    message.delete().catch(O_o=>{});
+  
+  message.channel.send(`:white_check_mark: I <@${message.author.id}>, O usuário foi **Temp Banned** com sucesso!`)
+
+    let tbembed = new Discord.RichEmbed()
+                  .setTitle(`🚫 SpeedLog I TempBan`)
+        .addField('⛔ Usuário Temp Banned', toban)
+        .addField('🔎 Pelo Staff', message.author)
+        .addField('📄 Motivo', reason, true)
+    .setColor("#0c8109")
+    .setThumbnail(message.author.avatarURL)
+    .setFooter(`FlashBOT Moderação`, message.author.displayAvatarURL)
+
+      
+    const embed = new Discord.RichEmbed()
+    .setFooter(`FlashBOT Moderação`)
+    .setTitle(`Você foi Banido no Servidor ${message.guild.name}!`)
+    .addField("🔍 Pelo Staff", `${message.author.username}`)
+    .addField("📜 Motivo", reason)
+    .addField("⏳ Expira em", `${ms(ms(bantime), { long:true })}`)
+    .setColor("#0c8109")
+
+    try{
+      await toban.send(embed)
+    }catch(e){
+    }
+
+    
+    message.guild.member(toban).ban(`TempBanned pelo ${message.author.username} - Motivo: ${reason} - Tempo: ${ms(ms(bantime), { long:true })}`);
+
+    
+    setTimeout(function(){
+      message.guild.unban(toban);
+    }, ms(bantime));
+  
+    message.delete().catch(O_o=>{});
+    let incidentschannel = message.guild.channels.find(`name`, modlog);
+  
+
+    incidentschannel.send(tbembed);
+}
 
     });
 bot.login(TOKEN);
