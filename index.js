@@ -187,11 +187,10 @@ if (command == `${prefix}anunciar`) {
           kickchannel.send(kickEmbed);
         }
 
-  
-    if (cmd == `${prefix}avatar`) {
-    const user = msg.mentions.users.first();
+    if (command == `${prefix}avatar`) {
+    const user = message.mentions.users.first();
     if (!user) {
-        msg.channel.send(`${msg.author}, Mencione um Usuário!`);
+        message.channel.send(`${message.author}, Mencione um Usuário!`);
     }
 	  const embed = new Discord.RichEmbed()
 	  
@@ -200,11 +199,11 @@ if (command == `${prefix}anunciar`) {
 	  .setImage(user.avatarURL)
 	  .setColor('#243cd8')
 
-	  msg.channel.send(`${msg.author}`)
-	  msg.channel.send(embed)
-	  
-	  
+	  message.channel.send(`${message.author}`)
+	  message.channel.send(embed)
 
+
+	  
     }
 
     });
