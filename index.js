@@ -20,12 +20,12 @@ bot.on("message", function(message) {
     };
   }
 
-
         if(message.channel.type === "dm") return;
         let prefix = 'F!'
         let messageArray = message.content.split(" ");
         let command = messageArray[0];
         let args = messageArray.slice(1);
+        let modlog = modlogs[message.guild.id].modlogs
 
      if (command == `${prefix}ajuda`) {
 			
