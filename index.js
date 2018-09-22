@@ -236,7 +236,7 @@ if (command == `${prefix}apagar`) {
     message.channel.send(`:white_check_mark: I ${message.author}, Chat limpo!`)
   }
 
-        if (cmd == `${prefix}tempmute`) {
+        if (command == `${prefix}tempmute`) {
           if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
  	  if(!message.guild.member(bot.user).hasPermission('MANAGE_ROLES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Cargos`, `Gerenciar Canais`.")
 		    if(!message.guild.member(bot.user).hasPermission('MANAGE_CHANNELS')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Canais`")
@@ -316,7 +316,7 @@ incidentschannel.send(muteembed);
         //end of module
         }
 
-        if (cmd == `${prefix}mute`) {
+        if (command == `${prefix}mute`) {
           if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
            	  if(!message.guild.member(bot.user).hasPermission('MANAGE_ROLES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Cargos`, `Gerenciar Canais`.")
 		    if(!message.guild.member(bot.user).hasPermission('MANAGE_CHANNELS')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Canais`")
@@ -387,7 +387,7 @@ incidentschannel.send(muteembed);
         //end of module
         }
 
-        if (cmd == `${prefix}warn`) {
+        if (command == `${prefix}warn`) {
 if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
 let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
 if(!wUser) return message.channel.send(`<@${message.author.id}>, Mencione um Usuário!`);
