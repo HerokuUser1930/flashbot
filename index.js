@@ -41,18 +41,24 @@ bot.on("message", function(message) {
 
         if (command == `${prefix}serverinfo`) {
             const embed = new Discord.RichEmbed()
-         .addField(':computer: Id do servidor', message.guild.id)
-        .setColor(0x00FFFF)
-        .addField(':hammer: Criadores do bot', '`Harry#6281` e `_SpeedLight_#4293`')
-        .addField(':newspaper: Seu Cargo', message.member.highestRole.name)
-        .addField(':tophat: Criador do servidor', message.guild.owner)
-        .addField(':earth_americas:   Região do servidor', message.guild.region)
-        .addField(`:speech_balloon: Canais (${message.guild.channels.size})`, `:pencil: Texto: ${message.guild.channels.filter(m => m.type === 'text').size}\n:loud_sound: Voz: ${message.guild.channels.filter(m => m.type === 'voice').size}`)
-        .addField(':book: Servidor criado em', message.guild.createdAt)
-        .addField(':balloon: Entrei aqui em', message.guild.joinedAt)
-        .addField(':busts_in_silhouette:  Membros', `${message.guild.memberCount}`)
-        .setThumbnail(message.guild.iconURL)
-        message.channel.send(embed)
+    .setTitle("Informações desse Servidor")
+    .setColor("#90ff00")
+    .addField("📋 Nome", message.guild.name, true)
+    .addField('👾 Total de Bots', `${message.guild.members.filter(b => b.user.bot).size}`, true)
+    .addField('📃 Presença', `📗 Online: ${message.guild.presences.size}/${message.guild.presences.filter(p => p.status === 'online').size}\n📕 Ocupado: ${message.guild.presences.filter(p => p.status === 'dnd').size}\n📒 Ausente: ${message.guild.presences.filter(p => p.status === 'idle').size}`, true)
+    .addField('💬 Canais de texto', `${msg.guild.channels.filter(m => m.type === 'text').size}`, true)
+    .addField('🔊 Canais de Voz', `${msg.guild.channels.filter(m => m.type === 'voice').size}`, true)
+    .setThumbnail(message.guild.iconURL)
+    .addField("💻 ID", message.guild.id)
+    .addField("👑 Dono", message.guild.owner)
+    .addField("📑 Criado em", message.guild.createdAt)
+    .addField("📮 Entrei aqui em", message.guild.joinedAt)
+    .addField("🙋‍ Total de Membros", message.guild.memberCount)
+    .addField("💬 Total de Canais", message.guild.channels.size)
+    .addField("🌍 Região", message.guild.region)
+    .setFooter(`SpeedStersBOT ServerInfo`, message.author.displayAvatarURL)
+    .addField("📜 Cargos", message.guild.roles.map(r => r.name).join(", "))
+    message.channel.send(embed)
 }
 
 if (command == `${prefix}anunciar`) {
@@ -86,7 +92,7 @@ if (command == `${prefix}anunciar`) {
               message.guild.member(bUser).ban(`Staff ${message.author.username}\n Motivo: ${bReason}`);
 
     let banEmbed = new Discord.RichEmbed()
-    .setTitle(`LightMine`)
+    .setTitle(`FlashBOT`)
     .addField('Usuario banido:', bUser)
     .addField('Staff:', message.author)
     .addField('Razão:', bReason, true)
@@ -122,7 +128,7 @@ if (command == `${prefix}anunciar`) {
           message.delete();
       
           let reportEmbed = new Discord.RichEmbed()
-        .setTitle(`LightMine`)
+        .setTitle(`FlashBOT`)
         .addField('Usuário Reportado', rUser)
         .addField('Reportado pelo', message.author)
         .addField('Razão', rreason)
@@ -138,23 +144,24 @@ if (command == `${prefix}anunciar`) {
           message.delete().catch(O_o=>{});
           reportschannel.send(reportEmbed);
         }
-        
-                if (command == `${prefix}kick`) {
-          if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send(`**Você não tem permissão para utilizar esse comando!** :x:`);
+
+      if (command == `${prefix}kick`) {
+          if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
+          if(!message.guild.member(bot.user).hasPermission('KICK_MEMBERS')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Expulsar Membros`")
           let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-          if(!kUser) return message.channel.send(`**Mencione o usuário!** :x:`);
-		 if(kUser.hasPermission("ADMINISTRATOR")) return message.channel.send("**Você não pode expulsar alguém que tem Administrador.** :x:");
-          if(kUser.id === message.author.id) return message.channel.send(`**Você não pode se Expulsar!** :x:`)
+          if(!kUser) return message.channel.send(`<@${message.author.id}>, Mencione um Usuário!`);
+		 if(kUser.hasPermission("MANAGE_GUILD")) return message.channel.send("Não consigo Expulsar esse usuário! Por ter a seguinte permissão: `Gerenciar Servidor`");
+          if(kUser.id === message.author.id) return message.channel.send(`<@${message.author.id}>, Você não pode se Expulsar!`)
          
           let kReason = args.join(" ").slice(22);
-          if(!kReason) return message.channel.send(`**Coloque a razão do kick!** :x:`)
+          if(!kReason) return message.channel.send(`<@${message.author.id}>, Coloque um Motivo para o Kick!`)
 	  message.delete();
       
           const embed = new Discord.RichEmbed()
-          .setFooter(`Equipe de Moderação`)
-          .setTitle(`Você foi Expulso do ${message.guild.name}!`)
-          .addField(" Pelo Staff", `${message.author.username}`)
-          .addField(" Razão", kReason)
+          .setFooter(`FlashBOT Moderação`)
+          .setTitle(`Você foi Expulso no Servidor ${message.guild.name}!`)
+          .addField("🔍 Pelo Staff", `${message.author.username}`)
+          .addField("📜 Motivo", kReason)
           .setColor("#0c8109")
     
           try{
@@ -163,19 +170,19 @@ if (command == `${prefix}anunciar`) {
           }
 
           let kickEmbed = new Discord.RichEmbed()
-          .setTitle(`LightMine`)
-        .addField('Usuário Expulso', kUser)
-        .addField(' Pelo Staff', message.author)
-        .addField(' Razão', kReason)
-          .setFooter(`Equipe de Moderação`)
+          .setTitle(`🚫 FlashLog I Expulso`)
+        .addField('⛔ Usuário Expulso', kUser)
+        .addField('🔎 Pelo Staff', message.author)
+        .addField('📄 Motivo', kReason)
+          .setFooter(`FlashBOT Moderação`, message.author.displayAvatarURL)
           .setThumbnail(message.author.avatarURL)
           .setColor("#e56b00")
 
           message.guild.member(kUser).kick(`Expulso pelo ${message.author.username} - Motivo: ${kReason}`);
 
-          let kickchannel = message.guild.channels.find(`name`, 'punicoes');
+          let kickchannel = message.guild.channels.find(`name`, modlog);
 
-          message.channel.send(`**Usuário expulso com sucesso.**`)
+          message.channel.send(`:white_check_mark: I ${message.author}, O Usuário foi **Expulso** com sucesso!`)
 
           kickchannel.send(kickEmbed);
         }
