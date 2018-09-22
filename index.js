@@ -217,7 +217,7 @@ if (command == `${prefix}warn`) {
   .addField("Número de avisos", warns[wUser.id].warns)
   .addField("Razão", reason);
 
-  let warnchannel = message.guild.channels.find(`name`, "incidents");
+  let warnchannel = message.guild.channels.find(`name`, "punições");
   if(!warnchannel) return message.reply("Couldn't find channel");
 
   warnchannel.send(warnEmbed);
