@@ -515,34 +515,5 @@ incidentschannel.send(muteembed);
           .addField("⏳ Expira em", 'Nunca')
           .setColor("#0c8109")
           
-      if (command == `${prefix}unmute`) {
-        if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
-    	 	  if(!message.guild.member(bot.user).hasPermission('MANAGE_ROLES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Cargos`.")
-	      
-      let tomute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-      if(!tomute) return message.channel.sendMessage(`<@${message.author.id}>, Mencione um Usuário!`);
-    
-      let role = message.guild.roles.find(r => r.name === "❌Mutado");
-    
-      if(!role || !tomute.roles.has(role.id)) return message.channel.sendMessage(`<@${message.author.id}>, Esse usuário não está Mutado!`);
-    
-      await tomute.removeRole(role);
-    
-      message.channel.send(`:white_check_mark: I <@${message.author.id}>, O  Usuário foi **Desmutado** com sucesso!`)
-
-      let embed = new Discord.RichEmbed()
-        .setTitle(`🔊 FlashLog I Unmute`)
-        .addField('⛔ Usuário Desmutado', tomute)
-        .addField('🔎 Pelo Staff', message.author)
-      .setColor('#00ff39')
-      .setThumbnail(message.author.avatarURL)
-      .setFooter(`FlashBOT Moderação`, message.author.displayAvatarURL)
-
-      let unmutechannel = message.guild.channels.find('name', 'modlog')
-     
-        unmutechannel.send(embed);
-      message.delete();
-      }
-
     });
 bot.login(TOKEN);
