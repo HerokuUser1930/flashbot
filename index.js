@@ -41,23 +41,20 @@ bot.on("message", function(message) {
 
         if (command == `${prefix}serverinfo`) {
             const embed = new Discord.RichEmbed()
-            .setTitle("Informações desse Servidor")
-            .setColor("#90ff00")
-            .addField("📋 Nome", message.guild.name, true)
-            .addField('👾 Total de Bots', `${message.guild.members.filter(b => b.user.bot).size}`, true)
-            .addField('📃 Presença', `📗 Online: ${message.guild.presences.size}/${message.guild.presences.filter(p => p.status === 'online').size}\n📕 Ocupado: ${message.guild.presences.filter(p => p.status === 'dnd').size}\n📒 Ausente: ${message.guild.presences.filter(p => p.status === 'idle').size}`, true)
-            .addField('💬 Canais de texto', `${message.guild.channels.filter(m => m.type === 'text').size}`, true)
-            .addField('🔊 Canais de Voz', `${message.guild.channels.filter(m => m.type === 'voice').size}`, true)
+            .setColor(0x00FFFF)
+            .addField("Nome:", message.guild.name, true)
+            .addField('Canais de Texto:', `${message.guild.channels.filter(m => m.type === 'text').size}`, true)
+            .addField('Canais de Voz:', `${message.guild.channels.filter(m => m.type === 'voice').size}`, true)
             .setThumbnail(message.guild.iconURL)
-            .addField("💻 ID", message.guild.id)
-            .addField("👑 Dono", message.guild.owner)
-            .addField("📑 Criado em", message.guild.createdAt)
-            .addField("📮 Entrei aqui em", message.guild.joinedAt)
-            .addField("🙋‍ Total de Membros", message.guild.memberCount)
-            .addField("💬 Total de Canais", message.guild.channels.size)
-            .addField("🌍 Região", message.guild.region)
-            .setFooter(`FlashBOT ServerInfo`, message.author.displayAvatarURL)
-            .addField("📜 Cargos", message.guild.roles.map(r => r.name).join(", "))
+            .addField("ID:", message.guild.id)
+            .addField("Criador da Guild:", message.guild.owner)
+            .addField("Guild criada em:", message.guild.createdAt)
+            .addField("Entrei aqui em:", message.guild.joinedAt)
+            .addField("Quantidade de Membros:", message.guild.memberCount)
+            .addField("Quantidade de Canais:", message.guild.channels.size)
+            .addField("Região da Guild:", message.guild.region)
+            .setFooter(`FlashBOT ServerInfo`)
+            .addField("Quantidade de Cargos:", message.guild.roles.size)
             message.channel.send(embed)
 }
 
@@ -144,177 +141,6 @@ if (command == `${prefix}anunciar`) {
           message.delete().catch(O_o=>{});
           reportschannel.send(reportEmbed);
         }
-
-      if (command == `${prefix}kick`) {
-          if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
-          if(!message.guild.member(bot.user).hasPermission('KICK_MEMBERS')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Expulsar Membros`")
-          let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-          if(!kUser) return message.channel.send(`<@${message.author.id}>, Mencione um Usuário!`);
-		 if(kUser.hasPermission("MANAGE_GUILD")) return message.channel.send("Não consigo Expulsar esse usuário! Por ter a seguinte permissão: `Gerenciar Servidor`");
-          if(kUser.id === message.author.id) return message.channel.send(`<@${message.author.id}>, Você não pode se Expulsar!`)
-         
-          let kReason = args.join(" ").slice(22);
-          if(!kReason) return message.channel.send(`<@${message.author.id}>, Coloque um Motivo para o Kick!`)
-	  message.delete();
-      
-          const embed = new Discord.RichEmbed()
-          .setFooter(`FlashBOT Moderação`)
-          .setTitle(`Você foi Expulso no Servidor ${message.guild.name}!`)
-          .addField("🔍 Pelo Staff", `${message.author.username}`)
-          .addField("📜 Motivo", kReason)
-          .setColor("#0c8109")
-    
-          try{
-            await kUser.send(embed)
-          }catch(e){
-          }
-
-          let kickEmbed = new Discord.RichEmbed()
-          .setTitle(`🚫 FlashLog I Expulso`)
-        .addField('⛔ Usuário Expulso', kUser)
-        .addField('🔎 Pelo Staff', message.author)
-        .addField('📄 Motivo', kReason)
-          .setFooter(`FlashBOT Moderação`, message.author.displayAvatarURL)
-          .setThumbnail(message.author.avatarURL)
-          .setColor("#e56b00")
-
-          message.guild.member(kUser).kick(`Expulso pelo ${message.author.username} - Motivo: ${kReason}`);
-
-          let kickchannel = message.guild.channels.find(`name`, 'modlog');
-
-          message.channel.send(`:white_check_mark: I ${message.author}, O Usuário foi **Expulso** com sucesso!`)
-
-          kickchannel.send(kickEmbed);
-        }
-
-    if (command == `${prefix}avatar`) {
-    const user = message.mentions.users.first();
-    if (!user) {
-        message.channel.send(`${message.author}, Mencione um Usuário!`);
-    }
-	  const embed = new Discord.RichEmbed()
-	  
-	  .setTitle(`Avatar de ${user.username}#${user.discriminator}`)
-	  .addField(`Download`, `[Clique aqui](${user.avatarURL})`)
-	  .setImage(user.avatarURL)
-	  .setColor('#243cd8')
-
-	  message.channel.send(`${message.author}`)
-	  message.channel.send(embed)
-
-
-	  
-    }
-
-        if (command == `${prefix}warn`) {
-if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
-let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
-if(!wUser) return message.channel.send(`<@${message.author.id}>, Mencione um Usuário!`);
-		 if(wUser.hasPermission("MANAGE_GUILD")) return message.channel.send("Não consigo Alertar esse usuário! Por ter a seguinte permissão: `Gerenciar Servidor`");
-if(wUser.id === message.author.id) return message.channel.send(`${message.author}, Você não pode se Alertar!`)
-let reason = args.join(" ").slice(22);
-if(!reason) return message.channel.send(`${message.author}, Coloque um Motivo para o Alerta!`)
-	message.delete();
-
-const embed = new Discord.RichEmbed()
-
-.setFooter(`FlashBOT Moderação`)
-.setTitle(`Você foi Alertado no Servidor ${message.guild.name}!`)
-.addField("🔍 Pelo Staff", `${message.author.username}`)
-.addField("📜 Motivo", reason)
-.setColor("#d25c0d")
-
-try{
-  await wUser.send(embed);
-}catch(e){
-}
-
-let warnEmbed = new Discord.RichEmbed()
-.setColor("#d25c0d")
-        .setTitle(`⚠ FlashLog I Alertado`)
-        .addField('⛔ Usuário Alertado', wUser)
-        .addField('🔎 Pelo Staff', message.author)
-.setThumbnail(message.author.avatarURL)
-        .addField('📄 Motivo', reason, true)
-
-
-let warnchannel = message.guild.channels.find(`name`, 'modlog');
-   
-
-message.channel.send(`:white_check_mark: I <@${message.author.id}>, O usuário foi **Alertado** com Sucesso!`)
-
-message.delete().catch(O_o=>{});
-
-warnchannel.send(warnEmbed);
-  }
-
-  if (command == `${prefix}limpar`) {
-        if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado`);
-		    if(!message.guild.member(bot.user).hasPermission('MANAGE_MESSAGES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Mensagens`")
-	  
-            // We want to check if the argument is a number
-            if (isNaN(args[0])) {
-                // Sends a message to the channel.
-                message.channel.send('Coloque um número de 1 á 100! Para poder apagar as mensagens!'); //\n means new line.
-                // Cancels out of the script, so the rest doesn't run.
-                return;
-            }
-
-            const fetched = await message.channel.fetchMessages({limit: args[0]}); // This grabs the last number(args) of messages in the channel.
-            console.log(fetched.size + ' messages found, deleting...'); // Lets post into console how many messages we are deleting
-
-            // Deleting the messages
-            message.channel.bulkDelete(fetched)
-    
-      .catch(error => message.reply(`Eu não consegui deletar mensagens por: ${error}`));
-    message.channel.send(`:white_check_mark: I ${message.author}, Chat limpo!`)
-  }
-
-        if (command == `${prefix}mute`) {
-          if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado.`);
-           	  if(!message.guild.member(bot.user).hasPermission('MANAGE_ROLES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Cargos`, `Gerenciar Canais`.")
-		    if(!message.guild.member(bot.user).hasPermission('MANAGE_CHANNELS')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Canais`")
-	  let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-          if(!tomute) return message.reply(` Mencione um Usuário!`);
-		 if(tomute.hasPermission("MANAGE_GUILD")) return message.channel.send("Não consigo Mutar esse usuário! Por ter a seguinte permissão: `Gerenciar Servidor`");
-          if(tomute.id === message.author.id) return message.channel.send(`${message.author}, Você não pode se Mutar!`)
-         
-          let reason = args.slice(1).join(" ");
-          if(!reason) return message.reply(` Coloque um motivo para o Mute!`);
-		  message.delete();
-      
-        
-          let muterole = message.guild.roles.find(`name`, "❌Mutado");
-          //start of create role
-          if(!muterole){
-            try{
-              muterole = await message.guild.createRole({
-                name: "❌Mutado",
-                color: "#000000",
-                permissions:[]
-              })
-              message.guild.channels.forEach(async (channel, id) => {
-                await channel.overwritePermissions(muterole, {
-                  SEND_MESSAGES: false,
-                  ADD_REACTIONS: false,
-            SPEAK: false
-                });
-              });
-            }catch(e){
-              console.log(e.stack);
-            }
-          }
-          //end of create role
-        
-          message.delete().catch(O_o=>{});
-        
-          const embed = new Discord.RichEmbed()
-          .setFooter(`FlashBOT Moderação`)
-          .setTitle(`Você foi Mutado no Servidor ${message.guild.name}!`)
-          .addField("🔍 Pelo Staff", `${message.author.username}`)
-          .addField("📜 Motivo", reason)
-          .addField("⏳ Expira em", 'Nunca')
-          .setColor("#0c8109")
           
     });
 bot.login(TOKEN);
