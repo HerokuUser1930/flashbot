@@ -146,20 +146,11 @@ else if (message.content === `${prefix}server`) {
     message.channel.send(`Servidor: ${message.guild.name}\nTemos exatamente ${message.guild.memberCount} em nosso grupo.`);
 }
 
-client.on("guildMemberAdd", (member) => {
-  const guild = member.guild;
- else if (!newUsers[guild.id]) newUsers[guild.id] = new Discord.Collection();
-  newUsers[guild.id].set(member.id, member.user);
-
  else if (newUsers[guild.id].size > 10) {
     const userlist = newUsers[guild.id].map(u => u.toString()).join(" ");
     guild.channels.find("name", "general").send("Bem-vindo nossos novos usuários!\n" + userlist);
     newUsers[guild.id].clear();
   }
- 
-client.on("guildMemberRemove", (member) => {
-  const guild = member.guild;
- else if (newUsers[guild.id].has(member.id)) newUsers.delete(member.id);
 
     });
 bot.login(TOKEN);
