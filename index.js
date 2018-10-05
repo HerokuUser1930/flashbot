@@ -43,7 +43,7 @@ bot.on("message", function(message) {
             const embed = new Discord.RichEmbed()
             .setColor(0x00FFFF)
             .addField("Nome:", message.guild.name, true)
-            .addField('Canais de Texto:', `${message.guild.channels.filter(m => m.type === 'text').size}`, true)
+            .addField('Canais de Texto:', `:BlobbleWobble: ${message.guild.channels.filter(m => m.type === 'text').size}`, true)
             .addField('Canais de Voz:', `${message.guild.channels.filter(m => m.type === 'voice').size}`, true)
             .setThumbnail(message.guild.iconURL)
             .addField("ID:", message.guild.id)
