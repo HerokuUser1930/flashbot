@@ -146,26 +146,8 @@ else if (message.content === `${prefix}server`) {
     message.channel.send(`Servidor: ${message.guild.name}\nTemos exatamente ${message.guild.memberCount} em nosso grupo.`);
 }
 
-client.on("message", (message) => {
-  if (message.content.startsWith("!Ready?")) {
-    message.channel.send("I am ready!");
-  }
-});
-
-client.on("guildMemberAdd", (member) => {
-  const guild = member.guild;
-  newUsers.set(member.id, member.user);
-
-  if (newUsers.size > 10) {
-    const defaultChannel = guild.channels.find(c=> c.permissionsFor(guild.me).has("SEND_MESSAGES"));
-    const userlist = newUsers.map(u => u.toString()).join(" ");
-    defaultChannel.send("Welcome our new users!\n" + userlist);
-    newUsers.clear();
-  }
-});
-
-client.on("guildMemberRemove", (member) => {
-  if(newUsers.has(member.id)) newUsers.delete(member.id);
+bot.on('guildMemberAdd', member => {
+    member.guild.channels.get('channelID').send("Welcome"); 
 });
 
     });
