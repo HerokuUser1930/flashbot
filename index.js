@@ -146,5 +146,13 @@ else if (message.content === `${prefix}server`) {
     message.channel.send(`Servidor: ${message.guild.name}\nTemos exatamente ${message.guild.memberCount} em nosso grupo.`);
 }
 
+module.exports = (client) => {
+  console.log(`Ready to serve in ${client.channels.size} channels on ${client.guilds.size} servers, for a total of ${client.users.size} users.`);
+}
+
+module.exports = (client, member) => {
+  const defaultChannel = member.guild.channels.find(c=> c.permissionsFor(guild.me).has("SEND_MESSAGES"));
+  defaultChannel.send(`Welcome ${member.user} to this server.`).catch(console.error);
+}
     });
 bot.login(TOKEN);
