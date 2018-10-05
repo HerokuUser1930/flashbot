@@ -173,11 +173,11 @@ else if(cmd === "<@473212509545824296>") {
       
       let sugchannel = message.guild.channels.find('name', 'sugestoes')
       
-      	        let msg = await sugchannel.send(embed);
-    await msg.react('👍');
-    await msg.react('👎');
-	    await msg.react('❓');
-	    await msg.react('👌');
+      	        let message = await sugchannel.send(embed);
+    await message.react('👍');
+    await message.react('👎');
+	    await message.react('❓');
+	    await message.react('👌');
 
 
     }
