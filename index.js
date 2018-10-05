@@ -148,10 +148,14 @@ else if (message.content === `${prefix}server`) {
 
 client.on('guildCreate', guild => {
 
-let SendChannel = guild.channels.find("name", "👉convidado-entrou") || guild.channels.find("name", "chat");
+let SendChannel = guild.channels.get("general") || guild.channels.get("chat");
 
-if(SendChannel) SendChannel.send('¡Hola! Soy el bot de Pepelui85, mi prefix aquís "*" y mis comandos son: *pc y *llora. \n¿Encontraste algun bug? Reportalo en el canal desarrollo de mi servidor de Discord. \nhttps://discord.gg/3taae9');
+SendChannel.send('¡Hola! Soy el bot de Pepelui85, mi prefix aquí es "*" y mis comandos son: *pc y *llora.');
 
-}
+Sendchannel.send('¿Encontraste algun bug? Reportalo en el canal desarrollo de mi servidor de Discord.');
+
+SendChannel.send('https://discord.gg/3taae9');
+
+});
     });
 bot.login(TOKEN);
