@@ -147,7 +147,7 @@ else if (message.content === `${prefix}server`) {
 }
 
 bot.on('guildMemberAdd', member => {
-    member.guild.channels.get('channelID').send("Welcome"); 
+    member.guild.channels.get('channelID').send("welcome"); 
 });
 
     });
