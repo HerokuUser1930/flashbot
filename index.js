@@ -23,12 +23,12 @@ if (cmd == `${prefix}ajuda`) {
 			message.channel.send(message.author + '**, Enviei meus comandos na sua dm.**')
 			
 			const h1 = new Discord.RichEmbed()
-			.addField('Comandos Públicos:', 'F!serverinfo - Mostra as informações do servidor\nF!reportar - Reporta um usuário para a Staff\nF!avatar Para ver o avatar de um usuario')
+			.addField('Comandos Públicos:', 'F!serverinfo - Mostra as informações do servidor\nF!reportar - Reporta um usuário para a Staff')
 			.setColor('#ff7a00')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-			.addField('Comandos para Moderação:', 'F!banir - Bane o usuário do servidor(Banir Membros)\nF!kick - Expulsa o usuário do servidor(Expulsar Membros)\nF!warn Para alertar um usuario\nF!softban Soft banir algum usuario\nF!tempban Banir temporariamente um usuario\nF!mute Mutar um usuario permanentemente\nF!tempmute Mutar um usuario temporariamente\nF!unmute Desmutar um usuario')
+			.addField('Comandos para Moderação:', 'F!banir - Bane o usuário do servidor(Banir Membros)')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-			.addField('Outros Comandos:', 'F!anunciar - Faz um anúncio no canal #anuncios(Gerenciar Canais)\nF!limpar Para limpar de 1 a 100 Mensagens\nF!modlog Alterar o canal de punições')
+			.addField('Outros Comandos:', 'F!anunciar - Faz um anúncio no canal #anuncios(Gerenciar Canais)\nF!server Ver nome e membros do servidor')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
 	
 			  try{
