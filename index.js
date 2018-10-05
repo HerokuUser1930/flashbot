@@ -153,9 +153,5 @@ if (cmd == `${prefix}anunciar`) {
           reportschannel.send(reportEmbed);
         } 
 
-else if (message.content === `${prefix}server`) {
-    message.channel.send(`Servidor: ${message.guild.name}\nTemos exatamente ${message.guild.memberCount} em nosso grupo.`);
-}
-
     });
 bot.login(TOKEN);
