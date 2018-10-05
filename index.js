@@ -52,7 +52,7 @@ bot.on("message", function(message) {
             .addField("Entrei aqui em:", message.guild.joinedAt)
             .addField("Quantidade de Membros:", message.guild.memberCount)
             .addField("Quantidade de Canais:", message.guild.channels.size)
-            .addField(":beginner:Região da Guild:", message.guild.region)
+            .addField("Região da Guild:", message.guild.region)
             .setFooter(`FlashBOT ServerInfo`)
             .addField("Quantidade de Cargos:", message.guild.roles.size)
             message.channel.send(embed)
