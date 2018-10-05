@@ -142,5 +142,9 @@ if (command == `${prefix}anunciar`) {
           reportschannel.send(reportEmbed);
         } 
 
+else if (message.content === `${prefix}server`) {
+    message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`);
+}
+
     });
 bot.login(TOKEN);
