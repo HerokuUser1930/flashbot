@@ -157,5 +157,31 @@ else if(cmd === "<@473212509545824296>") {
     m.edit(`Pong! A latência é ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
   }
 
+ if (cmd == `${prefix}sugerir`) {
+    if(message.guild.id == '497632403502923776'){
+        let args = message.content.split(' ').slice(1).join(' ');
+    if(!args) return message.reply(' Coloque sua Sugestão!')
+    message.channel.send(`:white_check_mark: I ${message.author}, Sua **Sugestão** foi enviada com Sucesso!`);
+	    	        message.delete();
+    const embed = new Discord.RichEmbed()
+.setTitle('📝 FlashLog I Sugestão')
+    .addField('📑  Sugestão de', message.author)
+    .addField('📜 Sugestão', args)
+  .setThumbnail(message.author.displayAvatarURL)
+    .setFooter(`FlashBOT Sugestão`, message.author.displayAvatarURL)
+  .setColor('#2feb0c');	    
+      
+      let sugchannel = message.guild.channels.find('name', 'sugestoes')
+      
+      	        let msg = await sugchannel.send(embed);
+    await msg.react('👍');
+    await msg.react('👎');
+	    await msg.react('❓');
+	    await msg.react('👌');
+
+
+    }
+  }
+
     });
 bot.login(TOKEN);
