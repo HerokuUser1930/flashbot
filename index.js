@@ -143,8 +143,10 @@ if (command == `${prefix}anunciar`) {
         } 
 
 else if (message.content === `${prefix}server`) {
-    message.channel.send(`Server name: ${message.guild.name}\nTotal members: ${message.guild.memberCount}`);
+    message.channel.send(`Servidor: ${message.guild.name}\nTemos exatamente ${message.guild.memberCount} em nosso grupo.`);
 }
+
+
 
     });
 bot.login(TOKEN);
