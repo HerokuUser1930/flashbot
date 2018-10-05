@@ -17,17 +17,6 @@ bot.on("message", function(message) {
         let messageArray = message.content.split(" ");
         let cmd = messageArray[0];
         let args = messageArray.slice(1);
-
-client.on("guildMemberAdd", (member) => {
-  const guild = member.guild;
-  newUsers.set(member.id, member.user);
-
-  if (newUsers.size > 10) {
-    const defaultChannel = guild.channels.find(c=> c.permissionsFor(guild.me).has("SEND_MESSAGES"));
-    const userlist = newUsers.map(u => u.toString()).join(" ");
-    defaultChannel.send("Sejam bem vindos ao servidor!\n" + userlist);
-    newUsers.clear();
-  }
      
 if (cmd == `${prefix}ajuda`) {
 			
@@ -152,6 +141,10 @@ if (cmd == `${prefix}anunciar`) {
           message.delete().catch(O_o=>{});
           reportschannel.send(reportEmbed);
         } 
+
+else if (message.content === `${prefix}server`) {
+    message.channel.send(`Servidor: ${message.guild.name}\nTemos exatamente ${message.guild.memberCount} em nosso grupo.`);
+}
 
     });
 bot.login(TOKEN);
