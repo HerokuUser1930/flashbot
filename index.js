@@ -142,6 +142,7 @@ if (command == `${prefix}anunciar`) {
           reportschannel.send(reportEmbed);
         } 
 
+  if (command == `${prefix}botinfo`) {
 module.exports.run = async (bot, message, args) => {
     let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
