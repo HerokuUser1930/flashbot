@@ -37,26 +37,30 @@ if (cmd == `${prefix}ajuda`) {
     console.log(e.stack);
     message.channel.send(`${message.author}**, Habilite o Dm para eu enviar os comandos.**`)
   }
-		}
-
-        if (cmd == `${prefix}serverinfo`) {
-            const embed = new Discord.RichEmbed()
-            .setColor(0x00FFFF)
-            .addField("Nome:", message.guild.name, true)
-            .addField('Canais de Texto:', `${message.guild.channels.filter(m => m.type === 'text').size}`, true)
-            .addField('Canais de Voz:', `${message.guild.channels.filter(m => m.type === 'voice').size}`, true)
-            .setThumbnail(message.guild.iconURL)
-            .addField("ID:", message.guild.id)
-            .addField("Criador da Guild:", message.guild.owner)
-            .addField("Guild criada em:", message.guild.createdAt)
-            .addField("Entrei aqui em:", message.guild.joinedAt)
-            .addField("Quantidade de Membros:", message.guild.memberCount)
-            .addField("Quantidade de Canais:", message.guild.channels.size)
-            .addField("Região da Guild:", message.guild.region)
-            .setFooter(`FlashBOT ServerInfo`)
-            .addField("Quantidade de Cargos:", message.guild.roles.size)
-            message.channel.send(embed)
-}
+                 }
+  
+if (cmd == `${prefix}serverinfo`) {
+    message.channel.send(`${message.author}`)
+    const embed = new Discord.RichEmbed()
+    .setTitle("Informações desse Servidor")
+    .setColor("#90ff00")
+    .addField("📋 Nome", message.guild.name, true)
+    .addField('👾 Total de Bots', `${message.guild.members.filter(b => b.user.bot).size}`, true)
+    .addField('📃 Presença', `📗 Online: ${message.guild.presences.size}/${message.guild.presences.filter(p => p.status === 'online').size}\n📕 Ocupado: ${message.guild.presences.filter(p => p.status === 'dnd').size}\n📒 Ausente: ${message.guild.presences.filter(p => p.status === 'idle').size}`, true)
+    .addField('💬 Canais de texto', `${message.guild.channels.filter(m => m.type === 'text').size}`, true)
+    .addField('🔊 Canais de Voz', `${message.guild.channels.filter(m => m.type === 'voice').size}`, true)
+    .setThumbnail(message.guild.iconURL)
+    .addField("💻 ID", message.guild.id)
+    .addField("👑 Dono", message.guild.owner)
+    .addField("📑 Criado em", message.guild.createdAt)
+    .addField("📮 Entrei aqui em", message.guild.joinedAt)
+    .addField("🙋‍ Total de Membros", message.guild.memberCount)
+    .addField("💬 Total de Canais", message.guild.channels.size)
+    .addField("🌍 Região", message.guild.region)
+    .setFooter(`FlashBOT ServerInfo`, message.author.displayAvatarURL)
+    .addField("📜 Cargos", message.guild.roles.map(r => r.name).join(", "))
+    message.channel.send(embed)
+  }
 
 if (cmd == `${prefix}anunciar`) {
     if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`**Você não tem permissão para utilizar este comando!** :x:`);
