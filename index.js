@@ -146,7 +146,7 @@ else if (message.content === `${prefix}server`) {
     message.channel.send(`Servidor: ${message.guild.name}\nTemos exatamente ${message.guild.memberCount} em nosso grupo.`);
 }
 
-else if(cmd === "`@FlashBOT#6948`") {
+else if(cmd === "<@473212509545824296>") {
     // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
     // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
     const m = await message.channel.send("Meu prefixo atual é: F! Utilize F!ajuda para ver meus comandos.");
