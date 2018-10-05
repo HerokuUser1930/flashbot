@@ -146,9 +146,12 @@ else if (message.content === `${prefix}server`) {
     message.channel.send(`Servidor: ${message.guild.name}\nTemos exatamente ${message.guild.memberCount} em nosso grupo.`);
 }
 
-bot.on('guildMemberAdd', member => {
-    member.guild.channels.get('497599558084329473').send("welcome"); 
-});
+client.on('guildCreate', guild => {
 
+let SendChannel = guild.channels.find("name", "general") || guild.channels.find("name", "chat");
+
+if(SendChannel) SendChannel.send('¡Hola! Soy el bot de Pepelui85, mi prefix aquís "*" y mis comandos son: *pc y *llora. \n¿Encontraste algun bug? Reportalo en el canal desarrollo de mi servidor de Discord. \nhttps://discord.gg/3taae9');
+
+}
     });
 bot.login(TOKEN);
