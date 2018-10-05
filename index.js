@@ -15,10 +15,10 @@ bot.on("message", function(message) {
         if(message.channel.type === "dm") return;
         let prefix = 'F!'
         let messageArray = message.content.split(" ");
-        let command = messageArray[0];
+        let cmd = messageArray[0];
         let args = messageArray.slice(1);
 
-     if (command == `${prefix}ajuda`) {
+     if (cmd == `${prefix}ajuda`) {
 			
 			message.channel.send(message.author + '**, Enviei meus comandos na sua dm.**')
 			
@@ -39,7 +39,7 @@ bot.on("message", function(message) {
   }
 		}
 
-        if (command == `${prefix}serverinfo`) {
+        if (cmd == `${prefix}serverinfo`) {
             const embed = new Discord.RichEmbed()
             .setColor(0x00FFFF)
             .addField("Nome:", message.guild.name, true)
@@ -58,7 +58,7 @@ bot.on("message", function(message) {
             message.channel.send(embed)
 }
 
-if (command == `${prefix}anunciar`) {
+if (cmd == `${prefix}anunciar`) {
     if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`**Você não tem permissão para utilizar este comando!** :x:`);
     let anuncio = args.join(" ");
     message.delete();
@@ -76,7 +76,7 @@ if (command == `${prefix}anunciar`) {
     anunciochannel.send(embed);
   }
 
-  if (command == `${prefix}banir`) {
+  if (cmd == `${prefix}banir`) {
     if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(`**Você não tem permissão para utilizar esse comando!** :x:`);
     let staff = message.author
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -116,7 +116,7 @@ if (command == `${prefix}anunciar`) {
     incidentchannel.send(banEmbed);
 }
         
-                if (command == `${prefix}reportar`) {
+                if (cmd == `${prefix}reportar`) {
                    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
           if(!rUser) return message.channel.send(`**Mencione o usuário!** :x:`);
           if(rUser.id === message.author.id) return message.channel.send(`**Você não pode se Reportar!** :x:`)
