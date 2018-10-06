@@ -4,10 +4,15 @@ var bot = new Discord.Client()
 
 const TOKEN = process.env.BOT_TOKEN
 
-bot.on("message", function(message) {
+bot.on('ready', () => {
 
-	 bot.user.setPresence({ game: { name: `Distribuindo Amor para ${bot.users.size} usuarios, em ${bot.guilds.size} guilds diferentes!`, type: 1, url: "https://www.twitch.tv/flashcentral"}});
-           
+    console.log(`📡 Estou conectado a: ${bot.guilds.size} servidores, e ${bot.users.size} usuários.`)
+   let games = [`📡 F!ajuda | ` + bot.guilds.size + ` servers e ` + bot.users.size + ` Usuários conectados no total`,
+      `🇧🇷 FlashBOT - Bot Totalmente Brasileiro.`, `😛 Minha prefix e F!`, `🤔 Precisando de ajuda? F!ajuda`];
+  setInterval(() => {
+      bot.user.setActivity(games[Math.floor(Math.random() * games.length)], { url: "https://twitch.tv/redstoneg4", type: "STREAMING" })
+
+  }, 20000);
 });
 
     bot.on("message", async message => {
