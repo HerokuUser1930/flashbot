@@ -163,10 +163,13 @@ else if(cmd === "<@473212509545824296>") {
   }
 
 bot.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find(ch => ch.name === 'lo-entrada');
-   channel.send(`${member}, Estou feliz que tenha entrado :wink:`);
-      
-  })
+
+
+  let embed = new Discord.RichEmbed()
+      .addField('teste`)
+      client.channels.get('502233508618698753').send(embed);
+
+})
 
     });
 bot.login(TOKEN);
