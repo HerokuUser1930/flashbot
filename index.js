@@ -163,12 +163,24 @@ else if(cmd === "<@473212509545824296>") {
   }
 
 bot.on('guildMemberAdd', member => {
+  let avatar = member.user.avatarURL
 
+  let role = member.guild.roles.find('name', ':zipper_mouth: NÃO VERIFICADO');
 
   let embed = new Discord.RichEmbed()
-      .addField('teste`)
-      bot.channels.get('502233508618698753').send(embed);
-
+      .setColor('RANDOM')
+      .setThumbnail(avatar)
+      .addField('Bem vindo ao discord.', `Bem vindo(a) ${member} ao discord oficial do Atlantic!\n Você foi o __${member.guild.memberCount}__ player a entrar em nosso servidor\n \nPara interagir com os player vá em: #💭chat\nPara ver os nossos anúncios vá em: #📣avisos\n \nAcesse já o servidor: mc-atlantic.tk`)
+      .setFooter(`Atlantic`);
+      client.channels.get('502233508618698753').send(embed);
+      member.addRole(role)
 })
+
+bot.on('message', message => {
+  if(message.content.toLowerCase() === '!criador')
+  message.channel.send('Meu criador é o <@407365291870257153>');
+
+});
+
     });
 bot.login(TOKEN);
