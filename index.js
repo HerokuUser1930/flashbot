@@ -162,5 +162,11 @@ else if(cmd === "<@473212509545824296>") {
     m.edit(`Pong! A latência é ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
   }
 
+bot.on('guildMemberAdd', member => {
+  const channel = member.guild.channels.find(ch => ch.name === 'lo-entrada');
+   channel.send(`${member}, Estou feliz que tenha entrado :wink:`);
+      
+  })
+
     });
 bot.login(TOKEN);
