@@ -169,9 +169,8 @@ bot.on('guildMemberAdd', member => {
 
   let embed = new Discord.RichEmbed()
       .addField('teste`)
-      client.channels.get('502233508618698753').send(embed);
+      bot.channels.get('502233508618698753').send(embed);
 
 })
-
     });
 bot.login(TOKEN);
