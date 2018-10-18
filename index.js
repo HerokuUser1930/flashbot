@@ -162,5 +162,16 @@ else if(cmd === "<@473212509545824296>") {
     m.edit(`Pong! A latência é ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
   }
 
+    bot.on('guildMemberAdd', member => {
+      let avatar = member.user.avatarURL
+
+      let embed = new Discord.RichEmbed()
+          .setColor('RANDOM')
+          .setThumbnail(avatar)
+          .addField('Bem vindo ao discord.', `Bem vindo(a) ${member} ao servidor ${message.guild.name}!\n Você foi o __${member.guild.memberCount}__ player a entrar em nosso servidor\n \n \nAcesse já o site do bot: flash--bot.glitch.me/`)
+          .setFooter(`Flash BOT`);
+          bot.channels.get('bem-vindo').send(embed);
+    })
+
     });
 bot.login(TOKEN);
