@@ -162,5 +162,24 @@ else if(cmd === "<@473212509545824296>") {
     m.edit(`Pong! A latência é ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
   }
 
+bot.on("message", message => {
+  if (message.author.bot) return;
+  if (!message.content.startsWith(config.prefix)) return;
+ 
+  let command = message.content.split(" ")[0];
+  command = command.slice(config.prefix.length);
+ 
+  let args = message.content.split(" ").slice(1);
+  // The list of if/else is replaced with those simple 2 lines:
+ 
+  try {
+    let commandFile = require(`./commands/${command}.js`);
+    commandFile.run(client, message, args);
+  } catch (err) {
+    console.error(err);
+  }
+ 
+});
+
     });
 bot.login(TOKEN);
