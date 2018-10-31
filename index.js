@@ -8,7 +8,7 @@ bot.on('ready', () => {
 
     console.log(`📡 Estou conectado a: ${bot.guilds.size} servidores, e ${bot.users.size} usuários.`)
    let games = [`📡 F!ajuda | ` + bot.guilds.size + ` servers e ` + bot.users.size + ` Usuários conectados no total`,
-      `🇧🇷 FlashBOT - Bot Totalmente Brasileiro.`, `😛 Minha prefix e F!`, `:large_orange_diamond: Meu criador foi o zPotterZ ツ#6281`, `🤔 Precisando de ajuda? F!ajuda`, `🤔 Me adicione: https://flash--bot.glitch.me`];
+      `🇧🇷 FlashBOT - Bot Totalmente Brasileiro.`, `😛 Minha prefix e F!`, `📡 Meu criador e o zPotterZ ツ#6281`, `🤔 Precisando de ajuda? F!ajuda`, `🤔 Me adicione: https://flash--bot.glitch.me`];
   setInterval(() => {
       bot.user.setActivity(games[Math.floor(Math.random() * games.length)], { url: "https://twitch.tv/redstoneg4", type: "STREAMING" })
 
