@@ -161,7 +161,7 @@ if (message.content === `${prefix}botinfo`) {
         .setColor("#15f153")
         .setThumbnail(bicon)
         .addField("🤖 __Nome do BOT:__", bot.user.username, true)
-        .addField("📆 __Criado em:__", "Sab 21 de abril de 2018 14:19:04", true)
+        .addField("📆 __Criado em:__", "18 de maio de 2018 as 17:15:00", true)
         .addField("💻 __Versão:__", "Cmp 1.0.0", true)
         .addField("👑 __Dono:__", bot.users.get("330445793867726849").tag, true)
         .addField("🛰️ __Ping__ :", Math.round(bot.ping), true)
