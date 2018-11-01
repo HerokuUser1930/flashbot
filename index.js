@@ -202,7 +202,7 @@ if (cmd == `${prefix}ship`) {
 
     }
 
-if (command == `${prefix}limpar`) {
+if (cmd == `${prefix}limpar`) {
   if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado`);
   if(!message.guild.member(bot.user).hasPermission('MANAGE_MESSAGES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Mensagens`")
 
