@@ -29,7 +29,7 @@ if (cmd == `${prefix}ajuda`) {
 			
 			const h1 = new Discord.RichEmbed()
 			.addField('Comandos Públicos:', 'F!serverinfo - Mostra as informações do servidor\nF!reportar - Reporta um usuário para a Staff')
-			.setColor('#ff7a00')
+			.setColor('RANDOM')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
 			.addField('Comandos para Moderação:', 'F!banir - Bane o usuário do servidor(Banir Membros)')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
