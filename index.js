@@ -67,6 +67,8 @@ if (cmd == `${prefix}serverinfo`) {
    .addField("💼 Cargos:", message.guild.roles.size, true);
    message.channel.send(serverembed);
 
+}
+
 if (cmd == `${prefix}anunciar`) {
     if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`**Você não tem permissão para utilizar este comando!** :x:`);
     let anuncio = args.join(" ");
