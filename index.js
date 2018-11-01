@@ -185,7 +185,7 @@ if (cmd == `${prefix}ship`) {
     let psc2 = ["83% [█████████..] Só falta um deles aceitar.", "83% [█████████..] Só falta um deles aceitar.", "67% [███████....] Achei legal esse casal hein.", "67% [███████....] Achei legal esse casal hein.", "42% [█████......] Falta só um deles aceitar.", "42% [█████......] Falta só um deles aceitar.", "100% [███████████] Ficaria surpreso se os dois já não namoram.", "50% [██████.....] Hummm sei não hein.", "50% [██████.....] Hummm sei não hein."]
     let shipUser = message.mentions.users.array()[0];
     let shipUser2 = message.mentions.users.array()[1];
-    if (!shipUser) return message.channel.send("Você usou o comando incorretamente: use l!shippar (@user1) (@user2)")
+    if (!shipUser) return message.channel.send("Você usou o comando incorretamente: use F!ship (@user1) (@user2)")
 
     let shipEmbed = new Discord.RichEmbed()
         .setDescription("Shipando... ")
