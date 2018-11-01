@@ -33,7 +33,8 @@ if (cmd == `${prefix}ajuda`) {
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
 			.addField('Comandos para Moderação:', 'F!banir - Bane o usuário do servidor(Banir Membros)')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-			.addField('Outros Comandos:', 'F!anunciar - Faz um anúncio no canal #anuncios(Gerenciar Canais)\nF!server Ver nome e membros do servidor')
+			.addField('Outros Comandos:', 'F!anunciar - Faz um anúncio no canal #anuncios(Gerenciar Canais)\nF!botinfo Ver as informações do bot')
+                        .addField('Diverção:', 'F!ship Shippar dois usuarios')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
 	
 			  try{
