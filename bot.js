@@ -185,23 +185,7 @@ if (cmd == `${prefix}ship`) {
     let psc2 = ["100% [███████████] Opá achou a(o) 10/10 hein ja pode casar", "100% [███████████] Opá achou a(o) 10/10 hein ja pode casar","83% [█████████..] Só falta um deles aceitar.", "83% [█████████..] Só falta um deles aceitar.", "67% [███████....] Achei legal esse casal hein.", "67% [███████....] Achei legal esse casal hein.", "42% [█████......] Falta só um deles aceitar.", "42% [█████......] Falta só um deles aceitar.", "100% [███████████] Ficaria surpreso se os dois já não namoram.", "50% [██████.....] Hummm sei não hein.", "50% [██████.....] Hummm sei não hein."]
     let shipUser = message.mentions.users.array()[0];
     let shipUser2 = message.mentions.users.array()[1];
-    let botembed = new Discord.RichEmbed()
-        .setAuthor("FlashBOT", bicon)
-        .setDescription("Informação do Bot")
-        .setColor("#15f153")
-        .setThumbnail(bicon)
-        .addField("🤖 __Nome do BOT:__", bot.user.username, true)
-        .addField("📆 __Criado em:__", "18 de maio de 2018 as 17:15:00", true)
-        .addField("💻 __Plataforma:__", "JavaScript", true)
-        .addField("👑 __Dono:__", bot.users.get("330445793867726849").tag, true)
-        .addField("🛰️ __Ping__ :", Math.round(bot.ping), true)
-        .addField("👥 __Membros__ :", bot.users.size, true)
-        .addField("💬 __Canais__ :", bot.channels.size, true)
-        .setColor("#7289DA")
-        .addField("Informações ", "Discord para suporte: https://discord.gg/z7R5jyJ, Site: https://flash--bot.glitch.me", true);
-
-    return message.channel.send(botembed);
-}
+    if (!shipUser) return message.channel.send(embed);("Teste")
 
     let shipEmbed = new Discord.RichEmbed()
         .setDescription("Shipando... ")
