@@ -44,6 +44,31 @@ if (cmd == `${prefix}ajuda`) {
     message.channel.send(`${message.author}**, Habilite o Dm para eu enviar os comandos.**`)
   }
                  }
+
+if (cmd == `${prefix}serverinfo`) {
+  let online = message.guild.members.filter(member => member.user.presence.status !== 'offline');
+  let day = message.guild.createdAt.getDate()
+  let month = 1 + message.guild.createdAt.getMonth()
+  let year = message.guild.createdAt.getFullYear()
+   let sicon = message.guild.iconURL;
+   let serverembed = new Discord.RichEmbed()
+   .setAuthor(message.guild.name, sicon)
+   .setFooter(`Guild criada • ${day}/${month}/${year}`)
+   .setColor("#7289DA")
+   .setThumbnail(sicon)
+   .addField("ID", message.guild.id, true)
+   .addField("📰 Nome da Guild:", message.guild.name, true)
+   .addField("👑 Dono:", message.guild.owner.user.tag, true)
+   .addField("🌎 Região:", message.guild.region, true)
+   .addField("📢 Canais:", message.guild.channels.size, true)
+   .addField("👥 Membros:", message.guild.memberCount, true)
+.addField('📃 Presença', `📗 Online: ${message.guild.presences.size}/${message.guild.presences.filter(p => p.status === 'online').size}\n📕 Ocupado: ${message.guild.presences.filter(p => p.status === 'dnd').size}\n📒 Ausente: ${message.guild.presences.filter(p => p.status === 'idle').size}`, true)
+   .addField("🤖 Bots:", message.guild.members.filter(m => m.user.bot).size, true)
+   .addField("<a:online:465311698438324236> Online:", online.size, true)
+   .addField("💼 Cargos:", message.guild.roles.size, true);
+   message.channel.send(serverembed);
+
+}
   
 if (cmd == `${prefix}anunciar`) {
     if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`**Você não tem permissão para utilizar este comando!** :x:`);
