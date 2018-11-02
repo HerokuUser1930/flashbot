@@ -185,6 +185,8 @@ if (cmd == `${prefix}ship`) {
     let psc2 = ["100% [███████████] Opá achou a(o) 10/10 hein ja pode casar", "100% [███████████] Opá achou a(o) 10/10 hein ja pode casar","83% [█████████..] Só falta um deles aceitar.", "83% [█████████..] Só falta um deles aceitar.", "67% [███████....] Achei legal esse casal hein.", "67% [███████....] Achei legal esse casal hein.", "42% [█████......] Falta só um deles aceitar.", "42% [█████......] Falta só um deles aceitar.", "100% [███████████] Ficaria surpreso se os dois já não namoram.", "50% [██████.....] Hummm sei não hein.", "50% [██████.....] Hummm sei não hein."]
     let shipUser = message.mentions.users.array()[0];
     let shipUser2 = message.mentions.users.array()[1];
+    if (!shipUser) return message.channel.send("Utilize: F!ship (@user1) (@user2)\n Exmplo: `@zPotterZ#6281` + `_SpeedLight_#4293`")
+
     let  shipEmbed = new Discord.RichEmbed()
         .setDescription("Shipando... ")
         .addField("Ummm será que temos um novo casal aqui:", `${shipUser} 👨🏻‍💖👩 ${shipUser2}`)
@@ -192,12 +194,6 @@ if (cmd == `${prefix}ship`) {
         .setColor("RED")
         .setImage("https://cdn.discordapp.com/attachments/467721860910415883/468806111684722698/Capturar.PNG")
         .addField("**Porcentagem de dar certo:**", "👇")
-        .setFooter(psc2[Math.floor(psc2.length * Math.random())])
-
-    return message.channel.send shipEmbed = new Discord.RichEmbed()
-        .setDescription("Shipando... ")
-        .addField("Utilize:", `@user1 e @user2`)
-        .setColor("RED")
         .setFooter(psc2[Math.floor(psc2.length * Math.random())])
 
 
