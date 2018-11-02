@@ -185,8 +185,7 @@ if (cmd == `${prefix}ship`) {
     let psc2 = ["100% [███████████] Opá achou a(o) 10/10 hein ja pode casar", "100% [███████████] Opá achou a(o) 10/10 hein ja pode casar","83% [█████████..] Só falta um deles aceitar.", "83% [█████████..] Só falta um deles aceitar.", "67% [███████....] Achei legal esse casal hein.", "67% [███████....] Achei legal esse casal hein.", "42% [█████......] Falta só um deles aceitar.", "42% [█████......] Falta só um deles aceitar.", "100% [███████████] Ficaria surpreso se os dois já não namoram.", "50% [██████.....] Hummm sei não hein.", "50% [██████.....] Hummm sei não hein."]
     let shipUser = message.mentions.users.array()[0];
     let shipUser2 = message.mentions.users.array()[1];
- if (!shipUser) return message.channel.send("override fun getExample(): List<String> { return listOf("`@Loritta @SparklyBot`")} override fun getUsage(): String { return "`<usuário 1> <usuário 2>`" } override fun needsToUploadFiles(): Boolean { return true
-	})")
+    if (!shipUser) return message.channel.send("Você usou o comando incorretamente: use l!shippar (@user1) (@user2)")
 
     let shipEmbed = new Discord.RichEmbed()
         .setDescription("Shipando... ")
