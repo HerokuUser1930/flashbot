@@ -192,7 +192,7 @@ if (cmd == `${prefix}ship`) {
         .addField("Ummm será que temos um novo casal aqui:", `${shipUser} 👨🏻‍💖👩 ${shipUser2}`)
         .addField("Comando requisitado por:", `${message.author}`)
         .setColor("RED")
-        .setImage("https://cdn.discordapp.com/attachments/451532143517106177/508018066303483924/9k.png")
+        .setImage("https://cdn.discordapp.com/attachments/471532114890981387/508021142943039489/images.png")
         .addField("**Porcentagem de dar certo:**", "👇")
         .setFooter(psc2[Math.floor(psc2.length * Math.random())])
 
