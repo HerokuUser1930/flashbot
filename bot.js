@@ -121,7 +121,7 @@ if (cmd == `${prefix}anunciar`) {
     }catch(e){
     }
 
-    let incidentchannel = message.guild.channels.find(`name`, 'modlog');
+    let incidentchannel = message.guild.channels.find(`name`, '🚫puniçoes🚫');
     message.channel.send(`**Usuário banido com sucesso!**`)
 
     incidentchannel.send(banEmbed);
