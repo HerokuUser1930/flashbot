@@ -21,28 +21,7 @@ bot.on('ready', () => {
         let prefix = 'F!'
         let messageArray = message.content.split(" ");
         let cmd = messageArray[0];
-        let args = messageArray.slice(1);
-    let command = message.content.split(" ")[0];
-    
-     command = command.slice(config.prefix);
-
-      let args = message.content.split(" ").slice(1)
-  
-      try {
-
-        let commandFile = require(`./commands/${command}.js`);
-    
-        commandFile.run(bot, message, args);
-    
-  
-      } catch (err) {
-    
-    if (!message.content.startsWith(config.prefix)) return;
- 
-    
-        console.error(err);
-    
-      }
+        let args = messageArray.slice(1) 
      
 if (cmd == `${prefix}ajuda`) {
 			
