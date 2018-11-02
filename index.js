@@ -24,7 +24,7 @@ bot.on('ready', () => {
         let args = messageArray.slice(1);
     let command = message.content.split(" ")[0];
     
-     command = command.slice(constdoprefix);
+     command = command.slice(config.prefix);
 
       let args = message.content.split(" ").slice(1)
   
