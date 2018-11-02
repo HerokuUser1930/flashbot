@@ -64,7 +64,6 @@ if (cmd == `${prefix}serverinfo`) {
    .addField("👥 Membros:", message.guild.memberCount, true)
 .addField('📃 Presença', `📗 Online: ${message.guild.presences.size}/${message.guild.presences.filter(p => p.status === 'online').size}\n📕 Ocupado: ${message.guild.presences.filter(p => p.status === 'dnd').size}\n📒 Ausente: ${message.guild.presences.filter(p => p.status === 'idle').size}`, true)
    .addField("🤖 Bots:", message.guild.members.filter(m => m.user.bot).size, true)
-   .addField("<a:online:465311698438324236> Online:", online.size, true)
    .addField("💼 Cargos:", message.guild.roles.size, true);
    message.channel.send(serverembed);
 
@@ -183,7 +182,7 @@ else if(cmd === "<@473212509545824296>") {
   }
 
 if (cmd == `${prefix}ship`) {
-    let psc2 = ["83% [█████████..] Só falta um deles aceitar.", "83% [█████████..] Só falta um deles aceitar.", "67% [███████....] Achei legal esse casal hein.", "67% [███████....] Achei legal esse casal hein.", "42% [█████......] Falta só um deles aceitar.", "42% [█████......] Falta só um deles aceitar.", "100% [███████████] Ficaria surpreso se os dois já não namoram.", "50% [██████.....] Hummm sei não hein.", "50% [██████.....] Hummm sei não hein."]
+    let psc2 = ["100% [███████████] Opá achou a(o) 10/10 hein ja pode casar", "100% [███████████] Opá achou a(o) 10/10 hein ja pode casar","83% [█████████..] Só falta um deles aceitar.", "83% [█████████..] Só falta um deles aceitar.", "67% [███████....] Achei legal esse casal hein.", "67% [███████....] Achei legal esse casal hein.", "42% [█████......] Falta só um deles aceitar.", "42% [█████......] Falta só um deles aceitar.", "100% [███████████] Ficaria surpreso se os dois já não namoram.", "50% [██████.....] Hummm sei não hein.", "50% [██████.....] Hummm sei não hein."]
     let shipUser = message.mentions.users.array()[0];
     let shipUser2 = message.mentions.users.array()[1];
     if (!shipUser) return message.channel.send("Você usou o comando incorretamente: use F!ship (@user1) (@user2)")
