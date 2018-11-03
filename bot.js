@@ -4,6 +4,8 @@ var bot = new Discord.Client()
 
 const TOKEN = process.env.BOT_TOKEN
 
+bot.on("message", async message => {
+
 bot.on('guildMemberAdd', member => {
   let avatar = member.user.avatarURL
 
@@ -31,7 +33,6 @@ bot.on('ready', () => {
   }, 20000);
 });
 
-    bot.on("message", async message => {
         if(message.author.bot) return;
         if(message.channel.type === "dm") return;
         let prefix = 'F!'
