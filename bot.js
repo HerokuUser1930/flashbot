@@ -4,18 +4,6 @@ var bot = new Discord.Client()
 
 const TOKEN = process.env.BOT_TOKEN
 
-bot.on('ready', () => {
-
-    console.log(`📡 Estou conectado a: ${bot.guilds.size} servidores, e ${bot.users.size} usuários.`)
-   let games = [`📡 F!ajuda | ` + bot.guilds.size + ` servers e ` + bot.users.size + ` Usuários conectados no total`,
-      `🇧🇷 FlashBOT - Bot Totalmente Brasileiro.`, `😛 Minha prefix e F!`, `📡 Meu criador e o zPotterZ ツ#6281`, `🤔 Precisando de ajuda? F!ajuda`, `🤔 Me adicione: https://flash-bot.weebly.com/`];
-  setInterval(() => {
-      bot.user.setActivity(games[Math.floor(Math.random() * games.length)], { url: "https://twitch.tv/redstoneg4", type: "STREAMING" })
-
-  }, 20000);
-});
-
-
 bot.on('guildMemberAdd', member => {
   let avatar = member.user.avatarURL
 
@@ -31,6 +19,17 @@ bot.on('guildMemberAdd', member => {
     channel.send(embed)
 
 })
+
+bot.on('ready', () => {
+
+    console.log(`📡 Estou conectado a: ${bot.guilds.size} servidores, e ${bot.users.size} usuários.`)
+   let games = [`📡 F!ajuda | ` + bot.guilds.size + ` servers e ` + bot.users.size + ` Usuários conectados no total`,
+      `🇧🇷 FlashBOT - Bot Totalmente Brasileiro.`, `😛 Minha prefix e F!`, `📡 Meu criador e o zPotterZ ツ#6281`, `🤔 Precisando de ajuda? F!ajuda`, `🤔 Me adicione: https://flash-bot.weebly.com/`];
+  setInterval(() => {
+      bot.user.setActivity(games[Math.floor(Math.random() * games.length)], { url: "https://twitch.tv/redstoneg4", type: "STREAMING" })
+
+  }, 20000);
+});
 
     bot.on("message", async message => {
         if(message.author.bot) return;
