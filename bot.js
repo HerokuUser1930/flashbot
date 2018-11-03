@@ -218,7 +218,7 @@ message.channel.send(`:white_check_mark: I ${message.author}, Chat limpo!`)
   if (cmd == `${prefix}aAliceEoq?`) {
     // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
     // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
-    const m = await message.channel.send("<@477930402347220993>, Sua linda gostosa maravilhosa, casa com migo eu te amo :heart:");
+    const m = await message.channel.send("a <@477930402347220993> eo <@302016211221479424> Formao um casal perfeito :heart:");
     m.edit(`Pong! A latência é ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
   }
 
