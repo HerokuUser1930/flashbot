@@ -25,7 +25,7 @@ bot.on('ready', () => {
 bot.on('guildMemberAdd', (member) => {
   let avatar = member.user.avatarURL
 
-  let role = member.guild.roles.find('name', ':zipper_mouth: NÃO VERIFICADO');
+  let role = member.guild.roles.find('name', 'bemvindo');
 
   let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
