@@ -173,14 +173,6 @@ if (message.content === `${prefix}botinfo`) {
     return message.channel.send(botembed);
 }
 
-
-else if(cmd === "<@473212509545824296>") {
-    // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
-    // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
-    const m = await message.channel.send("Meu prefixo atual é: F! Utilize F!ajuda para ver meus comandos.");
-    m.edit(`Pong! A latência é ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
-  }
-
 if (cmd == `${prefix}ship`) {
     let psc2 = ["100% [███████████] Opá achou a(o) 10/10 hein ja pode casar", "100% [███████████] Opá achou a(o) 10/10 hein ja pode casar","83% [█████████..] Só falta um deles aceitar.", "83% [█████████..] Só falta um deles aceitar.", "67% [███████....] Achei legal esse casal hein.", "67% [███████....] Achei legal esse casal hein.", "42% [█████......] Falta só um deles aceitar.", "42% [█████......] Falta só um deles aceitar.", "100% [███████████] Ficaria surpreso se os dois já não namoram.", "50% [██████.....] Hummm sei não hein.", "50% [██████.....] Hummm sei não hein."]
     let shipUser = message.mentions.users.array()[0];
