@@ -215,7 +215,7 @@ if (cmd == `${prefix}limpar`) {
 message.channel.send(`:white_check_mark: I ${message.author}, Chat limpo!`)
 }
 
-else if(cmd === "A alice e oq?") {
+  if (cmd == `${prefix}aAliceEoq?`) {
     // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
     // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
     const m = await message.channel.send("a @Alice SchaerBeek#9937 E uma gostosa");
