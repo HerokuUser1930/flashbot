@@ -18,7 +18,7 @@ bot.on('guildMemberAdd', (member) => {
     let channel = message.guild.channels.find("name", "bemvindo")
     channel.send(embed)
 
-}
+})
 
 bot.on('ready', () => {
 
