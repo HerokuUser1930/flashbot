@@ -22,22 +22,7 @@ bot.on('ready', () => {
         let messageArray = message.content.split(" ");
         let cmd = messageArray[0];
         let args = messageArray.slice(1) 
-bot.on('guildMemberAdd', (member) => {
-  let avatar = member.user.avatarURL
 
-  let role = member.guild.roles.find("name", "bemvindo");
-
-  let embed = new Discord.RichEmbed()
-      .setColor('RANDOM')
-      .setThumbnail(avatar)
-      .addField('Bem vindo ao discord.', `Bem vindo(a) ${member} ao discord oficial do Atlantic!\n Você foi o __${member.guild.memberCount}__ player a entrar em nosso servidor\n \nPara interagir com os player vá em: #:thought_balloon:chat\nPara ver os nossos anúncios vá em: #:mega:avisos\n \nAcesse já o servidor: mc-atlantic.tk`)
-      .setFooter(`Atlantic`);
-      member.addRole(role)
-    let channel = message.guild.channels.find("name", "bemvindo")
-    channel.send(embed)
-
-})
-     
 if (cmd == `${prefix}ajuda`) {
 			
 			message.channel.send(message.author + '**, Enviei meus comandos na sua dm.**')
