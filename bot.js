@@ -17,7 +17,7 @@ bot.on('guildMemberAdd', member => {
       .addField('Bem vindo ao discord.', `Bem vindo(a) ${member} ao discord oficial do Atlantic!\n Você foi o __${member.guild.memberCount}__ player a entrar em nosso servidor\n \nPara interagir com os player vá em: #:thought_balloon:chat\nPara ver os nossos anúncios vá em: #:mega:avisos\n \nAcesse já o servidor: mc-atlantic.tk`)
       .setFooter(`Atlantic`);
       member.addRole(role)
-    let channel = message.guild.channels.find("name", "bemvindo")
+    let channel = message.guild.channels.find("name", "508378532288790549")
     channel.send(embed)
 
 })
