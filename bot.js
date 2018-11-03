@@ -8,7 +8,7 @@ bot.on('ready', () => {
 
     console.log(`📡 Estou conectado a: ${bot.guilds.size} servidores, e ${bot.users.size} usuários.`)
    let games = [`📡 F!ajuda | ` + bot.guilds.size + ` servers e ` + bot.users.size + ` Usuários conectados no total`,
-      `🇧🇷 FlashBOT - Bot Totalmente Brasileiro.`, `😛 Minha prefix e F!`, `📡 Meu criador e o zPotterZ ツ#6281`, `🤔 Precisando de ajuda? F!ajuda`, `🤔 Me adicione: https://flash--bot.glitch.me`];
+      `🇧🇷 FlashBOT - Bot Totalmente Brasileiro.`, `😛 Minha prefix e F!`, `📡 Meu criador e o zPotterZ ツ#6281`, `🤔 Precisando de ajuda? F!ajuda`, `🤔 Me adicione: https://flash-bot.weebly.com/`];
   setInterval(() => {
       bot.user.setActivity(games[Math.floor(Math.random() * games.length)], { url: "https://twitch.tv/redstoneg4", type: "STREAMING" })
 
@@ -168,7 +168,7 @@ if (message.content === `${prefix}botinfo`) {
         .addField("👥 __Membros__ :", bot.users.size, true)
         .addField("💬 __Canais__ :", bot.channels.size, true)
         .setColor("#7289DA")
-        .addField("Informações ", "Discord para suporte: https://discord.gg/z7R5jyJ, Site: https://flash--bot.glitch.me", true);
+        .addField("Informações ", "Discord para suporte: https://discord.gg/z7R5jyJ, Site: https://flash-bot.weebly.com/", true);
 
     return message.channel.send(botembed);
 }
