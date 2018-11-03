@@ -5,8 +5,6 @@ var bot = new Discord.Client()
 const TOKEN = process.env.BOT_TOKEN
 
 bot.on("message", function(message) {
-	
-});
 
 bot.on('guildMemberAdd', member => {
   let avatar = member.user.avatarURL
