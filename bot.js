@@ -8,7 +8,7 @@ bot.on('ready', () => {
 
     console.log(`📡 Estou conectado a: ${bot.guilds.size} servidores, e ${bot.users.size} usuários.`)
    let games = [`📡 F!ajuda | ` + bot.guilds.size + ` servers e ` + bot.users.size + ` Usuários conectados no total`,
-      `🇧🇷 FlashBOT - Bot Totalmente Brasileiro.`, `😛 Minha prefix e F!`, `<a:anuncio:508877403280506881> Meu criador e o zPotterZ ツ#6281`, `🔱 Entre em meu grupo de suporte https://discord.gg/z7R5jyJ`, `🤔 Precisando de ajuda? F!ajuda`, `🤔 Me adicione: https://flash-bot.weebly.com/`];
+      `🇧🇷 FlashBOT - Bot Totalmente Brasileiro.`, `😛 Minha prefix e F!`, `😛 Meu criador e o zPotterZ ツ#6281`, `🔱 Entre em meu grupo de suporte https://discord.gg/z7R5jyJ`, `🤔 Precisando de ajuda? F!ajuda`, `🤔 Me adicione: https://flash-bot.weebly.com/`];
   setInterval(() => {
       bot.user.setActivity(games[Math.floor(Math.random() * games.length)], { url: "https://twitch.tv/redstoneg4", type: "STREAMING" })
 
