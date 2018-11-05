@@ -28,12 +28,12 @@ if (cmd == `${prefix}ajuda`) {
 			message.channel.send(message.author + '**, Enviei meus comandos na sua dm.**')
 			
 			const h1 = new Discord.RichEmbed()
-			.addField('Comandos Públicos:', 'F!serverinfo - Mostra as informações do servidor\nF!reportar - Reporta um usuário para a Staff')
+			.addField('Comandos Públicos:', 'F!serverinfo - Mostra as informações do servidor\nF!reportar - Reporta um usuário para a Staff (Crie um canal chamado 💫reportes💫 Para enviar os reportes)')
 			.setColor('RANDOM')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-			.addField('Comandos para Moderação:', 'F!banir - Bane o usuário do servidor(Banir Membros)')
+			.addField('Comandos para Moderação:', 'F!banir - Bane o usuário do servidor (Crie um canal chamado 🚫puniçoes🚫 Para enviar a punição para este canal)')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-			.addField('Outros Comandos:', 'F!anunciar - Faz um anúncio no canal #anuncios(Gerenciar Canais)\nF!botinfo Ver as informações do bot')
+			.addField('Outros Comandos:', 'F!anunciar - Fazer um anuncio (Crie um canal chamado 🚨avisos🚨 para enviar os avisos)\nF!botinfo Ver as informações do bot')
                         .addField('Diverção:', 'F!ship Shippar dois usuarios')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
 	
@@ -79,7 +79,7 @@ if (cmd == `${prefix}anunciar`) {
     .setColor('#19a338')
     .addField("Atenciosamente,", message.author)
 
-    let anunciochannel = message.guild.channels.find(`name`, 'anuncios')
+    let anunciochannel = message.guild.channels.find(`name`, '🚨avisos🚨')
 
     message.channel.send(`**Anuncio feito com sucesso.**`)
 
@@ -174,7 +174,7 @@ if (message.content === `${prefix}botinfo`) {
 }
 
 if (cmd == `${prefix}ship`) {
-    let psc2 = ["100% [███████████] Opá achou a(o) 10/10 hein ja pode casar", "100% [███████████] Opá achou a(o) 10/10 hein ja pode casar","83% [█████████..] Só falta um deles aceitar.", "83% [█████████..] Só falta um deles aceitar.", "67% [███████....] Achei legal esse casal hein.", "67% [███████....] Achei legal esse casal hein.", "42% [█████......] Falta só um deles aceitar.", "42% [█████......] Falta só um deles aceitar.", "100% [███████████] Ficaria surpreso se os dois já não namoram.", "50% [██████.....] Hummm sei não hein.", "50% [██████.....] Hummm sei não hein."]
+    let psc2 = ["100% [███████████] Opá achou a(o) 10/10 hein ja pode casar", "100% [███████████] Opá achou a(o) 10/10 hein ja pode casar","83% [█████████..] Só falta um deles aceitar.", "83% [█████████..] Só falta um deles aceitar.", "67% [███████....] Achei legal esse casal hein.", "67% [███████....] Achei legal esse casal hein.", "42% [█████......] Hummm sei não hein.", "42% [█████......] Hummm sei não hein.", "38% [████.......] Acho que não da certo hein.", "38% [████.......] Acho que não da certo hein.", "50% [██████.....] Falta só um deles aceitar.", "50% [██████.....] Falta só um deles aceitar.", "20% [███........] Não foi dessa vez.", "20% [███........] Não foi dessa vez.", "10% [██.........] Triste", "10% [██.........] Triste", "5% [█..........] Triste essa pessoa não gosta de você", "5% [█..........] Triste essa pessoa não gosta de você", "0% [...........] Vishe não foi desta vez", "0% [...........] Vishe não foi desta vez"]
     let shipUser = message.mentions.users.array()[0];
     let shipUser2 = message.mentions.users.array()[1];
     if (!shipUser) return message.channel.send(message.author + ' Utilize: F!ship (@user1) (@user2)\n Exmplo: `@zPotterZ#6281` + `_SpeedLight_#4293`') 
@@ -215,10 +215,10 @@ if (cmd == `${prefix}limpar`) {
 message.channel.send(`:white_check_mark: I ${message.author}, Chat limpo!`)
 }
 
-  if (cmd == `${prefix}aAliceEoq?`) {
+else if(cmd === "<@473212509545824296>") {
     // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
     // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
-    const m = await message.channel.send("a <@477930402347220993> eo <@302016211221479424> Formao um casal perfeito :heart:");
+    const m = await message.channel.send("Meu prefixo atual é: F! Utilize F!ajuda para ver meus comandos.");
     m.edit(`Pong! A latência é ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
   }
 
