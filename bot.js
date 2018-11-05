@@ -75,7 +75,7 @@ if (cmd == `${prefix}anunciar`) {
     message.delete();
 
     const embed = new Discord.RichEmbed()
-    .addField(" Anúncio ", anuncio)
+    .addField("<a:anuncio:508877403280506881> | Anúncio ", anuncio)
     .setColor('#19a338')
     .addField("Atenciosamente,", message.author)
 
