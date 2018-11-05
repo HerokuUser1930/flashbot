@@ -200,5 +200,27 @@ else if(cmd === "<@473212509545824296>") {
     m.edit(`Pong! A latência é ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
   }
 
+if (cmd == `${prefix}limpar`) {
+  if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado`);
+  if(!message.guild.member(bot.user).hasPermission('MANAGE_MESSAGES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Mensagens`")
+
+      // We want to check if the argument is a number
+      if (isNaN(args[0])) {
+          // Sends a message to the channel.
+          message.channel.send('Ei algo esta errado! Tente colocar uma quantia de 0 a 100 mensagens para mim apagar.!'); //\n means new line.
+          // Cancels out of the script, so the rest doesn't run.
+          return;
+      }
+
+      const fetched = await message.channel.fetchMessages({limit: args[0]}); // This grabs the last number(args) of messages in the channel.
+      console.log(fetched.size + ' messages found, deleting...'); // Lets post into console how many messages we are deleting
+
+      // Deleting the messages
+      message.channel.bulkDelete(fetched)
+
+.catch(error => message.reply(`Eu não consegui deletar mensagens por: ${error}`));
+message.channel.send(`:white_check_mark: I ${message.author}, Chat limpo!`)
+}
+
     });
 bot.login(TOKEN);
