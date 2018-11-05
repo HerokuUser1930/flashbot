@@ -8,9 +8,9 @@ bot.on('ready', () => {
 
     console.log(`📡 Estou conectado a: ${bot.guilds.size} servidores, e ${bot.users.size} usuários.`)
    let games = [`📡 F!ajuda | ` + bot.guilds.size + ` servers e ` + bot.users.size + ` Usuários conectados no total`,
-      `🇧🇷 FlashBOT - Bot Totalmente Brasileiro.`, `😛 Minha prefix e F!`, `📡 Meu criador e o zPotterZ ツ#6281`, `🤔 Precisando de ajuda? F!ajuda`, `🤔 Me adicione: https://flash-bot.weebly.com/`];
+      `🇧🇷 FlashBOT - Bot Totalmente Brasileiro.`, `😛 Minha prefix e F!`, `📡 Meu criador e o zPotterZ ツ#6281`, `🔱 Entre em meu grupo de suporte https://discord.gg/z7R5jyJ`, `🤔 Precisando de ajuda? F!ajuda`, `🤔 Me adicione: https://flash-bot.weebly.com/`];
   setInterval(() => {
-      bot.user.setActivity(games[Math.floor(Math.random() * games.length)], { url: "https://twitch.tv/redstoneg4", type: "STREAMING" })
+      bot.user.setActivity(games[Math.floor(Math.random() * games.length)], { url: "https://twitch.tv/redstoneg4", type: "RANDOM" })
 
   }, 20000);
 });
@@ -28,7 +28,7 @@ if (cmd == `${prefix}ajuda`) {
 			message.channel.send(message.author + '**, Enviei meus comandos na sua dm.**')
 			
 			const h1 = new Discord.RichEmbed()
-			.addField('Comandos Públicos:', 'F!serverinfo - Mostra as informações do servidor\nF!reportar - Reporta um usuário para a Staff (Crie um canal chamado 💫reportes💫 Para enviar os reportes)')
+			.addField('Comandos Públicos:', 'F!serverinfo - Mostra as informações do servidor\nF!reportar - Reporta um usuário para a Staff (Crie um canal chamado 🔱reportes🔱 Para enviar os reportes)')
 			.setColor('RANDOM')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
 			.addField('Comandos para Moderação:', 'F!banir - Bane o usuário do servidor (Crie um canal chamado 🚫puniçoes🚫 Para enviar a punição para este canal)')
@@ -144,8 +144,8 @@ if (cmd == `${prefix}anunciar`) {
           .setThumbnail(message.author.avatarURL)
           .setFooter(`FlashReport`)
       
-          let reportschannel = message.guild.channels.find(`name`, 'reportes');
-          if(!reportschannel) return message.channel.send(`O canal **reportes** não existe. :x:`);
+          let reportschannel = message.guild.channels.find(`name`, '🔱reportes🔱');
+          if(!reportschannel) return message.channel.send(`:x: Erro: O canal **reportes** não existe.`);
 
           message.channel.send(`**Usuário reportado com sucesso.**`)
       
