@@ -239,6 +239,22 @@ if (cmd == `${prefix}enquete`) {
     anunciochannel.send("")
     anunciochannel.send(embed);
   }
+		
+		function registerListeners() {
+    let emoji = bot.emojis.find("name", <:yes:509470343971471360>);
+    if (emoji === null) {
+        console.log(`Unable to find emoji with name '${emojiName}'`);
+        process.exit(0);
+        return;
+    }
+    bot.on("message", message => {
+        if (message.content === messageContent) {
+            message.react(emoji).then(() => {
+                console.log("Reacted to message")
+            }).catch(reason => {
+                console.log(`Problem while reacting to message: ${reason}`);
+            });
+        }
 
     });
 bot.login(TOKEN);
