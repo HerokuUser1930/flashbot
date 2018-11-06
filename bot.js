@@ -222,5 +222,23 @@ if (cmd == `${prefix}limpar`) {
 message.channel.send(`:white_check_mark: I ${message.author}, Chat limpo!`)
 }
 
+if (cmd == `${prefix}anunciar`) {
+    if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`**Você não tem permissão para utilizar este comando!** :x:`);
+    let anuncio = args.join(" ");
+    message.delete();
+
+    const embed = new Discord.RichEmbed()
+    .addField(" | Enquete ", ```anuncio```)
+    .setColor('#19a338')
+    .addField("Enquete iniciada por,", message.author)
+
+    let anunciochannel = message.guild.channels.find(`name`, '⚡enquete⚡')
+
+    message.channel.send(`Enquete aberta com sucesso`)
+
+    anunciochannel.send("@everyone")
+    anunciochannel.send(embed);
+  }
+
     });
 bot.login(TOKEN);
