@@ -224,6 +224,7 @@ message.channel.send(`<:yes:509470343971471360> I ${message.author}, Chat limpo!
 
 if (cmd == `${prefix}enquete`) {
     if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`<:no:509470373452972033> Você não tem permissão para utilizar este comando!`);
+    reaction.emoji ==  " 📘 "
     let anuncio = args.join(" ");
     message.delete();
 
@@ -233,7 +234,6 @@ if (cmd == `${prefix}enquete`) {
     .addField("Enquete iniciada por,", message.author)
 
     let anunciochannel = message.guild.channels.find(`name`, '⚡enquete⚡')
-    reaction.emoji ==  " 📘 "
 
     message.channel.send(`Enquete aberta com sucesso`)
 
