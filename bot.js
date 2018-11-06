@@ -233,6 +233,7 @@ if (cmd == `${prefix}enquete`) {
     .addField("Enquete iniciada por,", message.author)
 
     let anunciochannel = message.guild.channels.find(`name`, '⚡enquete⚡')
+    reaction.emoji ==  " 📘 "
 
     message.channel.send(`Enquete aberta com sucesso`)
 
