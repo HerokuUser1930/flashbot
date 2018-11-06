@@ -228,7 +228,7 @@ if (cmd == `${prefix}enquete`) {
     message.delete();
 
     const embed = new Discord.RichEmbed()
-    .addField(" | Enquete\n\nUtilize <:yes:509470343971471360> Para Sim \nE\n<:no:509470373452972033> Para não  ", ```anuncio```)
+    .addField(" | Enquete\n\nUtilize <:yes:509470343971471360> Para Sim \nE\n<:no:509470373452972033> Para não  ", anuncio)
     .setColor('#19a338')
     .addField("Enquete iniciada por,", message.author)
 
