@@ -228,7 +228,7 @@ if (cmd == `${prefix}enquete`) {
     message.delete();
 
     const embed = new Discord.RichEmbed()
-    .addField(" | Enquete\n<:yes:509470343971471360> Para Sim \nE\n<:no:509470373452972033> Para não", ```anuncio```)
+    .addField(" | Enquete\n<:yes:509470343971471360> Para Sim \nE\n<:no:509470373452972033> Para não", anuncio)
     .setColor('RANDOM')
     .addField("Enquete iniciada por,", message.author)
 
@@ -236,6 +236,7 @@ if (cmd == `${prefix}enquete`) {
 
     message.channel.send(`Enquete aberta com sucesso`)
 
+    anunciochannel.send("")
     anunciochannel.send(embed);
   }
 
