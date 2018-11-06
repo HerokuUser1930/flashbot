@@ -238,8 +238,12 @@ if (cmd == `${prefix}enquete`) {
 
     anunciochannel.send("")
     anunciochannel.send(embed);
-    message.react("<:yes:509470343971471360>")
-    message.react("<:no:509470373452972033>")
+            .then(function (message) {
+              message.react("👍")
+              message.react("👎")
+              message.pin()
+              message.delete()
+            }).catch(function() {
   }
 
     });
