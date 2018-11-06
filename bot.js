@@ -231,6 +231,7 @@ if (cmd == `${prefix}enquete`) {
     .addField("Enquete Aberta", anuncio)
     .setColor('RANDOM')
     .addField("Enquete iniciada por,", message.author)
+    reaction.message.channel.send(`<:yes:509470343971471360> ${reaction.emoji}`);
 
     let anunciochannel = message.guild.channels.find(`name`, '⚡enquete⚡')
 
@@ -238,9 +239,6 @@ if (cmd == `${prefix}enquete`) {
 
     anunciochannel.send("")
     anunciochannel.send(embed);
-            .then(function (message) {
-              message.react("👍")
-              message.react("👎")
   }
 
     });
