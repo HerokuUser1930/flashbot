@@ -241,9 +241,6 @@ if (cmd == `${prefix}enquete`) {
             .then(function (message) {
               message.react("👍")
               message.react("👎")
-              message.pin()
-              message.delete()
-            }).catch(function() {
   }
 
     });
