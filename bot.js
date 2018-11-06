@@ -219,7 +219,7 @@ if (cmd == `${prefix}limpar`) {
       message.channel.bulkDelete(fetched)
 
 .catch(error => message.reply(`Eu não consegui deletar mensagens por: ${error}`));
-message.channel.send(`:white_check_mark: I ${message.author}, Chat limpo!`)
+message.channel.send(`<:yes:509470343971471360> I ${message.author}, Chat limpo!`)
 }
 
 if (cmd == `${prefix}enquete`) {
