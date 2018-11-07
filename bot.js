@@ -223,7 +223,7 @@ message.channel.send(`<:yes:509470343971471360> I ${message.author}, Chat limpo!
 }
 
 if (cmd == `${prefix}enquete`) {
-    if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`<:no:509470373452972033> Você não tem permissão para utilizar este comando!`);
+    if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`:no: Você não tem permissão para utilizar este comando!`);
     let anuncio = args.join(" ");
     message.delete();
 
@@ -237,7 +237,9 @@ if (cmd == `${prefix}enquete`) {
     message.channel.send(`Enquete aberta com sucesso`)
 
     anunciochannel.send("")
-    anunciochannel.send(embed);
+anunciochannel.send(embed).then(msg1 => {
+msg1.react('👻') 
+})
   }
 
     });
