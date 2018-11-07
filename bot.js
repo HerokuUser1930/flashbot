@@ -238,7 +238,7 @@ if (cmd == `${prefix}enquete`) {
 
     anunciochannel.send("")
 anunciochannel.send(embed).then(msg1 => {
-msg1.react('👻') 
+msg1.react('<:yes:509470343971471360>') 
 })
   }
 
