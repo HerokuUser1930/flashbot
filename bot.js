@@ -243,17 +243,13 @@ msg1.react('👎')
 })
   }
 		
-   if (cmd == `${prefix}mineinfo`) {
-     let sicon = message.guild.iconURL;
-     let serverembed = new Discord.RichEmbed()
-     .setColor("#7289DA")
-     .setThumbnail(url=f"https://mc-heads.net/body/{message}")
-     .addfield(name=":minecraft: Nick:", value="{message}")
-     .addfield(name=":minecraft: UUID:", value="https://mcuuid.net/?q={message}")
-     .addfield(name=":minecraft: Perfil NameMC:", value="https://pt.namemc.com/profile/{message}")
-   
-     message.channel.send(serverembed);
-
+if (cmd == `${prefix}mineinfo`) {
+   let sicon = message.guild.iconURL;
+   let serverembed = new Discord.RichEmbed()
+   .setColor("#7289DA")
+   .setThumbnail(sicon)
+   .addField(name=":minecraft: UUID:", value="https://mcuuid.net/?q={messagem}")
+   .addField(name=":minecraft: Perfil NameMC:", value="https://pt.namemc.com/profile/{messagem}")
 }
  
 	});
