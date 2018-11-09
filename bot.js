@@ -247,10 +247,10 @@ msg1.react('👎')
      let sicon = message.guild.iconURL;
      let serverembed = new Discord.RichEmbed()
      .setColor("#7289DA")
-     .setThumbnail(url=f"https://mc-heads.net/body/{messagem}")
-     .addfield(name=":minecraft: Nick:", value="{messagem}")
-     .addfield(name=":minecraft: UUID:", value="https://mcuuid.net/?q={messagem}")
-     .addfield(name=":minecraft: Perfil NameMC:", value="https://pt.namemc.com/profile/{messagem}")
+     .setThumbnail(url=f"https://mc-heads.net/body/{message}")
+     .addfield(name=":minecraft: Nick:", value="{message}")
+     .addfield(name=":minecraft: UUID:", value="https://mcuuid.net/?q={message}")
+     .addfield(name=":minecraft: Perfil NameMC:", value="https://pt.namemc.com/profile/{message}")
    
      message.channel.send(serverembed);
 
