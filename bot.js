@@ -44,20 +44,6 @@ if (cmd == `${prefix}ajuda`) {
     message.channel.send(`${message.author}**, Habilite o Dm para eu enviar os comandos.**`)
   }
                  }
-		
-if (cmd == `${prefix}mineinfo`) {
-   let sicon = message.guild.iconURL;
-   let serverembed = new Discord.RichEmbed()
-   .setColor("#7289DA")
-   .setThumbnail(url=f"https://mc-heads.net/body/{messagem}")
-   .addfield(name=":minecraft: Nick:", value="{messagem}")
-   .addfield(name=":minecraft: UUID:", value="https://mcuuid.net/?q={messagem}")
-   .addfield(name=":minecraft: Perfil NameMC:", value="https://pt.namemc.com/profile/{messagem}")
-
-
-   message.channel.send(serverembed);
-
-}
 
 if (cmd == `${prefix}serverinfo`) {
   let online = message.guild.members.filter(member => member.user.presence.status !== 'offline');
@@ -256,6 +242,19 @@ msg1.react('👍')
 msg1.react('👎') 
 })
   }
+		
+   if (cmd == `${prefix}mineinfo`) {
+     let sicon = message.guild.iconURL;
+     let serverembed = new Discord.RichEmbed()
+     .setColor("#7289DA")
+     .setThumbnail(url=f"https://mc-heads.net/body/{messagem}")
+     .addfield(name=":minecraft: Nick:", value="{messagem}")
+     .addfield(name=":minecraft: UUID:", value="https://mcuuid.net/?q={messagem}")
+     .addfield(name=":minecraft: Perfil NameMC:", value="https://pt.namemc.com/profile/{messagem}")
+   
+     message.channel.send(serverembed);
 
-    });
+}
+ 
+	});
 bot.login(TOKEN);
