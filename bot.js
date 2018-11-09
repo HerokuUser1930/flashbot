@@ -46,14 +46,18 @@ if (cmd == `${prefix}ajuda`) {
                  }
 		
 if (cmd == `${prefix}mineinfo`) {
-        const h1 = new Discord.RichEmbed()
-        .set_thumbnail(url=f"https://mc-heads.net/body/{messagem}")
-        .add_field(name=":minecraft: Nick:", value="{messagem}")
-        .add_field(name=":minecraft: UUID:", value="https://mcuuid.net/?q={messagem}")
-        .add_field(name=":minecraft: Perfil NameMC:", value="https://pt.namemc.com/profile/{messagem}")
-			  try{
-    await message.author.send(h1)
-  }catch(e){
+   let sicon = message.guild.iconURL;
+   let serverembed = new Discord.RichEmbed()
+   .setColor("#7289DA")
+   .setThumbnail(url=f"https://mc-heads.net/body/{messagem}")
+   .addfield(name=":minecraft: Nick:", value="{messagem}")
+   .addfield(name=":minecraft: UUID:", value="https://mcuuid.net/?q={messagem}")
+   .addfield(name=":minecraft: Perfil NameMC:", value="https://pt.namemc.com/profile/{messagem}")
+
+
+   message.channel.send(serverembed);
+
+}
 
 if (cmd == `${prefix}serverinfo`) {
   let online = message.guild.members.filter(member => member.user.presence.status !== 'offline');
