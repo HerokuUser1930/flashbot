@@ -298,11 +298,11 @@ if (cmd == `${prefix}close`) {
 
 });
 
-function isCommand(message) {
+function cmd(message) {
     return message.content.toLowerCase().startsWith(prefix);
 }
 
-function isCommand(message, cmd) {
+function cmd(message, cmd) {
     return message.content.toLowerCase().startsWith(prefix + cmd);
 }
 
