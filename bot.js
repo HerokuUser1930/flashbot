@@ -258,7 +258,7 @@ if (cmd == `${prefix}ticket`) {
        cooldown.delete(message.author.id && message.guild.id);
     }, 300000);
     let guild = message.guild;
-    const channel = bot.channels.get('421569960029192202');
+    const channel = bot.channels.get('508671921894719502');
     message.reply(`Hey, ${message.author}, we got your report! We will reply soon as possible! Here is the full ticket:`);
     const embed2 = new Discord.RichEmbed()
   .setAuthor(`Ticket from ${message.author.tag}`, message.author.displayAvatarURL)
