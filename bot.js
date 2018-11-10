@@ -248,9 +248,9 @@ if (cmd == `${prefix}mineinfo`) {
    let serverembed = new Discord.RichEmbed()
    .setColor("#7289DA")
    .setThumbnail(sicon)
-   .addField(name=":minecraft: Nick:", value="{message}")
-   .addField(name=":minecraft: UUID:", value="https://mcuuid.net/?q={message}")
-   .addField(name=":minecraft: Perfil NameMC:", value="https://pt.namemc.com/profile/{message}")
+   .addField(":minecraft: Nick:", "{message}")
+   .addField(":minecraft: UUID:", "https://mcuuid.net/?q={message}")
+   .addField(":minecraft: Perfil NameMC:", "https://pt.namemc.com/profile/{message}")
 }
  
 	});
