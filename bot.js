@@ -244,9 +244,9 @@ msg1.react('👎')
   }
 		
 if (message.author.bot) return;
-if (message.channel.type !== 'ticket') {
+if (cmd == `${prefix}ticket`) {
     let active = await db.fetch(`support_${message.author.id}`);
-    let guild = client.guilds.get(serverStats.guildID);
+    let guild = bot.guilds.get(serverStats.guildID);
     let channel, found = true;
     try {
         if (active) client.channels.get(active.channelID)
@@ -276,7 +276,7 @@ if (message.channel.type !== 'ticket') {
         active.channelID = channel.id;
         active.targetID = author.id;
     }
-    channel = client.channels.get(active.channelID);
+    channel = bot.channels.get(active.channelID);
     const dm = new Discord.MessageEmbed()
         .setColor('RANDOM')
         .setAuthor(`Thank you, ${message.author.username}`, message.author.displayAvatarURL())
@@ -296,7 +296,7 @@ if (message.channel.type !== 'ticket') {
 let support = await db.fetch(`supportChannel_${message.channel.id}`);
 if (support) {
     support = await db.fetch(`support_${support}`);
-    let supportUser = client.users.get(support.targetID);
+    let supportUser = bot.users.get(support.targetID);
     if (!supportUser) return message.channel.delete();
     if (message.content.toLowerCase() === '!complete') {
         const complete = new Discord.MessageEmbed()
@@ -312,7 +312,7 @@ if (support) {
             .addField('Support User', `${supportUser.tag}`)
             .addField('Closer', message.author.tag)
             .setColor('RANDOM')
-        const staffChannel = client.channels.get('454616220382265346');
+        const staffChannel = bot.channels.get('508671921894719502');
         staffChannel.send(inEmbed);
     }
     const embed = new Discord.MessageEmbed()
@@ -320,7 +320,7 @@ if (support) {
         .setAuthor(message.author.tag, message.author.displayAvatarURL())
         .setFooter(`Message Received - Alpha Development`)
         .setDescription(message.content)
-    client.users.get(support.targetID)
+    bot.users.get(support.targetID)
         .send(embed);
     message.delete({
         timeout: 10000
