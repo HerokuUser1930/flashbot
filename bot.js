@@ -297,15 +297,6 @@ if (cmd == `${prefix}close`) {
     }
 
 });
-
-function cmd(message) {
-    return message.content.toLowerCase().startsWith(prefix);
-}
-
-function cmd(message, cmd) {
-    return message.content.toLowerCase().startsWith(prefix + cmd);
-}
-
 		
 	});
 bot.login(TOKEN);
