@@ -258,7 +258,7 @@ if (cmd == `${prefix}ticket`) {
        cooldown.delete(message.author.id && message.guild.id);
     }, 300000);
     let guild = message.guild;
-    const cnl = bot.channels.get('421569960029192202');
+    const channel = bot.channels.get('421569960029192202');
     message.reply(`Hey, ${message.author}, we got your report! We will reply soon as possible! Here is the full ticket:`);
     const embed2 = new Discord.RichEmbed()
   .setAuthor(`Ticket from ${message.author.tag}`, message.author.displayAvatarURL)
@@ -272,7 +272,7 @@ if (cmd == `${prefix}ticket`) {
   .addField('Ticket:', `**Report's Author:** ${message.author.tag}\n**Server:** ${guild.name}\n**Full report:** ${args}`)
   .setThumbnail(message.author.displayAvatarURL)
   .setColor("#ffd700");
-    cnl.send({embed})
+    channel.send({embed})
   .catch(e => logger.error(e))
 };
 	});
