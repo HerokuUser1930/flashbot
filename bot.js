@@ -244,7 +244,7 @@ msg1.react('👎')
   }
 
     // New ticket command
-    if (cmd(message, "new")) {
+if (cmd == `${prefix}new`) {
         const reason = message.content.split(" ").slice(1).join(" ");
         if (!message.guild.roles.exists("name", "Support Staff")) return message.channel.send(`This server doesn't have a \`Support Staff\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
         if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`You already have a ticket open.`);
@@ -275,7 +275,7 @@ msg1.react('👎')
     }
 
     // Close ticket command
-    if (cmd(message, "close")) {
+if (cmd == `${prefix}close`) {
         if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
         // Confirm delete - with timeout (Not command)
         message.channel.send(`Are you sure? Once confirmed, you cannot reverse this action!\nTo confirm, type \`/confirm\`. This will time out in 10 seconds and be cancelled.`)
