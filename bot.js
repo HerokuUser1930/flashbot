@@ -242,93 +242,38 @@ msg1.react('👍')
 msg1.react('👎') 
 })
   }
-		
-if (message.author.bot) return;
+
 if (cmd == `${prefix}ticket`) {
-    let active = await db.fetch(`support_${message.author.id}`);
-    let guild = bot.guilds.get(serverStats.guildID);
-    let channel, found = true;
-    try {
-        if (active) client.channels.get(active.channelID)
-            .guild;
-    } catch (e) {
-        found = false;
+    let args = message.content.split(' ').slice(1).join(' ');
+    message.delete();
+    if (cooldown.has(message.author.id && message.guild.id)) {
+        return message.reply('**[COOLDOWN]** Sending tickets has **5 Minutes** Cooldown!');
     }
-    if (!active || !found) {
-        active = {};
-        channel = await guild.channels.create(`${message.author.username}-${message.author.discriminator}`, {
-            parent: serverStats.ticketCategoryID,
-            topic: `!complete to close the ticket | Support for ${message.author.tag} | ID: ${message.author.id}`
-        });
-        let author = message.author;
-        const newChannel = new Discord.MessageEmbed()
-            .setColor('RANDOM')
-            .setAuthor(author.tag, author.displayAvatarURL())
-            .setFooter('Support Ticket Created!')
-            .addField('User', author)
-            .addField('ID', author.id)
-        await channel.send(newChannel);
-        const newTicket = new Discord.MessageEmbed()
-            .setColor('RANDOM')
-            .setAuthor(`Hello, ${author.username}`, author.displayAvatarURL())
-            .setFooter('Support Ticket Created!')
-        await author.send(newTicket);
-        active.channelID = channel.id;
-        active.targetID = author.id;
+    if (args.length < 1) {
+        return message.reply(`You must give me something to report first ${message.author}`);
     }
-    channel = bot.channels.get(active.channelID);
-    const dm = new Discord.MessageEmbed()
-        .setColor('RANDOM')
-        .setAuthor(`Thank you, ${message.author.username}`, message.author.displayAvatarURL())
-        .setFooter(`Your message has been sent - A staff member will be in contact soon.`)
-    await message.author.send(dm);
-    if (message.content === '!complete') return;
-    const embed = new Discord.MessageEmbed()
-        .setColor('RANDOM')
-        .setAuthor(message.author.tag, message.author.displayAvatarURL())
-        .setDescription(message.content)
-        .setFooter(`Message Received - ${message.author.tag}`)
-    await channel.send(embed);
-    db.set(`support_${message.author.id}`, active);
-    db.set(`supportChannel_${channel.id}`, message.author.id);
-    return;
-}
-let support = await db.fetch(`supportChannel_${message.channel.id}`);
-if (support) {
-    support = await db.fetch(`support_${support}`);
-    let supportUser = bot.users.get(support.targetID);
-    if (!supportUser) return message.channel.delete();
-    if (message.content.toLowerCase() === '!complete') {
-        const complete = new Discord.MessageEmbed()
-            .setColor('RANDOM')
-            .setAuthor(`Hey, ${supportUser.tag}`, supportUser.displayAvatarURL())
-            .setFooter('Ticket Closed -- Guild Name Here')
-            .setDescription('*Your ticket has been marked as complete. If you wish to reopen it, or create a new one, please send a message to the bot.*')
-        supportUser.send(complete);
-        message.channel.delete();
-        db.delete(`support_${support.targetID}`);
-        let inEmbed = new Discord.MessageEmbed()
-            .setTitle('Ticket Closed!')
-            .addField('Support User', `${supportUser.tag}`)
-            .addField('Closer', message.author.tag)
-            .setColor('RANDOM')
-        const staffChannel = bot.channels.get('508671921894719502');
-        staffChannel.send(inEmbed);
-    }
-    const embed = new Discord.MessageEmbed()
-        .setColor('RANDOM')
-        .setAuthor(message.author.tag, message.author.displayAvatarURL())
-        .setFooter(`Message Received - Alpha Development`)
-        .setDescription(message.content)
-    bot.users.get(support.targetID)
-        .send(embed);
-    message.delete({
-        timeout: 10000
-    });
-    embed.setFooter(`Message Sent -- ${supportUser.tag}`)
-        .setDescription(message.content);
-    return message.channel.send(embed);
-}
- 
+
+    cooldown.add(message.author.id && message.guild.id);
+    setTimeout(() => {
+       cooldown.delete(message.author.id && message.guild.id);
+    }, 300000);
+    let guild = message.guild;
+    const cnl = bot.channels.get('421569960029192202');
+    message.reply(`Hey, ${message.author}, we got your report! We will reply soon as possible! Here is the full ticket:`);
+    const embed2 = new Discord.RichEmbed()
+  .setAuthor(`Ticket from ${message.author.tag}`, message.author.displayAvatarURL)
+  .addField('Ticket:', `**Tickets's Author:** ${message.author.tag}\n**Server:** ${guild.name}\n**Full ticket:** ${args}`)
+  .setThumbnail(message.author.displayAvatarURL)
+  .setFooter(`${moment().format('MMMM Do YYYY, h:mm:ss a')}`)
+  .setColor(16711728);
+    message.channel.send({embed: embed2});
+    const embed = new Discord.RichEmbed()
+  .setAuthor(`Ticket from ${message.author.tag}`, message.author.displayAvatarURL)
+  .addField('Ticket:', `**Report's Author:** ${message.author.tag}\n**Server:** ${guild.name}\n**Full report:** ${args}`)
+  .setThumbnail(message.author.displayAvatarURL)
+  .setColor("#ffd700");
+    cnl.send({embed})
+  .catch(e => logger.error(e))
+};
 	});
 bot.login(TOKEN);
