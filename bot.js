@@ -322,11 +322,10 @@ if (cmd == `${prefix}anunciardm`) {
     await message.author.send(h1)
   }catch(e){
     console.log(e.stack);
-m.edit(`Anuncio em DM enviado para: ${message.author}`)
   }
 	
 
-    message.channel.send(`**Anuncio feito com sucesso.**`)
+    m.edit(`Anuncio em DM enviado para: ${message.author}`)
 
     anunciochannel.send(embed);
                  }
