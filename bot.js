@@ -306,10 +306,5 @@ if (cmd == `${prefix}yt`) {
     message.channel.send(embed);
 }
 	
-bot.on('guildMemberAdd', member => {
-       member.guild.defaultChannel.send(`Welcome to the server, ${member}!`);
-       console.log(`${member.user.username} has joined`);
-});
-	
 	});
 bot.login(TOKEN);
