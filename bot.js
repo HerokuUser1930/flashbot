@@ -296,8 +296,5 @@ if (cmd == `${prefix}close`) {
     });
 }
 
-});
-
-
 	});
 bot.login(TOKEN);
