@@ -246,8 +246,8 @@ msg1.react('👎')
 if (cmd == `${prefix}new`) {
     const reason = message.content.split(" ").slice(1).join(" ");
     if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`Este servidor não tem um cargo chamado \`Support Team\` então o ticket não será aberto.\nSe você for um administrador, crie um exatamente com esse nome e dê a ele usuários que possam ver os tickets.`);
-    if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`Você já tem um ticket aberto.`);
-    message.guild.createChannel(`ticket-`, '01', '02').then(c => {
+    if (message.guild.channels.exists("name", "ticket-" + message.number)) return message.channel.send(`Você já tem um ticket aberto.`);
+    message.guild.createChannel(`ticket-${message.number}`, "text").then(c => {
         let role = message.guild.roles.find("name", "Support Team");
         let role2 = message.guild.roles.find("name", "@everyone");
         c.overwritePermissions(role, {
