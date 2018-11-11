@@ -74,7 +74,7 @@ if (cmd == `${prefix}anunciar`) {
     let anuncio = args.join(" ");
     message.delete();
 
-    const embed = new Discord.RichEmbed()
+    const h1 = new Discord.RichEmbed()
     .addField("<a:anuncio:508877403280506881> | Anúncio ", anuncio)
     .setColor('#19a338')
     .addField("Atenciosamente,", message.author)
@@ -85,7 +85,13 @@ if (cmd == `${prefix}anunciar`) {
 
     anunciochannel.send("@everyone")
     anunciochannel.send(embed);
+			  try{
+    await message.author.send(h1)
+  }catch(e){
+    console.log(e.stack);
+    message.channel.send(`${message.author}**, Habilite o Dm para eu enviar os comandos.**`)
   }
+                 }
 
   if (cmd == `${prefix}banir`) {
     if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(`**Você não tem permissão para utilizar esse comando!** :x:`);
