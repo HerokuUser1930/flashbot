@@ -305,6 +305,15 @@ if (cmd == `${prefix}yt`) {
         .setColor("RED")
     message.channel.send(embed);
 }
-		
+	
+bot.on('guildMemberAdd', member => {
+       member.send("Welcome to the server!");
+       member.guild.defaultChannel.send(`Welcome to the server, ${member}!`);
+       console.log(`${member.user.username} has joined`);
+});
+
+
+});
+	
 	});
 bot.login(TOKEN);
