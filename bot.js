@@ -249,8 +249,8 @@ if (cmd == `${prefix}new`) {
     if (message.guild.channels.exists("name", "ticket-" + message.author.tag)) return message.channel.send(`Você já tem um ticket aberto.`);
     message.guild.createChannel(`ticket-${message.author.tag}`, "text").then(c => {
         let role = message.guild.roles.find("name", "Support Team");
-        let role2 = message.guild.roles.find("name", "@everyone");
-        c.overwritePermissions(role, {
+        let role2 = message.guild.roles.find("name", "@everyone");     
+            c.overwritePermissions(role, {
             SEND_MESSAGES: true,
             READ_MESSAGES: true
         });
@@ -306,20 +306,5 @@ if (cmd == `${prefix}yt`) {
     message.channel.send(embed);
 }
 	
-public class onJoinEvent extends ListenerAdapter {
-
-    public void onGuildMemberJoin(GuildMemberJoinEvent event) {
-
-        event.getGuild().getTextChannelById("511255242243833869").sendMessage(
-                new EmbedBuilder()
-                .setColor(RANDOM)
-                .setAuthor(user.getName(), null, user.getAvatarUrl())
-                .setTitle(":rocket:│Entrada")
-                .setDescription("Seja Bem-Vindo(a), " + u.getAsMention() + " ao Servidor de Suporte da <a:hypeblock:506674289773248513> Host. \nPara ter acesso total ao nosso servidor, vá ao canal <#511255722932174849> , leia os termos e aperte no emoji para **confirmar**.")
-                .setFooter("Agora temos " + guild.getMembers().size() + " membros!", null)
-                .build()
-        ).queue();
-    }
-}
     });
 bot.login(TOKEN);
