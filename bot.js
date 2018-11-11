@@ -267,7 +267,9 @@ if (cmd == `${prefix}new`) {
         .setColor(0xCF40FA)
         .addField(`Prezado, ${message.author.username}!`, `Por favor, tente explicar por que você abriu este ticket com o máximo de detalhes possível. Nossa ** Equipe de suporte ** estará aqui em breve para ajudar.`)
         .addField(`Ticket:`)
-        .addField(`${message.member}`)
+        .addField(`${message}`)
+        .addField(``)
+        .setThumbnail(sicon)
         .setTimestamp();
         c.send({ embed: embed });
     }).catch(console.error);
