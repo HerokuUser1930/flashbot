@@ -262,11 +262,16 @@ if (cmd == `${prefix}new`) {
             SEND_MESSAGES: true,
             READ_MESSAGES: true
         });
-        message.channel.send(`<:yes:509470343971471360> Seu ticket foi criado com sucesso, #${c.name}.`);
         const embed = new Discord.RichEmbed()
         .setColor(0xCF40FA)
-        .addField(`Hey ${message.author.username}!`, `Por favor, tente explicar por que você abriu este ticket com o máximo de detalhes possível. Nossa ** Equipe de suporte ** estará aqui em breve para ajudar.`)
-        .addField(`${message}`)
+	.addField(`<:yes:509470343971471360> Seu ticket foi criado com sucesso, #${c.name}.`)
+        c.send({ embed: embed });
+
+        const embed = new Discord.RichEmbed()
+        .setColor(0xCF40FA)
+        .addField(`Prezado, ${message.author.username}!`, `Por favor, tente explicar por que você abriu este ticket com o máximo de detalhes possível. Nossa ** Equipe de suporte ** estará aqui em breve para ajudar.`)
+        .addField(`Ticket:`)
+        .addField(`${message.member}`)
         .setTimestamp();
         c.send({ embed: embed });
     }).catch(console.error);
