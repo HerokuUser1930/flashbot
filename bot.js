@@ -79,16 +79,9 @@ if (cmd == `${prefix}anunciar`) {
     .setColor('#19a338')
     .addField("Atenciosamente,", message.author)
 
-    let anunciochannel = message.guild.channels.send(`name`, '🚨avisos🚨')
+    let anunciochannel = message.guild.channels.find(`name`, '🚨avisos🚨')
 
     message.channel.send(`**Anuncio feito com sucesso.**`)
-
-			  try{
-    await message.author.send(h1)
-  }catch(e){
-    console.log(e.stack);
-    message.channel.send(`${message.author}**, Habilite o Dm para eu enviar os comandos.**`)
-  }
 
     anunciochannel.send("@everyone")
     anunciochannel.send(embed);
@@ -313,5 +306,26 @@ if (cmd == `${prefix}yt`) {
     message.channel.send(embed);
 }
 	
+if (cmd == `${prefix}anunciar all`) {
+    if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`**Você não tem permissão para utilizar este comando!** :x:`);
+    let anuncio = args.join(" ");
+    message.delete();
+
+    const h1 = new Discord.RichEmbed()
+    .addField("<a:anuncio:508877403280506881> | Anúncio ", anuncio)
+    .setColor('RANDOM')
+    .addField("Atenciosamente,", message.author)
+
+    let anunciochannel = message.guild.channels.find(`name`, '🚨avisos🚨')
+
+    message.channel.send(`**Anuncio feito com sucesso.**`)
+
+			  try{
+    await message.author.send(h1)
+  }catch(e){
+    console.log(e.stack);
+    message.channel.send(`${message.author}**, Habilite o Dm para eu enviar os comandos.**`)
+  }
+
 	});
 bot.login(TOKEN);
