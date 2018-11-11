@@ -328,7 +328,6 @@ if (cmd == `${prefix}anunciardm`) {
   }catch(e){
     console.log(e.stack);
   }
-                 }
 	
     });
 bot.login(TOKEN);
