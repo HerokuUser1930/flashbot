@@ -270,7 +270,6 @@ if (cmd == `${prefix}new`) {
         .setAuthor(message.author.tag, message.author.displayAvatarURL)
 	.addField(`Ticket:`)
         .addField(`${message}`)
-        .addField(``)
         .setAuthor(message.author.tag, message.author.displayAvatarURL)
         .setTimestamp();
         c.send({ embed: embed });
