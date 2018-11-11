@@ -184,7 +184,7 @@ if (cmd == `${prefix}ship`) {
         .addField("Ummm será que temos um novo casal aqui:", `${shipUser} 👨🏻‍💖👩 ${shipUser2}`)
         .addField("Comando requisitado por:", `${message.author}`)
         .setColor("RED")
-        .setImage("https://cdn.discordapp.com/attachments/471532114890981387/508021142943039489/images.png")
+        .setImage("https://cdn.discordapp.com/attachments/467721860910415883/468806111684722698/Capturar.PNG")
         .addField("**Porcentagem de dar certo:**", "👇")
         .setFooter(psc2[Math.floor(psc2.length * Math.random())])
 
@@ -294,6 +294,29 @@ if (cmd == `${prefix}close`) {
           }, 3000);
         });
     });
+}
+
+if (cmd == `${prefix}prefix`) {
+if(!message.member.hasPermission("MANAGE_SERVER")) return message.reply("Não pode fazer isso.");
+  if(!args[0] || args[0 == "help"]) return message.reply("Use: F!prefix <nova prefix>");
+
+  let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
+
+  prefixes[message.guild.id] = {
+    prefixes: args[0]
+  };
+
+  fs.writeFile("./prefixes.json", JSON.stringify(prefixes), (err) => {
+    if (err) console.log(err)
+  });
+
+  let sEmbed = new Discord.RichEmbed()
+  .setColor("#FF9900")
+  .setTitle("Prefix setada")
+  .setDescription(`Nova prefix ${args[0]}`);
+
+  message.channel.send(sEmbed);
+
 }
 
 	});
