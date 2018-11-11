@@ -309,16 +309,14 @@ if (cmd == `${prefix}yt`) {
 public class onJoinEvent extends ListenerAdapter {
 
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
-        User u = event.getUser();
-        Guild g = event.getGuild();
 
         event.getGuild().getTextChannelById("511255242243833869").sendMessage(
                 new EmbedBuilder()
-                .setColor(new Color(78, 240, 11))
-                .setAuthor(u.getName(), null, u.getAvatarUrl())
+                .setColor(RANDOM)
+                .setAuthor(user.getName(), null, user.getAvatarUrl())
                 .setTitle(":rocket:│Entrada")
                 .setDescription("Seja Bem-Vindo(a), " + u.getAsMention() + " ao Servidor de Suporte da <a:hypeblock:506674289773248513> Host. \nPara ter acesso total ao nosso servidor, vá ao canal <#511255722932174849> , leia os termos e aperte no emoji para **confirmar**.")
-                .setFooter("Agora temos " + g.getMembers().size() + " membros!", null)
+                .setFooter("Agora temos " + guild.getMembers().size() + " membros!", null)
                 .build()
         ).queue();
     }
