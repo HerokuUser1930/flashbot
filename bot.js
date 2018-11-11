@@ -264,11 +264,12 @@ if (cmd == `${prefix}new`) {
         });
 	message.channel.send(`<:yes:509470343971471360> Seu ticket foi criado com sucesso, #${c.name}.`)
         const embed = new Discord.RichEmbed()
-        .setColor(030303)
+        .setColor(000000)
 	.setAuthor(message.author.tag, message.author.displayAvatarURL)
         .addField(`Prezado, ${message.author.username}!`, `Por favor, tente explicar por que você abriu este ticket com o máximo de detalhes possível. Nossa ** Equipe de suporte ** estará aqui em breve para ajudar.`)
         .setAuthor(message.author.tag, message.author.displayAvatarURL)
 	.addField('Ticket:', `${message}`)
+	message = message.content[prefix:]
         .setAuthor(message.author.tag, message.author.displayAvatarURL)
         .setTimestamp();
         c.send({ embed: embed });
