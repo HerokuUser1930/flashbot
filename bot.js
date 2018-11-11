@@ -319,15 +319,17 @@ if (cmd == `${prefix}anunciardm`) {
     let anunciochannel = message.guild.channels.find(`name`, '🚨avisos🚨')
 
     message.channel.send(`**Anuncio feito com sucesso.**`)
+
+    anunciochannel.send(embed);
+                 }
 			  try{
     await message.author.send(h1)
   }catch(e){
     console.log(e.stack);
-    message.channel.send(`${message.author}**, Habilite o Dm para eu enviar os comandos.**`)
-  }
-
-    anunciochannel.send(embed);
-                 }
+          m.edit(`Anuncio Em DM enviado para: ${message.Author}`).then(m2 => {
+              m2.delete();
+          }, 3000);
+        });
 
 	});
 bot.login(TOKEN);
