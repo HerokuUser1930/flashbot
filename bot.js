@@ -262,16 +262,10 @@ if (cmd == `${prefix}new`) {
             SEND_MESSAGES: true,
             READ_MESSAGES: true
         });
- cost embed = new Discord.RichEmbed()
-        .setColor("#1bc643")
-        .setTitle("<:yes:509470343971471360> Seu ticket foi criado com sucesso, #${c.name}.!")
-        .addField("Created At", message.author.createdAt)
-
-        .setDescription("");
-
-    message.channel.sendMessage(embed);
-	
-message.channel.send(`<:yes:509470343971471360> Seu ticket foi criado com sucesso, #${c.name}.`)
+cost embed = new Discord.RichEmbed()
+	.addField(`<:yes:509470343971471360> Seu ticket foi criado com sucesso, #${c.name}.`)
+       c.send({ embed: embed});
+    }
 
         const embed = new Discord.RichEmbed()
         .setColor(000000)
