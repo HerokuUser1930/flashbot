@@ -306,5 +306,16 @@ if (cmd == `${prefix}yt`) {
     message.channel.send(embed);
 }
 	
+   bot.on('guildMemberAdd', member => {
+     let avatar = member.user.displayAvatarURL
+
+      let embed = new Discord.RichEmbed()
+          .setColor('#CC0000')
+          .setThumbnail(avatar)
+          .addField('Bem vindo ao discord.', `Bem vindo(a) ${member} ao Servidor!\n Você foi o __${member.guild.memberCount}__ player a entrar em nosso servidor`)
+          .setFooter(`FlashJoin`);
+          bot.channels.get('🔗bem-vindo🔗').send(embed);
+    });
+
     });
 bot.login(TOKEN);
