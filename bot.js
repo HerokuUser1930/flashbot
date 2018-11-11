@@ -296,28 +296,15 @@ if (cmd == `${prefix}close`) {
     });
 }
 
-if (cmd == `${prefix}prefix`) {
-if(!message.member.hasPermission("MANAGE_SERVER")) return message.reply("Não pode fazer isso.");
-  if(!args[0] || args[0 == "help"]) return message.reply("Use: F!prefix <nova prefix>");
-
-  let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
-
-  prefixes[message.guild.id] = {
-    prefixes: args[0]
-  };
-
-  fs.writeFile("./prefixes.json", JSON.stringify(prefixes), (err) => {
-    if (err) console.log(err)
-  });
-
-  let sEmbed = new Discord.RichEmbed()
-  .setColor("#FF9900")
-  .setTitle("Prefix setada")
-  .setDescription(`Nova prefix ${args[0]}`);
-
-  message.channel.send(sEmbed);
-
+if (cmd == `${prefix}yt`) {		  
+    let youtube = args.slice(0).join('+');
+    let embed = new Discord.RichEmbed()
+        .addField(`https://www.youtube.com/results?search_query=${youtube}`, `Você pesquisou: **${youtube}**`)
+        .setDescription("**Eu perguntei pro youtube e...**")
+        .setThumbnail("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQJybHrz8EksyW96_-uAkMMDh0czw0CR-L6FGOyXwMXelY9z3H")
+        .setColor("RED")
+    message.channel.send(embed);
 }
-
+		
 	});
 bot.login(TOKEN);
