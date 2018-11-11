@@ -318,16 +318,17 @@ if (cmd == `${prefix}anunciardm`) {
 
     let anunciochannel = message.guild.channels.find(`name`, '🚨avisos🚨')
 
-    message.channel.send(`**Anuncio feito com sucesso.**`)
-
-    anunciochannel.send(embed);
-                 }
-	
 			  try{
     await message.author.send(h1)
   }catch(e){
     console.log(e.stack);
   }
 	
+
+    message.channel.send(`**Anuncio feito com sucesso.**`)
+
+    anunciochannel.send(embed);
+                 }
+
     });
 bot.login(TOKEN);
