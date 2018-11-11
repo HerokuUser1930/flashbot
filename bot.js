@@ -322,6 +322,7 @@ if (cmd == `${prefix}anunciardm`) {
     await message.author.send(h1)
   }catch(e){
     console.log(e.stack);
+m.edit(`Anuncio em DM enviado para: ${message.author}`)
   }
 	
 
