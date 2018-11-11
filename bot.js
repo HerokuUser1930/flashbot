@@ -316,10 +316,11 @@ if (cmd == `${prefix}anunciar all`) {
     .setColor('RANDOM')
     .addField("Atenciosamente,", message.author)
 
-    let anunciochannel = message.guild.channels.find(`name`, '🚨avisos🚨')
-
     message.channel.send(`**Anuncio feito com sucesso.**`)
 
+    anunciochannel.send("@everyone")
+    anunciochannel.send(embed);
+                 }
 			  try{
     await message.author.send(h1)
   }catch(e){
