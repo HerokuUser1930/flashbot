@@ -312,7 +312,7 @@ public class onJoinEvent extends ListenerAdapter {
         User u = event.getUser();
         Guild g = event.getGuild();
 
-        event.getGuild().getTextChannelById("ID_DO_CANAL").sendMessage(
+        event.getGuild().getTextChannelById("511255242243833869").sendMessage(
                 new EmbedBuilder()
                 .setColor(new Color(78, 240, 11))
                 .setAuthor(u.getName(), null, u.getAvatarUrl())
