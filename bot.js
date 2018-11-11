@@ -83,14 +83,15 @@ if (cmd == `${prefix}anunciar`) {
 
     message.channel.send(`**Anuncio feito com sucesso.**`)
 
-    anunciochannel.send("@everyone")
-    anunciochannel.send(embed);
 			  try{
     await message.author.send(h1)
   }catch(e){
     console.log(e.stack);
     message.channel.send(`${message.author}**, Habilite o Dm para eu enviar os comandos.**`)
   }
+
+    anunciochannel.send("@everyone")
+    anunciochannel.send(embed);
                  }
 
   if (cmd == `${prefix}banir`) {
