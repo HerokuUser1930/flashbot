@@ -246,8 +246,8 @@ msg1.react('👎')
 if (cmd == `${prefix}new`) {
     const reason = message.content.split("prefix").slice(1).join(" ");
     if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`Este servidor não tem um cargo chamado \`Support Team\` então o ticket não será aberto.\nSe você for um administrador, crie um exatamente com esse nome e dê a ele usuários que possam ver os tickets.`);
-    if (message.guild.channels.exists("name", "ticket-" + message.author)) return message.channel.send(`Você já tem um ticket aberto.`);
-    message.guild.createChannel(`ticket-${message.author`, "text").then(c => {
+    if (message.guild.channels.exists("name", "ticket-" + message.author.tag)) return message.channel.send(`Você já tem um ticket aberto.`);
+    message.guild.createChannel(`ticket-${message.author.tag}`, "text").then(c => {
         let role = message.guild.roles.find("name", "Support Team");
         let role2 = message.guild.roles.find("name", "@everyone");
         c.overwritePermissions(role, {
@@ -262,8 +262,7 @@ if (cmd == `${prefix}new`) {
             SEND_MESSAGES: true,
             READ_MESSAGES: true
         });
-	message.channel.send(`<:yes:509470343971471360> Seu ticket foi criado com sucesso, #${c.name}.`)
-
+        message.channel.send(`<:yes:509470343971471360> Seu ticket foi criado com sucesso, #${c.name}.`);
         const embed = new Discord.RichEmbed()
         .setColor(000000)
 	.setAuthor(message.author.tag, message.author.displayAvatarURL)
