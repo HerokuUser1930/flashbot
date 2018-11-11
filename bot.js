@@ -306,7 +306,7 @@ if (cmd == `${prefix}yt`) {
     message.channel.send(embed);
 }
 	
-if (cmd == `${prefix}anunciar`) {
+if (cmd == `${prefix}anunciardm`) {
     if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`**Você não tem permissão para utilizar este comando!** :x:`);
     let anuncio = args.join(" ");
     message.delete();
@@ -319,15 +319,15 @@ if (cmd == `${prefix}anunciar`) {
     let anunciochannel = message.guild.channels.find(`name`, '🚨avisos🚨')
 
     message.channel.send(`**Anuncio feito com sucesso.**`)
-
-    anunciochannel.send(embed);
-                 }
 			  try{
     await message.author.send(h1)
   }catch(e){
     console.log(e.stack);
     message.channel.send(`${message.author}**, Habilite o Dm para eu enviar os comandos.**`)
   }
+
+    anunciochannel.send(embed);
+                 }
 
 	});
 bot.login(TOKEN);
