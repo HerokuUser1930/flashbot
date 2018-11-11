@@ -79,7 +79,7 @@ if (cmd == `${prefix}anunciar`) {
     .setColor('#19a338')
     .addField("Atenciosamente,", message.author)
 
-    let anunciochannel = message.guild.channels.find(`name`, '🚨avisos🚨')
+    let anunciochannel = message.guild.channels.send(`name`, '🚨avisos🚨')
 
     message.channel.send(`**Anuncio feito com sucesso.**`)
 
