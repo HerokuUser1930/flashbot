@@ -300,8 +300,8 @@ if (cmd == `${prefix}yt`) {
     let youtube = args.slice(0).join('+');
     let embed = new Discord.RichEmbed()
         .addField(`https://www.youtube.com/${youtube}`, `Você pesquisou: **${youtube}**`)
-        .setDescription("**Eu perguntei pro youtube e...**")
-        .setThumbnail("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQJybHrz8EksyW96_-uAkMMDh0czw0CR-L6FGOyXwMXelY9z3H")
+        .setDescription("**Eu perguntei pro youtube e ele respondeu...**")
+        .setThumbnail("https://cdn.discordapp.com/attachments/509485956148101129/511084587993006082/images.png")
         .setColor("RED")
     message.channel.send(embed);
 }
