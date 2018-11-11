@@ -306,29 +306,22 @@ if (cmd == `${prefix}yt`) {
     message.channel.send(embed);
 }
 	
-if (cmd == `${prefix}anunciardm`) {
-    if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`**Você não tem permissão para utilizar este comando!** :x:`);
-    let anuncio = args.join(" ");
-    message.delete();
+public class onJoinEvent extends ListenerAdapter {
 
-    const h1 = new Discord.RichEmbed()
-    .addField("<a:anuncio:508877403280506881> | Anúncio ", anuncio)
-    .setColor('#19a338')
-    .addField("Atenciosamente,", message.author)
+    public void onGuildMemberJoin(GuildMemberJoinEvent event) {
+        User u = event.getUser();
+        Guild g = event.getGuild();
 
-    let anunciochannel = message.guild.channels.find(`name`, '🚨avisos🚨')
-
-			  try{
-    await message.author.send(h1)
-  }catch(e){
-    console.log(e.stack);
-  }
-	
-
-    m.edit(`Anuncio em DM enviado para: ${message.author}`)
-
-    anunciochannel.send(embed);
-                 }
-
+        event.getGuild().getTextChannelById("ID_DO_CANAL").sendMessage(
+                new EmbedBuilder()
+                .setColor(new Color(78, 240, 11))
+                .setAuthor(u.getName(), null, u.getAvatarUrl())
+                .setTitle(":rocket:│Entrada")
+                .setDescription("Seja Bem-Vindo(a), " + u.getAsMention() + " ao Servidor de Suporte da <a:hypeblock:506674289773248513> Host. \nPara ter acesso total ao nosso servidor, vá ao canal <#511255722932174849> , leia os termos e aperte no emoji para **confirmar**.")
+                .setFooter("Agora temos " + g.getMembers().size() + " membros!", null)
+                .build()
+        ).queue();
+    }
+}
     });
 bot.login(TOKEN);
