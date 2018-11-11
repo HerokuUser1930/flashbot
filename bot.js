@@ -275,5 +275,29 @@ if (cmd == `${prefix}new`) {
     }).catch(console.error);
 }
 
+if (cmd == `${prefix}close`) {
+    if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`Você não pode usar o comando **F!close** fora de um canal de ticket.`);
+
+    message.channel.send(`Você tem certeza? Uma vez confirmado, você não pode reverter esta ação!\nPara confirmar, digite \`-confirm\`. Isso expirará em 10 segundos e será cancelado.`)
+    .then((m) => {
+      message.channel.awaitMessages(response => response.content === '-confirm', {
+        max: 1,
+        time: 10000,
+        errors: ['time'],
+      })
+      .then((collected) => {
+          message.channel.delete();
+        })
+        .catch(() => {
+          m.edit('Ticket close expirou, o ticket não foi fechado.').then(m2 => {
+              m2.delete();
+          }, 3000);
+        });
+    });
+}
+
+});
+
+
 	});
 bot.login(TOKEN);
