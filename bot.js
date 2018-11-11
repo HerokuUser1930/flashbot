@@ -74,8 +74,8 @@ if (cmd == `${prefix}anunciar`) {
     let anuncio = args.join(" ");
     message.delete();
 
-    const h1 = new Discord.RichEmbed()
-    .addField("<a:anuncio:508877403280506881> | Anúncio ", anuncio)
+    const embed = new Discord.RichEmbed()
+    .addField(" Anúncio ", anuncio)
     .setColor('#19a338')
     .addField("Atenciosamente,", message.author)
 
@@ -85,7 +85,7 @@ if (cmd == `${prefix}anunciar`) {
 
     anunciochannel.send("@everyone")
     anunciochannel.send(embed);
-                 }
+  }
 
   if (cmd == `${prefix}banir`) {
     if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(`**Você não tem permissão para utilizar esse comando!** :x:`);
@@ -306,19 +306,20 @@ if (cmd == `${prefix}yt`) {
     message.channel.send(embed);
 }
 	
-if (cmd == `${prefix}anunciar all`) {
+if (cmd == `${prefix}anunciar`) {
     if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send(`**Você não tem permissão para utilizar este comando!** :x:`);
     let anuncio = args.join(" ");
     message.delete();
 
     const h1 = new Discord.RichEmbed()
     .addField("<a:anuncio:508877403280506881> | Anúncio ", anuncio)
-    .setColor('RANDOM')
+    .setColor('#19a338')
     .addField("Atenciosamente,", message.author)
+
+    let anunciochannel = message.guild.channels.find(`name`, '🚨avisos🚨')
 
     message.channel.send(`**Anuncio feito com sucesso.**`)
 
-    anunciochannel.send("@everyone")
     anunciochannel.send(embed);
                  }
 			  try{
