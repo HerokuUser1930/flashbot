@@ -28,12 +28,12 @@ if (cmd == `${prefix}ajuda`) {
 			message.channel.send(message.author + '**, Enviei meus comandos na sua dm.**')
 			
 			const h1 = new Discord.RichEmbed()
-			.addField('Comandos Públicos:', 'F!serverinfo - Mostra as informações do servidor\nF!reportar - Reporta um usuário para a Staff (Crie um canal chamado ??reportes?? Para enviar os reportes)')
+			.addField('Comandos Públicos:', 'F!serverinfo - Mostra as informações do servidor\nF!reportar - Reporta um usuário para a Staff (Crie um canal chamado `🔱reportes🔱` Para enviar os reportes)')
 			.setColor('RANDOM')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-			.addField('Comandos para Moderação:', 'F!banir - Bane o usuário do servidor (Crie um canal chamado ??puniçoes?? Para enviar a punição para este canal)')
+			.addField('Comandos para Moderação:', 'F!banir - Bane o usuário do servidor (Crie um canal chamado `🚫puniçoes🚫` Para enviar a punição para este canal)')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-			.addField('Outros Comandos:', 'F!anunciar - Fazer um anuncio (Crie um canal chamado ??avisos?? para enviar os avisos)\nF!botinfo Ver as informações do bot\nF!enquete Fazer uma enquete no canal `?enquete?` (Crie um canal chamado ?enquete?)\nF!new (Abrir um ticket)\nF!close (Feichar um ticket)\nF!yt (Procurar algo no youtube)')
+			.addField('Outros Comandos:', 'F!anunciar - Fazer um anuncio (Crie um canal chamado `🚨avisos🚨` para enviar os avisos)\nF!botinfo Ver as informações do bot\nF!enquete Fazer uma enquete no canal `⚡enquete⚡` (Crie um canal chamado ?enquete?)\nF!new (Abrir um ticket)\nF!close (Feichar um ticket)\nF!yt (Procurar algo no youtube)')
                         .addField('Diverção:', 'F!ship Shippar dois usuarios')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
 	
@@ -52,7 +52,7 @@ if (cmd == `${prefix}serverinfo`) {
   let year = message.guild.createdAt.getFullYear()
    let sicon = message.guild.iconURL;
    let serverembed = new Discord.RichEmbed()
-   .setAuthor(message.guild.name, sicon)
+   .setAuthor(<a:frita:491010628111171585>,message.guild.name, sicon)
    .setFooter(`Guild criada • ${day}/${month}/${year}`)
    .setColor("#7289DA")
    .setThumbnail(sicon)
@@ -79,7 +79,7 @@ if (cmd == `${prefix}anunciar`) {
     .setColor('#19a338')
     .addField("Atenciosamente,", message.author)
 
-    let anunciochannel = message.guild.channels.find(`name`, '??avisos??')
+    let anunciochannel = message.guild.channels.find(`name`, '🚨avisos🚨')
 
     message.channel.send(`**Anuncio feito com sucesso.**`)
 
@@ -121,7 +121,7 @@ if (cmd == `${prefix}anunciar`) {
     }catch(e){
     }
 
-    let incidentchannel = message.guild.channels.find(`name`, '??puniçoes??');
+    let incidentchannel = message.guild.channels.find(`name`, '🚫puniçoes🚫');
     message.channel.send(`**Usuário banido com sucesso!**`)
 
     incidentchannel.send(banEmbed);
@@ -144,7 +144,7 @@ if (cmd == `${prefix}anunciar`) {
           .setThumbnail(message.author.avatarURL)
           .setFooter(`FlashReport`)
       
-          let reportschannel = message.guild.channels.find(`name`, '??reportes??');
+          let reportschannel = message.guild.channels.find(`name`, '🔱reportes🔱');
           if(!reportschannel) return message.channel.send(`:x: Erro: O canal **reportes** não existe.`);
 
           message.channel.send(`**Usuário reportado com sucesso.**`)
@@ -232,7 +232,7 @@ if (cmd == `${prefix}enquete`) {
     .setColor('RANDOM')
     .addField("Enquete iniciada por,", message.author)
 
-    let anunciochannel = message.guild.channels.find(`name`, '?enquete?')
+    let anunciochannel = message.guild.channels.find(`name`, '⚡enquete⚡')
 
     message.channel.send(`Enquete aberta com sucesso`)
 
