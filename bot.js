@@ -302,7 +302,7 @@ if (cmd == `${prefix}yt`) {
     let embed = new Discord.RichEmbed()
         .addField(`https://www.youtube.com/${youtube}`, `Você pesquisou: **${youtube}**`)
         .setDescription("**Eu perguntei pro youtube e ele respondeu...**")
-        .setThumbnail("https://cdn.discordapp.com/attachments/509485956148101129/511084587993006082/images.png")
+        .setThumbnail("https://cdn.discordapp.com/attachments/512734858771169282/512739769399377921/images.png")
         .setColor("RED")
     message.channel.send(embed);
 }
