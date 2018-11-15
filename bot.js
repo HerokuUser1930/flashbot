@@ -306,11 +306,7 @@ if (cmd == `${prefix}yt`) {
         .setColor("RED")
     message.channel.send(embed);
 }
-	
-bot.on('ready', () => {
-  console.log('I am ready!');
-});
-
+		
 bot.on('message', message => {
   if (message.content === 'picachu') {
     message.channel.send('Pikachu <a:picachu:512716967887765524>');
