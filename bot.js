@@ -56,7 +56,7 @@ if (cmd == `${prefix}serverinfo`) {
    .setFooter(`Guild criada • ${day}/${month}/${year}`)
    .setColor("#7289DA")
    .setThumbnail(sicon)
-   .addField("<a:frita:491010628111171585>")
+   .addField("Serverinfo:", "<a:frita:491010628111171585>")
    .addField("ID", message.guild.id, true)
    .addField("?? Nome da Guild:", message.guild.name, true)
    .addField("?? Dono:", message.guild.owner.user.tag, true)
@@ -76,7 +76,7 @@ if (cmd == `${prefix}anunciar`) {
     message.delete();
 
     const embed = new Discord.RichEmbed()
-    .addField("<a:anuncio:508877403280506881> Anúncio ", anuncio)
+    .addField("<a:anuncio:508877403280506881> | Anúncio ", anuncio)
     .setColor('#19a338')
     .addField("Atenciosamente,", message.author)
 
