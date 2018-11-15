@@ -307,5 +307,14 @@ if (cmd == `${prefix}yt`) {
     message.channel.send(embed);
 }
 	
+// Create an event listener for messages
+bot.on('message', message => {
+  // If the message is "ping"
+  if (message.content === 'picachu') {
+    // Send "pong" to the same channel
+    message.channel.send('Pikachu <a:picachu:512716967887765524>');
+  }
+});
+
     });
 bot.login(TOKEN);
