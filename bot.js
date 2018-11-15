@@ -64,7 +64,7 @@ if (cmd == `${prefix}serverinfo`) {
    .addField("👥 Membros:", message.guild.memberCount, true)
    .addField("🤼 Pessoas:", message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size, true)
    .addField("🤖 Bots:", message.guild.members.filter(m => m.user.bot).size, true)
-   .addField('?? Presença', `?? <:online:512708369660903476> ${message.guild.presences.size}/${message.guild.presences.filter(p => p.status === 'online').size}\n <:pertube:512708432067952640> ${message.guild.presences.filter(p => p.status === 'dnd').size}\n <:ausente:512708393706848266> ${message.guild.presences.filter(p => p.status === 'idle').size}`, true)
+   .addField('<a:frita:491010628111171585> Presença', `?? <:online:512708369660903476> ${message.guild.presences.size}/${message.guild.presences.filter(p => p.status === 'online').size}\n <:pertube:512708432067952640> ${message.guild.presences.filter(p => p.status === 'dnd').size}\n <:ausente:512708393706848266> ${message.guild.presences.filter(p => p.status === 'idle').size}`, true)
    .addField("💼 Cargos:", message.guild.roles.size, true);
    message.channel.send(serverembed);
 
@@ -161,13 +161,13 @@ if (message.content === `${prefix}botinfo`) {
         .setDescription("Informação do Bot")
         .setColor("#15f153")
         .setThumbnail(bicon)
-        .addField("?? __Nome do BOT:__", bot.user.username, true)
-        .addField("?? __Criado em:__", "18 de maio de 2018 as 17:15:00", true)
-        .addField("?? __Plataforma:__", "JavaScript", true)
-        .addField("?? __Dono:__", bot.users.get("330445793867726849").tag, true)
-        .addField("??? __Ping__ :", Math.round(bot.ping), true)
-        .addField("?? __Membros__ :", bot.users.size, true)
-        .addField("?? __Canais__ :", bot.channels.size, true)
+        .addField("🤖 __Nome do BOT:__", bot.user.username, true)
+        .addField("📆 __Criado em:__", "Sab 21 de abril de 2018 14:19:04", true)
+        .addField("💻 __Versão:__", "Cmp 1.0.0", true)
+        .addField("👑 __Dono:__", bot.users.get("330445793867726849").tag, true)
+        .addField("🛰️ __Ping__ :", Math.round(bot.ping), true)
+        .addField("👥 __Membros__ :", bot.users.size, true)
+        .addField("💬 __Canais__ :", bot.channels.size, true)
         .setColor("#7289DA")
         .addField("Informações ", "Discord para suporte: https://discord.gg/z7R5jyJ, Site: https://flash-bot.weebly.com/", true);
 
@@ -175,7 +175,7 @@ if (message.content === `${prefix}botinfo`) {
 }
 
 if (cmd == `${prefix}ship`) {
-    let psc2 = ["100% [¦¦¦¦¦¦¦¦¦¦¦] Opá achou a(o) 10/10 hein ja pode casar", "100% [¦¦¦¦¦¦¦¦¦¦¦] Opá achou a(o) 10/10 hein ja pode casar","83% [¦¦¦¦¦¦¦¦¦..] Só falta um deles aceitar.", "83% [¦¦¦¦¦¦¦¦¦..] Só falta um deles aceitar.", "67% [¦¦¦¦¦¦¦....] Achei legal esse casal hein.", "67% [¦¦¦¦¦¦¦....] Achei legal esse casal hein.", "42% [¦¦¦¦¦......] Hummm sei não hein.", "42% [¦¦¦¦¦......] Hummm sei não hein.", "38% [¦¦¦¦.......] Acho que não da certo hein.", "38% [¦¦¦¦.......] Acho que não da certo hein.", "50% [¦¦¦¦¦¦.....] Falta só um deles aceitar.", "50% [¦¦¦¦¦¦.....] Falta só um deles aceitar.", "20% [¦¦¦........] Não foi dessa vez.", "20% [¦¦¦........] Não foi dessa vez.", "10% [¦¦.........] Triste", "10% [¦¦.........] Triste", "5% [¦..........] Triste essa pessoa não gosta de você", "5% [¦..........] Triste essa pessoa não gosta de você", "0% [...........] Vishe não foi desta vez", "0% [...........] Vishe não foi desta vez"]
+    let psc2 = ["100% [███████████] Opá achou a(o) 10/10 hein ja pode casar", "100% [███████████] Opá achou a(o) 10/10 hein ja pode casar","83% [█████████..] Só falta um deles aceitar.", "83% [█████████..] Só falta um deles aceitar.", "67% [███████....] Achei legal esse casal hein.", "67% [███████....] Achei legal esse casal hein.", "42% [█████......] Hummm sei não hein.", "42% [█████......] Hummm sei não hein.", "38% [███........] Acho que não da certo hein.", "38% [███........] Acho que não da certo hein.", "50% [██████.....] Falta só um deles aceitar.", "50% [██████.....] Falta só um deles aceitar.", "20% [███........] Não foi dessa vez.", "20% [███........] Não foi dessa vez.", "10% [██.........] Triste", "10% [██.........] Triste", "5% [█..........] Triste essa pessoa não gosta de você", "5% [█..........] Triste essa pessoa não gosta de você", "0% [...........] Vishe não foi desta vez", "0% [...........] Vishe não foi desta vez"]
     let shipUser = message.mentions.users.array()[0];
     let shipUser2 = message.mentions.users.array()[1];
     if (!shipUser) return message.channel.send(message.author + ' Utilize: F!ship (@user1) (@user2)\n Exmplo: `@zPotterZ#6281` + `_SpeedLight_#4293`') 
