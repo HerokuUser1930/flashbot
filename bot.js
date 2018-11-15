@@ -64,7 +64,7 @@ if (cmd == `${prefix}serverinfo`) {
    .addField("👥 Membros:", message.guild.memberCount, true)
    .addField("🤼 Pessoas:", message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size, true)
    .addField("🤖 Bots:", message.guild.members.filter(m => m.user.bot).size, true)
-   .addField('<a:frita:491010628111171585> Presença', `?? <:online:512708369660903476> ${message.guild.presences.size}/${message.guild.presences.filter(p => p.status === 'online').size}\n <:pertube:512708432067952640> ${message.guild.presences.filter(p => p.status === 'dnd').size}\n <:ausente:512708393706848266> ${message.guild.presences.filter(p => p.status === 'idle').size}`, true)
+   .addField('<a:frita:512713702638878731> Presença', `<:online:512708369660903476> ${message.guild.presences.size}/${message.guild.presences.filter(p => p.status === 'online').size}\n <:pertube:512708432067952640> ${message.guild.presences.filter(p => p.status === 'dnd').size}\n <:ausente:512708393706848266> ${message.guild.presences.filter(p => p.status === 'idle').size}`, true)
    .addField("💼 Cargos:", message.guild.roles.size, true);
    message.channel.send(serverembed);
 
