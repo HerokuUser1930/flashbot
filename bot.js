@@ -1,21 +1,21 @@
 const Discord = require('discord.js')
 
-var client = new Discord.Client()
+var bot = new Discord.Client()
 
 const TOKEN = process.env.BOT_TOKEN
 
-client.on('ready', () => {
+bot.on('ready', () => {
 
-    console.log(`📡 Estou conectado a: ${client.guilds.size} servidores, e ${client.users.size} usuários.`)
-   let games = [`📡 F!ajuda | ` + client.guilds.size + ` servers e ` + client.users.size + ` Usuários conectados no total`,
-      `🇧🇷 FlashBOT - Bot Totalmente Brasileiro.`, `😛 Minha prefix e F!`, `😛 Meu criador e o zPotterZ ツ#6281`, `🔱 Entre em meu grupo de suporte https://discord.gg/z7R5jyJ`, `🤔 Precisando de ajuda? F!ajuda`, `🤔 Me adicione: https://flash-bot.weebly.com/`];
+    console.log(`?? Estou conectado a: ${bot.guilds.size} servidores, e ${bot.users.size} usuários.`)
+   let games = [`?? F!ajuda | ` + bot.guilds.size + ` servers e ` + bot.users.size + ` Usuários conectados no total`,
+      `???? FlashBOT - Bot Totalmente Brasileiro.`, `?? Minha prefix e F!`, `?? Meu criador e o zPotterZ ?#6281`, `?? Entre em meu grupo de suporte https://discord.gg/z7R5jyJ`, `?? Precisando de ajuda? F!ajuda`, `?? Me adicione: https://flash-bot.weebly.com/`];
   setInterval(() => {
-      client.user.setActivity(games[Math.floor(Math.random() * games.length)], { url: "https://twitch.tv/redstoneg4", type: "STREAMING" })
+      bot.user.setActivity(games[Math.floor(Math.random() * games.length)], { url: "https://twitch.tv/redstoneg4", type: "STREAMING" })
 
   }, 20000);
 });
 
-	client.on("message", async message => {
+	bot.on("message", async message => {
         if(message.author.bot) return;
         if(message.channel.type === "dm") return;
         let prefix = 'F!'
@@ -28,12 +28,12 @@ if (cmd == `${prefix}ajuda`) {
 			message.channel.send(message.author + '**, Enviei meus comandos na sua dm.**')
 			
 			const h1 = new Discord.RichEmbed()
-			.addField('Comandos Públicos:', 'F!serverinfo - Mostra as informações do servidor\nF!reportar - Reporta um usuário para a Staff (Crie um canal chamado 🔱reportes🔱 Para enviar os reportes)')
+			.addField('Comandos Públicos:', 'F!serverinfo - Mostra as informações do servidor\nF!reportar - Reporta um usuário para a Staff (Crie um canal chamado ??reportes?? Para enviar os reportes)')
 			.setColor('RANDOM')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-			.addField('Comandos para Moderação:', 'F!banir - Bane o usuário do servidor (Crie um canal chamado 🚫puniçoes🚫 Para enviar a punição para este canal)')
+			.addField('Comandos para Moderação:', 'F!banir - Bane o usuário do servidor (Crie um canal chamado ??puniçoes?? Para enviar a punição para este canal)')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
-			.addField('Outros Comandos:', 'F!anunciar - Fazer um anuncio (Crie um canal chamado 🚨avisos🚨 para enviar os avisos)\nF!botinfo Ver as informações do bot\nF!enquete Fazer uma enquete no canal `⚡enquete⚡` (Crie um canal chamado ⚡enquete⚡)\nF!new (Abrir um ticket)\nF!close (Feichar um ticket)\nF!yt (Procurar algo no youtube)')
+			.addField('Outros Comandos:', 'F!anunciar - Fazer um anuncio (Crie um canal chamado ??avisos?? para enviar os avisos)\nF!botinfo Ver as informações do bot\nF!enquete Fazer uma enquete no canal `?enquete?` (Crie um canal chamado ?enquete?)\nF!new (Abrir um ticket)\nF!close (Feichar um ticket)\nF!yt (Procurar algo no youtube)')
                         .addField('Diverção:', 'F!ship Shippar dois usuarios')
 			.setAuthor(message.author.tag, message.author.displayAvatarURL)
 	
@@ -57,14 +57,14 @@ if (cmd == `${prefix}serverinfo`) {
    .setColor("#7289DA")
    .setThumbnail(sicon)
    .addField("ID", message.guild.id, true)
-   .addField("📰 Nome da Guild:", message.guild.name, true)
-   .addField("👑 Dono:", message.guild.owner.user.tag, true)
-   .addField("🌎 Região:", message.guild.region, true)
-   .addField("📢 Canais:", message.guild.channels.size, true)
-   .addField("👥 Membros:", message.guild.memberCount, true)
-.addField('📃 Presença', `📗 Online: ${message.guild.presences.size}/${message.guild.presences.filter(p => p.status === 'online').size}\n📕 Ocupado: ${message.guild.presences.filter(p => p.status === 'dnd').size}\n📒 Ausente: ${message.guild.presences.filter(p => p.status === 'idle').size}`, true)
-   .addField("🤖 Bots:", message.guild.members.filter(m => m.user.bot).size, true)
-   .addField("💼 Cargos:", message.guild.roles.size, true);
+   .addField("?? Nome da Guild:", message.guild.name, true)
+   .addField("?? Dono:", message.guild.owner.user.tag, true)
+   .addField("?? Região:", message.guild.region, true)
+   .addField("?? Canais:", message.guild.channels.size, true)
+   .addField("?? Membros:", message.guild.memberCount, true)
+.addField('?? Presença', `?? Online: ${message.guild.presences.size}/${message.guild.presences.filter(p => p.status === 'online').size}\n?? Ocupado: ${message.guild.presences.filter(p => p.status === 'dnd').size}\n?? Ausente: ${message.guild.presences.filter(p => p.status === 'idle').size}`, true)
+   .addField("?? Bots:", message.guild.members.filter(m => m.user.bot).size, true)
+   .addField("?? Cargos:", message.guild.roles.size, true);
    message.channel.send(serverembed);
 
 }
@@ -79,7 +79,7 @@ if (cmd == `${prefix}anunciar`) {
     .setColor('#19a338')
     .addField("Atenciosamente,", message.author)
 
-    let anunciochannel = message.guild.channels.find(`name`, '🚨avisos🚨')
+    let anunciochannel = message.guild.channels.find(`name`, '??avisos??')
 
     message.channel.send(`**Anuncio feito com sucesso.**`)
 
@@ -121,7 +121,7 @@ if (cmd == `${prefix}anunciar`) {
     }catch(e){
     }
 
-    let incidentchannel = message.guild.channels.find(`name`, '🚫puniçoes🚫');
+    let incidentchannel = message.guild.channels.find(`name`, '??puniçoes??');
     message.channel.send(`**Usuário banido com sucesso!**`)
 
     incidentchannel.send(banEmbed);
@@ -144,7 +144,7 @@ if (cmd == `${prefix}anunciar`) {
           .setThumbnail(message.author.avatarURL)
           .setFooter(`FlashReport`)
       
-          let reportschannel = message.guild.channels.find(`name`, '🔱reportes🔱');
+          let reportschannel = message.guild.channels.find(`name`, '??reportes??');
           if(!reportschannel) return message.channel.send(`:x: Erro: O canal **reportes** não existe.`);
 
           message.channel.send(`**Usuário reportado com sucesso.**`)
@@ -154,19 +154,19 @@ if (cmd == `${prefix}anunciar`) {
         } 
 
 if (message.content === `${prefix}botinfo`) {
-    let bicon = client.user.displayAvatarURL;
+    let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
         .setAuthor("FlashBOT", bicon)
         .setDescription("Informação do Bot")
         .setColor("#15f153")
         .setThumbnail(bicon)
-        .addField("🤖 __Nome do BOT:__", client.user.username, true)
-        .addField("📆 __Criado em:__", "18 de maio de 2018 as 17:15:00", true)
-        .addField("💻 __Plataforma:__", "JavaScript", true)
-        .addField("👑 __Dono:__", client.users.get("330445793867726849").tag, true)
-        .addField("🛰️ __Ping__ :", Math.round(client.ping), true)
-        .addField("👥 __Membros__ :", client.users.size, true)
-        .addField("💬 __Canais__ :", client.channels.size, true)
+        .addField("?? __Nome do BOT:__", bot.user.username, true)
+        .addField("?? __Criado em:__", "18 de maio de 2018 as 17:15:00", true)
+        .addField("?? __Plataforma:__", "JavaScript", true)
+        .addField("?? __Dono:__", bot.users.get("330445793867726849").tag, true)
+        .addField("??? __Ping__ :", Math.round(bot.ping), true)
+        .addField("?? __Membros__ :", bot.users.size, true)
+        .addField("?? __Canais__ :", bot.channels.size, true)
         .setColor("#7289DA")
         .addField("Informações ", "Discord para suporte: https://discord.gg/z7R5jyJ, Site: https://flash-bot.weebly.com/", true);
 
@@ -174,18 +174,18 @@ if (message.content === `${prefix}botinfo`) {
 }
 
 if (cmd == `${prefix}ship`) {
-    let psc2 = ["100% [███████████] Opá achou a(o) 10/10 hein ja pode casar", "100% [███████████] Opá achou a(o) 10/10 hein ja pode casar","83% [█████████..] Só falta um deles aceitar.", "83% [█████████..] Só falta um deles aceitar.", "67% [███████....] Achei legal esse casal hein.", "67% [███████....] Achei legal esse casal hein.", "42% [█████......] Hummm sei não hein.", "42% [█████......] Hummm sei não hein.", "38% [████.......] Acho que não da certo hein.", "38% [████.......] Acho que não da certo hein.", "50% [██████.....] Falta só um deles aceitar.", "50% [██████.....] Falta só um deles aceitar.", "20% [███........] Não foi dessa vez.", "20% [███........] Não foi dessa vez.", "10% [██.........] Triste", "10% [██.........] Triste", "5% [█..........] Triste essa pessoa não gosta de você", "5% [█..........] Triste essa pessoa não gosta de você", "0% [...........] Vishe não foi desta vez", "0% [...........] Vishe não foi desta vez"]
+    let psc2 = ["100% [¦¦¦¦¦¦¦¦¦¦¦] Opá achou a(o) 10/10 hein ja pode casar", "100% [¦¦¦¦¦¦¦¦¦¦¦] Opá achou a(o) 10/10 hein ja pode casar","83% [¦¦¦¦¦¦¦¦¦..] Só falta um deles aceitar.", "83% [¦¦¦¦¦¦¦¦¦..] Só falta um deles aceitar.", "67% [¦¦¦¦¦¦¦....] Achei legal esse casal hein.", "67% [¦¦¦¦¦¦¦....] Achei legal esse casal hein.", "42% [¦¦¦¦¦......] Hummm sei não hein.", "42% [¦¦¦¦¦......] Hummm sei não hein.", "38% [¦¦¦¦.......] Acho que não da certo hein.", "38% [¦¦¦¦.......] Acho que não da certo hein.", "50% [¦¦¦¦¦¦.....] Falta só um deles aceitar.", "50% [¦¦¦¦¦¦.....] Falta só um deles aceitar.", "20% [¦¦¦........] Não foi dessa vez.", "20% [¦¦¦........] Não foi dessa vez.", "10% [¦¦.........] Triste", "10% [¦¦.........] Triste", "5% [¦..........] Triste essa pessoa não gosta de você", "5% [¦..........] Triste essa pessoa não gosta de você", "0% [...........] Vishe não foi desta vez", "0% [...........] Vishe não foi desta vez"]
     let shipUser = message.mentions.users.array()[0];
     let shipUser2 = message.mentions.users.array()[1];
     if (!shipUser) return message.channel.send(message.author + ' Utilize: F!ship (@user1) (@user2)\n Exmplo: `@zPotterZ#6281` + `_SpeedLight_#4293`') 
 
     let  shipEmbed = new Discord.RichEmbed()
         .setDescription("Shipando... ")
-        .addField("Ummm será que temos um novo casal aqui:", `${shipUser} 👨🏻‍💖👩 ${shipUser2}`)
+        .addField("Ummm será que temos um novo casal aqui:", `${shipUser} ????????? ${shipUser2}`)
         .addField("Comando requisitado por:", `${message.author}`)
         .setColor("RED")
         .setImage("https://cdn.discordapp.com/attachments/467721860910415883/468806111684722698/Capturar.PNG")
-        .addField("**Porcentagem de dar certo:**", "👇")
+        .addField("**Porcentagem de dar certo:**", "??")
         .setFooter(psc2[Math.floor(psc2.length * Math.random())])
 
 
@@ -202,7 +202,7 @@ else if(cmd === "<@473212509545824296>") {
 
 if (cmd == `${prefix}limpar`) {
   if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado`);
-  if(!message.guild.member(client.user).hasPermission('MANAGE_MESSAGES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Mensagens`")
+  if(!message.guild.member(bot.user).hasPermission('MANAGE_MESSAGES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Mensagens`")
 
       // We want to check if the argument is a number
       if (isNaN(args[0])) {
@@ -232,14 +232,14 @@ if (cmd == `${prefix}enquete`) {
     .setColor('RANDOM')
     .addField("Enquete iniciada por,", message.author)
 
-    let anunciochannel = message.guild.channels.find(`name`, '⚡enquete⚡')
+    let anunciochannel = message.guild.channels.find(`name`, '?enquete?')
 
     message.channel.send(`Enquete aberta com sucesso`)
 
     anunciochannel.send("")
 anunciochannel.send(embed).then(msg1 => {
-msg1.react('👍') 
-msg1.react('👎') 
+msg1.react('??') 
+msg1.react('??') 
 })
   }
 
