@@ -1,21 +1,21 @@
 const Discord = require('discord.js')
 
-var bot = new Discord.Client()
+var client = new Discord.Client()
 
 const TOKEN = process.env.BOT_TOKEN
 
-bot.on('ready', () => {
+client.on('ready', () => {
 
-    console.log(`📡 Estou conectado a: ${bot.guilds.size} servidores, e ${bot.users.size} usuários.`)
-   let games = [`📡 F!ajuda | ` + bot.guilds.size + ` servers e ` + bot.users.size + ` Usuários conectados no total`,
+    console.log(`📡 Estou conectado a: ${client.guilds.size} servidores, e ${client.users.size} usuários.`)
+   let games = [`📡 F!ajuda | ` + client.guilds.size + ` servers e ` + client.users.size + ` Usuários conectados no total`,
       `🇧🇷 FlashBOT - Bot Totalmente Brasileiro.`, `😛 Minha prefix e F!`, `😛 Meu criador e o zPotterZ ツ#6281`, `🔱 Entre em meu grupo de suporte https://discord.gg/z7R5jyJ`, `🤔 Precisando de ajuda? F!ajuda`, `🤔 Me adicione: https://flash-bot.weebly.com/`];
   setInterval(() => {
-      bot.user.setActivity(games[Math.floor(Math.random() * games.length)], { url: "https://twitch.tv/redstoneg4", type: "STREAMING" })
+      client.user.setActivity(games[Math.floor(Math.random() * games.length)], { url: "https://twitch.tv/redstoneg4", type: "STREAMING" })
 
   }, 20000);
 });
 
-	bot.on("message", async message => {
+	client.on("message", async message => {
         if(message.author.bot) return;
         if(message.channel.type === "dm") return;
         let prefix = 'F!'
@@ -154,19 +154,19 @@ if (cmd == `${prefix}anunciar`) {
         } 
 
 if (message.content === `${prefix}botinfo`) {
-    let bicon = bot.user.displayAvatarURL;
+    let bicon = client.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
         .setAuthor("FlashBOT", bicon)
         .setDescription("Informação do Bot")
         .setColor("#15f153")
         .setThumbnail(bicon)
-        .addField("🤖 __Nome do BOT:__", bot.user.username, true)
+        .addField("🤖 __Nome do BOT:__", client.user.username, true)
         .addField("📆 __Criado em:__", "18 de maio de 2018 as 17:15:00", true)
         .addField("💻 __Plataforma:__", "JavaScript", true)
-        .addField("👑 __Dono:__", bot.users.get("330445793867726849").tag, true)
-        .addField("🛰️ __Ping__ :", Math.round(bot.ping), true)
-        .addField("👥 __Membros__ :", bot.users.size, true)
-        .addField("💬 __Canais__ :", bot.channels.size, true)
+        .addField("👑 __Dono:__", client.users.get("330445793867726849").tag, true)
+        .addField("🛰️ __Ping__ :", Math.round(client.ping), true)
+        .addField("👥 __Membros__ :", client.users.size, true)
+        .addField("💬 __Canais__ :", client.channels.size, true)
         .setColor("#7289DA")
         .addField("Informações ", "Discord para suporte: https://discord.gg/z7R5jyJ, Site: https://flash-bot.weebly.com/", true);
 
@@ -202,7 +202,7 @@ else if(cmd === "<@473212509545824296>") {
 
 if (cmd == `${prefix}limpar`) {
   if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`:no_entry_sign: I <@${message.author.id}>, Comando Negado`);
-  if(!message.guild.member(bot.user).hasPermission('MANAGE_MESSAGES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Mensagens`")
+  if(!message.guild.member(client.user).hasPermission('MANAGE_MESSAGES')) return message.channel.send(message.author + ", Eu não tenho as seguintes permissões: `Gerenciar Mensagens`")
 
       // We want to check if the argument is a number
       if (isNaN(args[0])) {
