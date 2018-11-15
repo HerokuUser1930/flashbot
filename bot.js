@@ -52,10 +52,11 @@ if (cmd == `${prefix}serverinfo`) {
   let year = message.guild.createdAt.getFullYear()
    let sicon = message.guild.iconURL;
    let serverembed = new Discord.RichEmbed()
-   .setAuthor(<a:frita:491010628111171585>,message.guild.name, sicon)
+   .setAuthor(message.guild.name, sicon)
    .setFooter(`Guild criada • ${day}/${month}/${year}`)
    .setColor("#7289DA")
    .setThumbnail(sicon)
+   .addField("<a:frita:491010628111171585>")
    .addField("ID", message.guild.id, true)
    .addField("?? Nome da Guild:", message.guild.name, true)
    .addField("?? Dono:", message.guild.owner.user.tag, true)
@@ -75,7 +76,7 @@ if (cmd == `${prefix}anunciar`) {
     message.delete();
 
     const embed = new Discord.RichEmbed()
-    .addField(" Anúncio ", anuncio)
+    .addField("<a:anuncio:508877403280506881> Anúncio ", anuncio)
     .setColor('#19a338')
     .addField("Atenciosamente,", message.author)
 
