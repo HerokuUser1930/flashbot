@@ -56,16 +56,16 @@ if (cmd == `${prefix}serverinfo`) {
    .setFooter(`Guild criada • ${day}/${month}/${year}`)
    .setColor("#7289DA")
    .setThumbnail(sicon)
-   .addField("Serverinfo:", "<a:frita:491010628111171585>")
    .addField("ID", message.guild.id, true)
-   .addField("?? Nome da Guild:", message.guild.name, true)
-   .addField("?? Dono:", message.guild.owner.user.tag, true)
-   .addField("?? Região:", message.guild.region, true)
-   .addField("?? Canais:", message.guild.channels.size, true)
-   .addField("?? Membros:", message.guild.memberCount, true)
-.addField('?? Presença', `?? Online: ${message.guild.presences.size}/${message.guild.presences.filter(p => p.status === 'online').size}\n?? Ocupado: ${message.guild.presences.filter(p => p.status === 'dnd').size}\n?? Ausente: ${message.guild.presences.filter(p => p.status === 'idle').size}`, true)
-   .addField("?? Bots:", message.guild.members.filter(m => m.user.bot).size, true)
-   .addField("?? Cargos:", message.guild.roles.size, true);
+   .addField("📰 Nome da Guild:", message.guild.name, true)
+   .addField("👑 Dono:", message.guild.owner.user.tag, true)
+   .addField("🌎 Região:", message.guild.region, true)
+   .addField("📢 Canais:", message.guild.channels.size, true)
+   .addField("👥 Membros:", message.guild.memberCount, true)
+   .addField("🤼 Pessoas:", message.guild.memberCount - message.guild.members.filter(m => m.user.bot).size, true)
+   .addField("🤖 Bots:", message.guild.members.filter(m => m.user.bot).size, true)
+   .addField('?? Presença', `?? <:online:512708369660903476> ${message.guild.presences.size}/${message.guild.presences.filter(p => p.status === 'online').size}\n <:pertube:512708432067952640> ${message.guild.presences.filter(p => p.status === 'dnd').size}\n <:ausente:512708393706848266> ${message.guild.presences.filter(p => p.status === 'idle').size}`, true)
+   .addField("💼 Cargos:", message.guild.roles.size, true);
    message.channel.send(serverembed);
 
 }
