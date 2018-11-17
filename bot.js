@@ -309,6 +309,27 @@ if (cmd == `${prefix}yt`) {
         .setColor("RED")
     message.channel.send(embed);
 }
+
+if (cmd == `${prefix}saychannel`) {
+    if (!(message.member.hasPermission('ADMINISTRATOR'))) {
+        message.channel.send("<:no:509470373452972033> Erro: Você não tem permissão administrador.");
+        return;
+    }
+    try {
+        const toSend = messageArray.splice(2);
+        const sayMessage = toSend.join(" ");
+        if (sayMessage === "") {
+            message.channel.send("<:no:509470373452972033> Erro: você não colocou o ID do canal ... então eu não tenho nada para enviar ou você não coloca nenhuma mensagem para enviar após o ID do canal UwU");
+            return;
+        }
+        else{
+            bot.channels.get(`${messageArray[1]}`).send(sayMessage);
+        }
+    }
+    catch(err) {
+        message.channel.send("<:kyukoexc:500205878147022858> Uhoh! Something went wrong, Did you spell the channel ID right?");
+    }
+}
 		
     });
 bot.login(TOKEN);
