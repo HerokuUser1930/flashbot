@@ -327,7 +327,7 @@ if (cmd == `${prefix}saychannel`) {
         }
     }
     catch(err) {
-        message.channel.send("<:kyukoexc:500205878147022858> Uhoh! Something went wrong, Did you spell the channel ID right?");
+        message.channel.send("<:no:509470373452972033> Uh! Algo deu errado, você soletrou a ID do canal, certo?");
     }
 }
 		
