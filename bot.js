@@ -331,5 +331,12 @@ if (cmd == `${prefix}saychannel`) {
     }
 }
 		
+//Mensagem de bem vindo
+bot.on('guildMemberAdd', member => {
+  const channel = member.guild.channels.find(ch => ch.name === 'bemvindo');
+  if (!channel) return;
+  channel.send(`Seja bem vindo(a) ao servidor ${member.guild.name}, ${member}`);
+});
+
     });
 bot.login(TOKEN);
